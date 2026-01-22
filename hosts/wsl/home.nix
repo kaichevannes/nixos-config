@@ -11,6 +11,10 @@
     xclip
   ];
 
+  home.file = {
+    ".ssh/known_hosts".source = ./known_hosts;
+  };
+
   home.activation.copyWeztermConfigToWindows = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       if [ "$(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip')" ]; then
         WIN_HOME="/mnt/c/Users/$(whoami)"
