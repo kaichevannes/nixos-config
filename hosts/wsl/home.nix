@@ -1,5 +1,6 @@
 { pkgs, lib, ... }: {
   imports = [
+    ./variables.nix
     ../../home/shared.nix
     ./bash.nix
   ];
@@ -12,7 +13,10 @@
   ];
 
   home.file = {
-    ".ssh/known_hosts".source = ./known_hosts;
+    ".ssh/known_hosts" = {
+      source = ./known_hosts;
+      force = true;
+    };
   };
 
   home.activation.copyWeztermConfigToWindows = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
