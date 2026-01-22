@@ -1,15 +1,15 @@
 { ... }: {
   programs.tmux = {
     enable = true;
-    baseIndex = 1;
     disableConfirmationPrompt = true;
     escapeTime = 0;
     historyLimit = 50000;
     keyMode = "vi";
     extraConfig = ''
-      display-time = 4000;
-      renumber-windows = "on"
-      status-interval = 60;
+      set -g display-time 4000
+      set -g renumber-windows on
+      set -g status-interval 60
+      set -g status-right ""
     '';
   };
 }
