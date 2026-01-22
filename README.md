@@ -4,7 +4,7 @@
 
 ### Elevated Powershell
 
-1. Install (Wezterm nightly)[https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe]
+1. Install [Wezterm nightly](https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe)
 2. Install WSl and Nix
 ```
 wsl.exe --install Ubuntu
