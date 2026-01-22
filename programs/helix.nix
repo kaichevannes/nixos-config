@@ -32,22 +32,43 @@
     languages = {
       language = [
         {
-          name = "go";
+          name = "html";
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "html"
+            ];
+          };
           auto-format = true;
+        }
+        {
+          name = "css";
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "css"
+            ];
+          };
+          auto-format = true;
+        }
+        {
+          name = "go";
           formatter.command = "goimports";
+          auto-format = true;
         }
         {
           name = "c";
-          auto-format = true;
           file-types = [
             "c"
             "h"
           ];
           formatter.command = "clang-format";
+          auto-format = true;
         }
         {
           name = "cpp";
-          auto-format = true;
           file-types = [
             "cpp"
             "cc"
@@ -57,11 +78,12 @@
             "hxx"
           ];
           formatter.command = "clang-format";
+          auto-format = true;
         }
         {
           name = "nix";
-          auto-format = true;
           formatter.command = "nixfmt";
+          auto-format = true;
         }
       ];
     };

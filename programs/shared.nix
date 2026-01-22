@@ -36,5 +36,6 @@
     typescript
     typescript-language-server
     vscode-langservers-extracted # HTML / CSS / JSON
+    prettier
   ];
 }
