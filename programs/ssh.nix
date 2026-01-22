@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services.ssh-agent.enable = true;
 
   programs.ssh = {
@@ -16,7 +17,7 @@
       controlPath = "~/.ssh/master-%r@%n:%p";
       controlPersist = "no";
       identityFile = "~/.ssh/id_ed25519";
-    }; 
+    };
   };
 
   home.file.".ssh/.managed_known_hosts" = {
