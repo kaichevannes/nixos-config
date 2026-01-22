@@ -24,6 +24,7 @@
     fzf
     ripgrep
     tree
+    tokei
     nil
     nixfmt
     gopls
