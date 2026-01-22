@@ -2,12 +2,6 @@
 {
   programs.helix = {
     enable = true;
-    themes = {
-      gruvbox-material-transparent = {
-        inherits = "gruvbox-material";
-        "ui.background" = "none";
-      };
-    };
     settings = {
       theme = "gruvbox-material-transparent";
       editor = {
@@ -70,6 +64,12 @@
           formatter.command = "nixfmt";
         }
       ];
+    };
+    themes = {
+      gruvbox-material-transparent = {
+        inherits = "gruvbox-material";
+        "ui.background" = "none";
+      };
     };
   };
 }
