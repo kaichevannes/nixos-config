@@ -33,24 +33,20 @@
       language = [
         {
           name = "html";
-          formatter = {
-            command = "prettier";
-            args = [
-              "--parser"
-              "html"
-            ];
-          };
+          formatter.command = "prettier";
+          formatter.args = [
+            "--parser"
+            "html"
+          ];
           auto-format = true;
         }
         {
           name = "css";
-          formatter = {
-            command = "prettier";
-            args = [
-              "--parser"
-              "css"
-            ];
-          };
+          formatter.command = "prettier";
+          formatter.args = [
+            "--parser"
+            "css"
+          ];
           auto-format = true;
         }
         {
