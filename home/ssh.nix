@@ -5,7 +5,7 @@
     enable = true;
     extraConfig = ''
       AddKeysToAgent yes
-      IdentifyFile ~/.ssh/id_ed25519
+      IdentityFile ~/.ssh/id_ed25519
     '';
   };
 
