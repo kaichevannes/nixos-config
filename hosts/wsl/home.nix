@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 {
   imports = [
-    ./variables.nix
+    ./settings.nix
     ../../programs/shared.nix
     ./bash.nix
   ];
