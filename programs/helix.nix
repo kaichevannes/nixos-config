@@ -45,14 +45,29 @@
         {
           name = "c";
           auto-format = true;
-          file-types = ["c" "h"];
+          file-types = [
+            "c"
+            "h"
+          ];
           formatter.command = "clang-format";
         }
         {
           name = "cpp";
           auto-format = true;
-          file-types = ["cpp" "cc" "cxx" "hpp" "hcc" "hxx"];
+          file-types = [
+            "cpp"
+            "cc"
+            "cxx"
+            "hpp"
+            "hcc"
+            "hxx"
+          ];
           formatter.command = "clang-format";
+        }
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = "nixfmt";
         }
       ];
     };

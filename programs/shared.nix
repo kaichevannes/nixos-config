@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./ssh.nix
     ./git.nix
@@ -24,6 +25,7 @@
     ripgrep
     tree
     nil
+    nixfmt
     gopls
     delve
     gotools
