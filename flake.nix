@@ -9,7 +9,7 @@
 
   outputs = { self, nixpkgs, home-manager, ...}@inputs: {
     homeConfigurations = {
-      "cheva" = home-manager.lib.homeManagerConfiguration {
+      "wsl" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
         modules = [
