@@ -1,16 +1,17 @@
 { pkgs, ... }:
 {
   imports = [
+    ./lazygit
+    ./helix
+
+    ./fish.nix
+    ./starship.nix
     ./ssh.nix
     ./git.nix
     ./tmux.nix
     ./eza.nix
     ./zoxide.nix
     ./yazi.nix
-
-    ./lazygit
-    ./helix
-    ./zsh
   ];
 
   home.stateVersion = "25.05";
