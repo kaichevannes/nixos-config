@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./settings.nix
@@ -6,8 +11,8 @@
     ./bash.nix
   ];
 
-  home.username = "cheva";
-  home.homeDirectory = "/home/cheva";
+  home.username = config.var.username;
+  home.homeDirectory = "/home/" + config.var.username;
 
   home.packages = with pkgs; [
     xclip
