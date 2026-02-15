@@ -9,7 +9,6 @@
     ./ssh.nix
     ./git.nix
     ./tmux.nix
-    ./eza.nix
     ./zoxide.nix
     ./yazi.nix
   ];
