@@ -1,15 +1,16 @@
 { pkgs, ... }:
 {
   imports = [
-    ./ssh
-    ./git
-    ./zsh
-    ./tmux
-    ./eza
-    ./zoxide
-    ./helix
+    ./ssh.nix
+    ./git.nix
+    ./tmux.nix
+    ./eza.nix
+    ./zoxide.nix
+    ./yazi.nix
+
     ./lazygit
-    ./yazi
+    ./helix
+    ./zsh
   ];
 
   home.stateVersion = "25.05";
