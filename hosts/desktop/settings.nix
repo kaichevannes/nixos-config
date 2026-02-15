@@ -1,6 +1,7 @@
 { lib, ... }:
 {
   config.var = {
+    hostname = "nixos";
     username = "cheva";
     git = {
       name = "Kai Chevannes";
