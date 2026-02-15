@@ -28,7 +28,7 @@
         style = "yellow";
       };
       fill.symbol = " ";
-      format = "$all$fill$cmd_duration$line_break$character";
+      format = "$all$fill$cmd_duration$status$line_break$character";
     };
   };
 
