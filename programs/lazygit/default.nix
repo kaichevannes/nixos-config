@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       git.overrideGpg = true;
-      customCommands = import ./customCommands.nix;
+      customCommands = import ./custom_commands.nix;
     };
   };
 }
