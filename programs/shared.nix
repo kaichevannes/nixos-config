@@ -3,9 +3,9 @@
   imports = [
     ./ssh.nix
     ./git.nix
-    ./fish.nix
-    ./starship.nix
+    ./zsh.nix
     ./tmux.nix
+    ./eza.nix
     ./zoxide.nix
     ./helix.nix
     ./lazygit.nix
