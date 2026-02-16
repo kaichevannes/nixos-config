@@ -50,6 +50,7 @@ nixos-enter --root /mnt -c 'passwd cheva'
 ```
 reboot
 sudo mv /root/nixos-config ~/.config/nixos-config
+sudo chown -R $USER:users ~/.config/nixos-config
 ```
 
 To rebuild use `sudo nixos-rebuild switch --flake ~/.config/nixos-config#desktop`
