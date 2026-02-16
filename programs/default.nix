@@ -3,6 +3,7 @@
   imports = [
     ./lazygit
     ./helix
+    ./yazi
 
     ./fish.nix
     ./starship.nix
@@ -10,7 +11,6 @@
     ./git.nix
     ./tmux.nix
     ./zoxide.nix
-    ./yazi.nix
   ];
 
   home.stateVersion = "25.05";
