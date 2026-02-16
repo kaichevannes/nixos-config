@@ -46,10 +46,13 @@ nixos-install --flake /mnt/root/nixos-config#nixos
 ```
 nixos-enter --root /mnt -c 'passwd cheva'
 ```
-9. Reboot
+9. Reboot and move repo to home
 ```
 reboot
+sudo mv /root/nixos-config ~/.config/nixos-config
 ```
+
+To rebuild use `sudo nixos-rebuild switch --flake ~/.config/nixos-config#desktop`
 
 ## WSL
 Install [Wezterm nightly](https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe)
