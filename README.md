@@ -1,9 +1,11 @@
 # nixos-config
 
 ## NixOS
-1. `sudo nix-env -iA nixos.git`
-2. `git clone https://github.com/kaichevannes/nixos-config.git ~/.config/nixos-config`
-3. `sudo nixos-rebuild switch --flake ~/.config/nixos-config#desktop`
+```
+sudo nix-env -iA nixos.git
+git clone https://github.com/kaichevannes/nixos-config.git ~/.config/nixos-config
+sudo nixos-rebuild switch --flake ~/.config/nixos-config#desktop
+```
 
 ## WSL
 Install [Wezterm nightly](https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe)
