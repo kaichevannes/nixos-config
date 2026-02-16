@@ -1,20 +1,52 @@
 # nixos-config
 
 ## NixOS
-1. Clone repo
+https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning
+1. Start root shell
 ```
-sudo nix-env -iA nixos.git
+sudo -i
+```
+2. Partition
+```
+parted /dev/sda -- mklabel gpt
+parted /dev/sda -- mkpart root ext4 512MB -8GB
+parted /dev/sda -- mkpart swap linux-swap -8GB 100%
+parted /dev/sda -- mkpart ESP fat32 1MB 512MB
+parted /dev/sda -- set 3 esp on
+```
+3. Format
+```
+mkfs.ext4 -L nixos /dev/sda1
+mkswap -L swap /dev/sda2
+mkfs.fat -F 32 -n boot /dev/sda3
+```
+4. Mount
+```
+mount /dev/disk/by-label/nixos /mnt
+mkdir -p /mnt/boot
+mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
+```
+5. Clone repo
+```
+nix-env -iA nixos.git
 git clone https://github.com/kaichevannes/nixos-config.git ~/.config/nixos-config
 ```
-2. Move hardware-configuration if necessary
+6. Copy hardware-configuration.nix
 ```
 cp /etc/nixos/hardware-configuration.nix ~/.config/nixos-config/hosts/desktop/
 ```
-3. Build system
+7. Install system
 ```
-sudo nixos-rebuild switch --flake ~/.config/nixos-config#nixos
+nixos-install --flake ~/.config/nixos-config#nixos
 ```
-
+8. Set password for user account
+```
+nixos-enter --root /mnt -c 'passwd cheva'
+```
+9. Reboot
+```
+reboot
+```
 
 ## WSL
 Install [Wezterm nightly](https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe)
