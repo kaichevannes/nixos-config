@@ -53,7 +53,7 @@ sudo mv /root/nixos-config ~/.config/nixos-config
 sudo chown -R $USER:users ~/.config/nixos-config
 ```
 
-To rebuild use `sudo nixos-rebuild switch --flake ~/.config/nixos-config#desktop`
+To rebuild use `sudo nixos-rebuild switch --flake ~/.config/nixos-config#nixos`
 
 ## WSL
 Install [Wezterm nightly](https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe)
