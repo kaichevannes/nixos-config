@@ -28,4 +28,9 @@
   };
 
   console.keyMap = "uk";
+
+  environment.variables = {
+    TERMINAL = "foot";
+    TERM = "foot";
+  };
 }
