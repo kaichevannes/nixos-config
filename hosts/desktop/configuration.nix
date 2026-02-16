@@ -1,7 +1,7 @@
 { config, ... }:
 {
   imports = [
-    ../../system/shared.nix
+    ../../system
     ./hardware-configuration.nix
     ./settings.nix
   ];
