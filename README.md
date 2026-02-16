@@ -7,9 +7,13 @@ sudo nix-env -iA nixos.git
 git clone https://github.com/kaichevannes/nixos-config.git ~/.config/nixos-config
 ```
 2. Move hardware-configuration if necessary
-`cp /etc/nixos/hardware-configuration.nix ~/.config/nixos-config/hosts/desktop/`
+```
+cp /etc/nixos/hardware-configuration.nix ~/.config/nixos-config/hosts/desktop/
+```
 3. Build system
-`sudo nixos-rebuild switch --flake ~/.config/nixos-config#desktop`
+```
+sudo nixos-rebuild switch --flake ~/.config/nixos-config#desktop
+```
 
 
 ## WSL
