@@ -4,8 +4,8 @@
     enable = true;
     enableFishIntegration = true;
     settings = {
-      cursor.color = "391a02 af9a91";
       colors = {
+        cursor = "391a02 af9a91";
         foreground = "af9a91";
         background = "121214";
         regular0 = "572100";

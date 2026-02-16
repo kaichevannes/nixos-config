@@ -1,12 +1,11 @@
 { config, ... }:
 {
   imports = [
-    ./foot
-
     ./boot.nix
-    ./nix.nix
+    ./foot.nix
     ./home-manager.nix
     ./hyprland.nix
+    ./nix.nix
     ./user.nix
   ];
 
