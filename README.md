@@ -26,18 +26,22 @@ mount /dev/disk/by-label/nixos /mnt
 mkdir -p /mnt/boot
 mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 ```
+5. Generate hardware-configuration.nix
+```
+nixos-generate-config --root /mnt
+```
 5. Clone repo
 ```
 nix-env -iA nixos.git
-git clone https://github.com/kaichevannes/nixos-config.git ~/.config/nixos-config
+git clone https://github.com/kaichevannes/nixos-config.git /mnt/root/nixos-config
 ```
 6. Copy hardware-configuration.nix
 ```
-cp /etc/nixos/hardware-configuration.nix ~/.config/nixos-config/hosts/desktop/
+cp /mnt/etc/nixos/hardware-configuration.nix /mnt/root/nixos-config/hosts/desktop/
 ```
 7. Install system
 ```
-nixos-install --flake ~/.config/nixos-config#nixos
+nixos-install --flake /root/nixos-config#nixos
 ```
 8. Set password for user account
 ```
