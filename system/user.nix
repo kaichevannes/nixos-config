@@ -6,7 +6,7 @@
 
     users.${config.var.username} = {
       isNormalUser = true;
-      description = "${config.var.git.username}";
+      description = "${config.var.git.user}";
       extraGroups = [
         "networkmanager"
         "wheel"
