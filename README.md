@@ -12,7 +12,7 @@ cp /etc/nixos/hardware-configuration.nix ~/.config/nixos-config/hosts/desktop/
 ```
 3. Build system
 ```
-sudo nixos-rebuild switch --flake ~/.config/nixos-config#desktop
+sudo nixos-rebuild switch --flake ~/.config/nixos-config#nixos
 ```
 
 
