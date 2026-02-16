@@ -15,6 +15,14 @@
       ...
     }@inputs:
     {
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./hosts/desktop/configuration.nix
+          ];
+        };
+      };
+
       homeConfigurations = {
         "wsl" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
