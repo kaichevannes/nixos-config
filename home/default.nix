@@ -13,9 +13,6 @@
     ./zoxide.nix
   ];
 
-  home.stateVersion = "25.05";
-  programs.home-manager.enable = true;
-
   home.sessionVariables = {
     EDITOR = "hx";
     VISUAL = "hx";
@@ -39,4 +36,8 @@
     vscode-langservers-extracted # HTML / CSS / JSON
     prettier
   ];
+
+  home.stateVersion = "25.05";
+
+  programs.home-manager.enable = true;
 }

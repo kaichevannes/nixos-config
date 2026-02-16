@@ -2,7 +2,7 @@
 {
   imports = [
     ./settings.nix
-    ../../programs
+    ../../home
   ];
 
   home.homeDirectory = "/home/" + config.var.username;

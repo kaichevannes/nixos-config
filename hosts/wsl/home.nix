@@ -7,7 +7,7 @@
 {
   imports = [
     ./settings.nix
-    ../../programs
+    ../../home
     ./bash.nix
   ];
 
