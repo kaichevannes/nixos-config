@@ -4,6 +4,8 @@
     ./boot.nix
     ./nix.nix
     ./home-manager.nix
+    ./hyprland.nix
+    ./user.nix
   ];
 
   networking.hostName = config.var.hostname;
