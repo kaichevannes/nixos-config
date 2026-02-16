@@ -36,6 +36,7 @@ git clone https://github.com/kaichevannes/nixos-config.git /mnt/root/nixos-confi
 ```
 nixos-generate-config --root /mnt
 cp /mnt/etc/nixos/hardware-configuration.nix /mnt/root/nixos-config/hosts/desktop/
+git -C /mnt/root/nixos-config add .
 ```
 7. Install system
 ```
