@@ -39,7 +39,7 @@ cp /mnt/etc/nixos/hardware-configuration.nix /mnt/root/nixos-config/hosts/deskto
 ```
 7. Install system
 ```
-nixos-install --flake /root/nixos-config#nixos
+nixos-install --flake /mnt/root/nixos-config#nixos
 ```
 8. Set password for user account
 ```
