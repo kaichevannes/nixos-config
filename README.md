@@ -2,9 +2,10 @@
 
 ## NixOS
 https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning
-1. Start root shell
+1. Start root shell and uk keyboard layout
 ```
 sudo -i
+loadkeys uk
 ```
 2. Partition
 ```
