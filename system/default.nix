@@ -1,7 +1,9 @@
 { config, ... }:
 {
   imports = [
-
+    ./boot.nix
+    ./nix.nix
+    ./home-manager.nix
   ];
 
   networking.hostName = config.var.hostname;
