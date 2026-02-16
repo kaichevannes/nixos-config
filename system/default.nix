@@ -1,6 +1,8 @@
 { config, ... }:
 {
   imports = [
+    ./foot
+
     ./boot.nix
     ./nix.nix
     ./home-manager.nix
