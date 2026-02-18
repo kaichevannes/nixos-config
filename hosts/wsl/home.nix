@@ -1,19 +1,17 @@
 {
-  config,
   pkgs,
   lib,
   ...
 }:
 {
   imports = [
-    ./settings.nix
     ./bash.nix
   ];
 
   programs.home-manager.enable = true;
 
-  home.username = config.var.username;
-  home.homeDirectory = "/home/" + config.var.username;
+  home.username = "cheva";
+  home.homeDirectory = "/home/cheva";
 
   home.packages = with pkgs; [
     xclip

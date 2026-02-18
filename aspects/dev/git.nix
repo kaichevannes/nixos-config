@@ -5,8 +5,8 @@
       programs.git = {
         enable = true;
         settings = {
-          user.name = config.var.git.name;
-          user.email = config.var.git.email;
+          user.name = "Kai Chevannes";
+          user.email = "chevannes.kai@gmail.com";
           pull.rebase = false;
           pull.ff = "only";
         };
