@@ -7,9 +7,13 @@
 {
   imports = [
     ./settings.nix
-    ../../home
     ./bash.nix
   ];
+
+  # temp
+  home.stateVersion = "25.05";
+  programs.home-manager.enable = true;
+  # temp
 
   home.username = config.var.username;
   home.homeDirectory = "/home/" + config.var.username;

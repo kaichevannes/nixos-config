@@ -1,6 +1,6 @@
 # nixos-config
 
-## NixOS
+## NixOS (Minimal ISO)
 https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning
 1. Start root shell and uk keyboard layout
 ```
@@ -28,6 +28,7 @@ mkdir -p /mnt/boot
 mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 ```
 5. Clone repo
+# POSSIBLE TO DO --flake github:kaichevannes/nixos-config#hostname IF filesystem.nix EXISTS
 ```
 nix-env -iA nixos.git
 git clone https://github.com/kaichevannes/nixos-config.git /mnt/root/nixos-config

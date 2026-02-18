@@ -1,4 +1,6 @@
 {
+  description = "Dendritic pattern without dependencies";
+
   inputs = {
     nixpgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -9,29 +11,29 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
       ...
     }@inputs:
-    {
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          modules = [
-            inputs.home-manager.nixosModules.home-manager
-            ./hosts/desktop/configuration.nix
-          ];
-        };
-      };
+    let
+      files = aspect: builtins.attrNames (builtins.readDir ./aspects/${aspect});
 
+      aspectModules = aspect: map (file: (import ./aspects/${aspect}/${file}).homeManager) (files aspect);
+
+      homeModules = aspects: builtins.concatMap aspectModules aspects;
+    in
+    {
       homeConfigurations = {
-        "wsl" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/wsl/home.nix
-          ];
-        };
+        "wsl" =
+          let
+            aspects = [ "dev" ];
+          in
+          home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            modules = homeModules aspects ++ [
+              ./hosts/wsl/home.nix
+            ];
+          };
       };
     };
 }
