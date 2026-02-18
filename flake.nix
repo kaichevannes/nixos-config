@@ -23,7 +23,7 @@
             builtins.attrNames (builtins.readDir ./aspects/${aspect})
           );
         in
-        map (module: module.${kind}) (builtins.filter (module: builtins.hasAttr kind module) (modules));
+        map (module: module.${kind}) (builtins.filter (module: builtins.hasAttr kind module) modules);
 
       homeModules = aspects: builtins.concatMap (collectModulesOfKind "homeManager") aspects;
       nixosModules = aspects: builtins.concatMap (collectModulesOfKind "nixos") aspects;
