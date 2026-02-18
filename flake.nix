@@ -16,11 +16,17 @@
       ...
     }@inputs:
     let
-      files = aspect: builtins.attrNames (builtins.readDir ./aspects/${aspect});
+      collectModulesOfKind =
+        kind: aspect:
+        let
+          modules = map (file: import ./aspects/${aspect}/${file}) (
+            builtins.attrNames (builtins.readDir ./aspects/${aspect})
+          );
+        in
+        map (module: module.${kind}) (builtins.filter (module: builtins.hasAttr kind module) (modules));
 
-      aspectModules = aspect: map (file: (import ./aspects/${aspect}/${file}).homeManager) (files aspect);
-
-      homeModules = aspects: builtins.concatMap aspectModules aspects;
+      homeModules = aspects: builtins.concatMap (collectModulesOfKind "homeManager") aspects;
+      nixosModules = aspects: builtins.concatMap (collectModulesOfKind "nixos") aspects;
     in
     {
       homeConfigurations = {
