@@ -28,7 +28,6 @@ mkdir -p /mnt/boot
 mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 ```
 5. Clone repo
-# POSSIBLE TO DO --flake github:kaichevannes/nixos-config#hostname IF filesystem.nix EXISTS
 ```
 nix-env -iA nixos.git
 git clone https://github.com/kaichevannes/nixos-config.git /mnt/root/nixos-config
@@ -36,7 +35,7 @@ git clone https://github.com/kaichevannes/nixos-config.git /mnt/root/nixos-confi
 6. Generate and copy hardware-configuration.nix
 ```
 nixos-generate-config --root /mnt
-cp /mnt/etc/nixos/hardware-configuration.nix /mnt/root/nixos-config/hosts/desktop/
+cp /mnt/etc/nixos/hardware-configuration.nix /mnt/root/nixos-config/hosts/desktop/hardware-configuration.nix
 git -C /mnt/root/nixos-config add .
 ```
 7. Install system
