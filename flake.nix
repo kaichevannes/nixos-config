@@ -2,7 +2,7 @@
   description = "Dendritic pattern without flake-parts or import-tree.";
 
   inputs = {
-    nixpgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager = {
       url = "github:nix-community/home-manager";
