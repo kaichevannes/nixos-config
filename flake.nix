@@ -45,16 +45,34 @@
               userModules = nixpkgs.lib.optionals (user != null) [
                 userConfig.nixos
 
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                  };
+                }
+
                 home-manager.nixosModules.home-manager
                 {
                   home-manager.users.${user} = nixpkgs.lib.mkMerge (
-                    homeModules aspects ++ [ userConfig.homeManager ]
+                    homeModules aspects
+                    ++ [
+                      userConfig.homeManager
+                      {
+                        programs.home-manager.enable = true;
+                        home.stateVersion = "25.05";
+                      }
+                    ]
                   );
                 }
               ];
             in
             [
               ./hosts/${hostname}/hardware-configuration.nix
+
+              {
+                system.stateVersion = "25.05";
+              }
             ]
             ++ nixosModules aspects
             ++ userModules;
