@@ -18,20 +18,21 @@
         };
         languages = import ./languages.nix;
         themes = import ./themes.nix;
-        extraPackages = with pkgs; [
-          nil
-          nixfmt
-          gopls
-          delve
-          gotools
-          golangci-lint
-          golangci-lint-langserver
-          neocmakelsp
-          typescript
-          typescript-language-server
-          vscode-langservers-extracted # HTML / CSS / JSON
-          prettier
-        ];
       };
+      home.packages = with pkgs; [
+        nil
+        nixfmt
+        gopls
+        delve
+        gotools
+        golangci-lint
+        golangci-lint-langserver
+        neocmakelsp
+        typescript
+        typescript-language-server
+        vscode-langservers-extracted # HTML / CSS / JSON
+        prettier
+      ];
     };
+
 }

@@ -1,8 +1,10 @@
 {
-  homeManager = {...}: {
-    programs.fzf = {
-      enable = true;
-      enableZshIntegration = true;
+  homeManager =
+    { ... }:
+    {
+      programs.fzf = {
+        enable = true;
+        enableZshIntegration = true;
+      };
     };
-  };
 }
