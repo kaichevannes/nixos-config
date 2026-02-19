@@ -29,34 +29,58 @@
 
       homeModules = aspects: builtins.concatMap (collectModulesOfKind "homeManager") aspects;
       nixosModules = aspects: builtins.concatMap (collectModulesOfKind "nixos") aspects;
-    in
-    {
-      nixosConfigurations = {
-        wsl =
-          let
-            aspects = [
-              "wsl"
-              "cheva"
-              "dev"
-            ];
-          in
-          nixpkgs.lib.nixosSystem {
-            modules = nixosModules aspects ++ [
-              ./hosts/wsl/hardware-configuration.nix
+
+      mkHost =
+        {
+          aspects,
+          hostname,
+          user,
+          extraModules ? [ ],
+        }:
+        nixpkgs.lib.nixosSystem {
+          modules =
+            nixosModules aspects
+            ++ [
+              ./hosts/${hostname}/hardware-configuration.nix
 
               home-manager.nixosModules.home-manager
               {
-                home-manager.users.cheva = nixpkgs.lib.mkMerge (homeModules aspects);
+                home-manager.users.${user} = nixpkgs.lib.mkMerge (homeModules aspects);
               }
+            ]
+            ++ extraModules;
+        };
+    in
+    {
+      nixosConfigurations = {
+        desktop = mkHost {
+          hostname = "desktop";
+          aspects = [
+            "nixos"
+            "cheva"
+            "desktop"
+            "dev"
+          ];
+          user = "cheva";
+        };
 
-              nixos-wsl.nixosModules.default
-              {
-                system.stateVersion = "25.05";
-                wsl.enable = true;
-                wsl.defaultUser = "cheva";
-              }
-            ];
-          };
+        wsl = mkHost {
+          hostname = "wsl";
+          aspects = [
+            "wsl"
+            "cheva"
+            "dev"
+          ];
+          user = "cheva";
+          extraModules = [
+            nixos-wsl.nixosModules.default
+            {
+              system.stateVersion = "25.05";
+              wsl.enable = true;
+              wsl.defaultUser = "cheva";
+            }
+          ];
+        };
       };
     };
 }
