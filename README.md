@@ -72,6 +72,7 @@ sudo nixos-rebuild boot --flake github:kaichevannes/nixos-config#wsl
 ```
 4. Reset default username
 ```
+exit
 wsl.exe -t NixOS
 wsl.exe -d NixOS --user root exit
 wsl.exe -t NixOS
