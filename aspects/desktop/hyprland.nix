@@ -1,6 +1,9 @@
-{ ... }:
 {
-  programs.hyprland = {
-    enable = true;
-  };
+  nixos =
+    { ... }:
+    {
+      programs.hyprland = {
+        enable = true;
+      };
+    };
 }

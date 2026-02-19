@@ -1,11 +1,5 @@
 { config, ... }:
 {
-  imports = [
-    ./systemd-boot.nix
-    ./nix.nix
-    ./user.nix
-  ];
-
   networking.hostName = config.var.hostname;
   networking.networkmanager.enable = true;
 
@@ -26,9 +20,4 @@
   };
 
   console.keyMap = "uk";
-
-  environment.variables = {
-    TERMINAL = "foot";
-    TERM = "foot";
-  };
 }

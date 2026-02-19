@@ -1,7 +1,10 @@
-{ ... }:
 {
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-  };
+  nixos =
+    { ... }:
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+      };
+    };
 }
