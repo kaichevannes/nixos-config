@@ -29,7 +29,7 @@ mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 ```
 5. Clone repo
 ```
-nix-env -iA nixos.git
+nix-shell -p git
 git clone https://github.com/kaichevannes/nixos-config.git /mnt/root/nixos-config
 ```
 6. Generate and copy hardware-configuration.nix
