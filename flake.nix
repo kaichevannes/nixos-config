@@ -37,7 +37,7 @@
           user ? null,
         }:
         nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs hostname; };
 
           modules =
             let
