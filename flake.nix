@@ -3,6 +3,7 @@
 
   inputs = {
     nixpgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,9 +13,10 @@
   outputs =
     {
       nixpkgs,
+      nixos-wsl,
       home-manager,
       ...
-    }@inputs:
+    }:
     let
       collectModulesOfKind =
         kind: aspect:
@@ -41,6 +43,12 @@
               home-manager.nixosModules.home-manager
               {
                 home-manager.users.cheva = nixpkgs.lib.mkMerge (homeModules aspects);
+              }
+
+              nixos-wsl.nixosModules.default
+              {
+                system.stateVersion = "25.05";
+                wsl.enable = true;
               }
             ];
 

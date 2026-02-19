@@ -71,9 +71,16 @@ wsl --install --no-distribution
 wsl -d NixOS
 sudo nix-channel --update
 ```
-4. Initialise dotfiles
+4. Initialise system
 ```
-sudo nixos-rebuild switch --flake github:kaichevannes/nixos-config#wsl
+sudo nixos-rebuild boot --flake github:kaichevannes/nixos-config#wsl
+```
+5. Reset default username
+```
+exit
+wsl --t NixOS
+wsl -d NixOS --user root exit
+wsl --t NixOS
 ```
 
 ##OLD
