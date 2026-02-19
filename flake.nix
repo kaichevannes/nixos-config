@@ -36,6 +36,9 @@
           in
           nixpkgs.lib.nixosSystem {
             modules = nixosModules aspects ++ [
+              import
+              ./hosts/wsl/hardware-configuration.nix
+
               home-manager.nixosModules.home-manager
               {
                 home-manager.users.cheva = homeModules aspects;
