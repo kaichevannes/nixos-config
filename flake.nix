@@ -34,29 +34,30 @@
         {
           aspects,
           hostname,
-          user,
+          user ? null,
         }:
         nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
 
           modules =
             let
-              userModule = import ./users/${user}.nix;
+              userConfig = import ./users/${user}.nix;
+              userModules = nixpkgs.lib.optionals (user != null) [
+                userConfig.nixos
+
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager.users.${user} = nixpkgs.lib.mkMerge (
+                    homeModules aspects ++ [ userConfig.homeManager ]
+                  );
+                }
+              ];
             in
             [
               ./hosts/${hostname}/hardware-configuration.nix
-
-              {
-                imports = nixosModules aspects ++ [ userModule.nixos ];
-              }
-
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.users.${user} = nixpkgs.lib.mkMerge (
-                  homeModules aspects ++ [ userModule.homeManager ]
-                );
-              }
-            ];
+            ]
+            ++ nixosModules aspects
+            ++ userModules;
         };
     in
     {
