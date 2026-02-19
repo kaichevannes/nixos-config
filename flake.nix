@@ -40,7 +40,7 @@
 
               home-manager.nixosModules.home-manager
               {
-                home-manager.users.cheva = nixpkgs.lib.mkMerge (homeModules aspects);
+                home-manager.users.nixos = nixpkgs.lib.mkMerge (homeModules aspects);
               }
             ];
 
