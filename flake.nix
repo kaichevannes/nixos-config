@@ -34,7 +34,12 @@
       nixosConfigurations = {
         wsl =
           let
-            aspects = (import ./hosts/wsl).aspects;
+            aspects = [
+              "base"
+              "wsl"
+              "cheva"
+              "dev"
+            ];
           in
           nixpkgs.lib.nixosSystem {
             modules = nixosModules aspects ++ [
@@ -47,21 +52,11 @@
 
               nixos-wsl.nixosModules.default
               {
-                system.stateVersion = "25.05";
                 wsl.enable = true;
                 wsl.defaultUser = "cheva";
-
               }
             ];
-
           };
-      };
-
-      homeConfigurations = {
-        "wsl" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          modules = homeModules (import ./hosts/wsl).aspects;
-        };
       };
     };
 }

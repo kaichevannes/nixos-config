@@ -1,7 +1,0 @@
-{
-  aspects = [
-    "wsl"
-    "cheva"
-    "dev"
-  ];
-}

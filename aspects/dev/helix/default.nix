@@ -4,6 +4,7 @@
     {
       programs.helix = {
         enable = true;
+        defaultEditor = true;
         settings = {
           theme = "gruvbox-material-transparent";
           editor = {
@@ -17,31 +18,20 @@
         };
         languages = import ./languages.nix;
         themes = import ./themes.nix;
+        extraPackages = with pkgs; [
+          nil
+          nixfmt
+          gopls
+          delve
+          gotools
+          golangci-lint
+          golangci-lint-langserver
+          neocmakelsp
+          typescript
+          typescript-language-server
+          vscode-langservers-extracted # HTML / CSS / JSON
+          prettier
+        ];
       };
-
-      home.sessionVariables = {
-        EDITOR = "hx";
-        VISUAL = "hx";
-      };
-
-      home.packages = with pkgs; [
-        pure-prompt
-        fzf
-        ripgrep
-        tree
-        tokei
-        nil
-        nixfmt
-        gopls
-        delve
-        gotools
-        golangci-lint
-        golangci-lint-langserver
-        neocmakelsp
-        typescript
-        typescript-language-server
-        vscode-langservers-extracted # HTML / CSS / JSON
-        prettier
-      ];
     };
 }
