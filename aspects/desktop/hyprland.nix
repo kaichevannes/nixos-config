@@ -20,6 +20,10 @@
             "$mod, Q, exec, $terminal"
             "$mod, M, exit"
           ];
+
+          inputs = {
+            kb_layout = "gb";
+          };
         };
       };
     };
