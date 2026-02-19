@@ -90,7 +90,7 @@
           user = "cheva";
         };
 
-        sartre-wsl = mkHost {
+        singer-wsl = mkHost {
           hostname = "sartre-wsl";
           aspects = [
             "wsl"
