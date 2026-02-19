@@ -19,6 +19,7 @@
         languages = import ./languages.nix;
         themes = import ./themes.nix;
       };
+
       home.packages = with pkgs; [
         nil
         nixfmt
