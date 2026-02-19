@@ -66,11 +66,14 @@ wsl --install --no-distribution
 ```
 
 2. Download and run `nixos.wsl` from [the latest release](https://github.com/nix-community/NixOS-WSL/releases/latest)
-3. Start NixOS
+3. Start NixOS and update
 ```
 wsl -d NixOS
 sudo nix-channel --update
-sudo nixos-rebuild switch
+```
+4. Initialise dotfiles
+```
+sudo nixos-rebuild switch --flake github:kaichevannes/nixos-config#wsl
 ```
 
 ##OLD
