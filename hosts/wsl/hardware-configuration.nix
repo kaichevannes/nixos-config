@@ -10,7 +10,7 @@
 
   swapDevices = [ ];
 
-  boot.initr.availableKernelModules = [ ];
+  boot.initrd.availableKernelModules = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
