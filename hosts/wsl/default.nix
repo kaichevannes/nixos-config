@@ -1,0 +1,6 @@
+{
+  aspects = [
+    "cheva"
+    "dev"
+  ];
+}

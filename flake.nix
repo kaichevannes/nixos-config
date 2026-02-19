@@ -30,16 +30,12 @@
     in
     {
       homeConfigurations = {
-        "wsl" =
-          let
-            aspects = [ "dev" ];
-          in
-          home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages.x86_64-linux;
-            modules = homeModules aspects ++ [
-              ./hosts/wsl/home.nix
-            ];
-          };
+        "wsl" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = homeModules (import ./hosts/wsl).aspects ++ [
+            ./hosts/wsl/home.nix
+          ];
+        };
       };
     };
 }
