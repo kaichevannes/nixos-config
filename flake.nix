@@ -35,7 +35,6 @@
         wsl =
           let
             aspects = [
-              "base"
               "wsl"
               "cheva"
               "dev"
