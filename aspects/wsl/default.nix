@@ -2,7 +2,7 @@
   nixos =
     { ... }:
     {
-      boot.loader.enable = false;
+      boot.isContainer = true;
     };
 
   homeManager =
