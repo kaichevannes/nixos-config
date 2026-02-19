@@ -80,8 +80,8 @@
     in
     {
       nixosConfigurations = {
-        camus-desktop = mkHost {
-          hostname = "camus-desktop";
+        camus = mkHost {
+          hostname = "camus";
           aspects = [
             "nixos"
             "desktop"
@@ -90,8 +90,8 @@
           user = "cheva";
         };
 
-        singer-wsl = mkHost {
-          hostname = "singer-wsl";
+        sartre = mkHost {
+          hostname = "sartre";
           aspects = [
             "wsl"
             "dev"
