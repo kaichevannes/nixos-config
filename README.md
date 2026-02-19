@@ -66,21 +66,17 @@ wsl.exe --install --no-distribution
 ```
 
 2. Download and run `nixos.wsl` from [the latest release](https://github.com/nix-community/NixOS-WSL/releases/latest)
-3. Start NixOS
-```
-wsl.exe -d NixOS
-```
-4. Initialise system
+3. Initialise system
 ```
 sudo nixos-rebuild boot --flake github:kaichevannes/nixos-config#wsl
 ```
-5. Reset default username
+4. Reset default username
 ```
 wsl.exe -t NixOS
 wsl.exe -d NixOS --user root exit
 wsl.exe -t NixOS
 ```
-6. Initialise SSH key
+5. Initialise SSH key
 ```
 ssh-keygen
 cat ~/.ssh/id_ed25519.pub
