@@ -1,5 +1,6 @@
 {
   aspects = [
+    "wsl"
     "cheva"
     "dev"
   ];

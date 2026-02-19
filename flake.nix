@@ -20,7 +20,7 @@
         kind: aspect:
         let
           modules = map (file: import ./aspects/${aspect}/${file}) (
-            builtins.attrNames (builtins.readDir ./aspects/${aspect})
+            (builtins.attrNames (builtins.readDir ./aspects/${aspect}))
           );
         in
         map (module: module.${kind}) (builtins.filter (module: builtins.hasAttr kind module) modules);
@@ -32,9 +32,7 @@
       homeConfigurations = {
         "wsl" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          modules = homeModules (import ./hosts/wsl).aspects ++ [
-            ./hosts/wsl/home.nix
-          ];
+          modules = homeModules (import ./hosts/wsl).aspects;
         };
       };
     };
