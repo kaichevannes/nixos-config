@@ -35,12 +35,12 @@ git clone https://github.com/kaichevannes/nixos-config.git /mnt/root/nixos-confi
 6. Generate and copy hardware-configuration.nix
 ```
 nixos-generate-config --root /mnt
-cp /mnt/etc/nixos/hardware-configuration.nix /mnt/root/nixos-config/hosts/desktop/hardware-configuration.nix
+cp /mnt/etc/nixos/hardware-configuration.nix /mnt/root/nixos-config/hosts/camus-desktop/hardware-configuration.nix
 git -C /mnt/root/nixos-config add .
 ```
 7. Install system
 ```
-nixos-install --flake /mnt/root/nixos-config#nixos
+nixos-install --flake /mnt/root/nixos-config#camus-desktop
 ```
 8. Set password for user account
 ```
@@ -53,7 +53,7 @@ sudo mv /root/nixos-config ~/.config/nixos-config
 sudo chown -R $USER:users ~/.config/nixos-config
 ```
 
-To rebuild use `sudo nixos-rebuild switch --flake ~/.config/nixos-config#nixos`
+To rebuild use `sudo nixos-rebuild switch --flake ~/.config/nixos-config#camus-desktop`
 
 ## WSL
 Install [Wezterm nightly](https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe)
