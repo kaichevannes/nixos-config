@@ -91,7 +91,7 @@
         };
 
         singer-wsl = mkHost {
-          hostname = "sartre-wsl";
+          hostname = "singer-wsl";
           aspects = [
             "wsl"
             "dev"
