@@ -1,5 +1,5 @@
 {
-  description = "Dendritic pattern without dependencies";
+  description = "Dendritic pattern without flake-parts or import-tree.";
 
   inputs = {
     nixpgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -16,7 +16,7 @@
       nixos-wsl,
       home-manager,
       ...
-    }:
+    }@inputs:
     let
       collectModulesOfKind =
         kind: aspect:
@@ -35,20 +35,18 @@
           aspects,
           hostname,
           user,
-          extraModules ? [ ],
         }:
         nixpkgs.lib.nixosSystem {
-          modules =
-            nixosModules aspects
-            ++ [
-              ./hosts/${hostname}/hardware-configuration.nix
+          specialArgs = { inherit inputs; };
 
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.users.${user} = nixpkgs.lib.mkMerge (homeModules aspects);
-              }
-            ]
-            ++ extraModules;
+          modules = nixosModules aspects ++ [
+            ./hosts/${hostname}/hardware-configuration.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.users.${user} = nixpkgs.lib.mkMerge (homeModules aspects);
+            }
+          ];
         };
     in
     {
@@ -72,14 +70,6 @@
             "dev"
           ];
           user = "cheva";
-          extraModules = [
-            nixos-wsl.nixosModules.default
-            {
-              system.stateVersion = "25.05";
-              wsl.enable = true;
-              wsl.defaultUser = "cheva";
-            }
-          ];
         };
       };
     };
