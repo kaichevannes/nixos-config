@@ -39,14 +39,24 @@
         nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
 
-          modules = nixosModules aspects ++ [
-            ./hosts/${hostname}/hardware-configuration.nix
+          modules =
+            let
+              userModule = import ./users/${user}.nix;
+            in
+            [
+              ./hosts/${hostname}/hardware-configuration.nix
 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.users.${user} = nixpkgs.lib.mkMerge (homeModules aspects);
-            }
-          ];
+              {
+                imports = nixosModules aspects ++ [ userModule.nixos ];
+              }
+
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.${user} = nixpkgs.lib.mkMerge (
+                  homeModules aspects ++ [ userModule.homeManager ]
+                );
+              }
+            ];
         };
     in
     {
@@ -55,7 +65,6 @@
           hostname = "desktop";
           aspects = [
             "nixos"
-            "cheva"
             "desktop"
             "dev"
           ];
@@ -66,7 +75,6 @@
           hostname = "wsl";
           aspects = [
             "wsl"
-            "cheva"
             "dev"
           ];
           user = "cheva";
