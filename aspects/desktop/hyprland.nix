@@ -15,11 +15,12 @@
         settings = {
           "$mod" = "SUPER";
           "$terminal" = "foot";
+
+          bind = [
+            "$mod, Q, exec, $terminal"
+            "$mod, M, exit"
+          ];
         };
       };
-
-      home.packages = with pkgs; [
-        wayland
-      ];
     };
 }
