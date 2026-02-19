@@ -1,8 +1,4 @@
 {
-  nixos = {
-    home-manager.users.cheva = { ... }: { };
-  };
-
   homeManager = {
     home.username = "cheva";
     home.homeDirectory = "/home/cheva";

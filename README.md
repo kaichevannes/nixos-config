@@ -59,6 +59,21 @@ To rebuild use `sudo nixos-rebuild switch --flake ~/.config/nixos-config#nixos`
 ## WSL
 Install [Wezterm nightly](https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe)
 ### Elevated Powershell
+
+1. Enable WSL
+```
+wsl --install --no-distribution
+```
+
+2. Download and run `nixos.wsl` from [the latest release](https://github.com/nix-community/NixOS-WSL/releases/latest)
+3. Start NixOS
+```
+wsl -d NixOS
+sudo nix-channel --update
+sudo nixos-rebuild switch
+```
+
+##OLD
 1. Install WSL and Nix
 ```
 wsl.exe --install Ubuntu

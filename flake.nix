@@ -29,6 +29,22 @@
       nixosModules = aspects: builtins.concatMap (collectModulesOfKind "nixos") aspects;
     in
     {
+      nixosConfigurations = {
+        wsl =
+          let
+            aspects = (import ./hosts/wsl).aspects;
+          in
+          nixpkgs.lib.nixosSystem {
+            modules = nixosModules aspects ++ [
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.users.cheva = homeModules aspects;
+              }
+            ];
+
+          };
+      };
+
       homeConfigurations = {
         "wsl" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
