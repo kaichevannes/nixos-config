@@ -1,4 +1,10 @@
 {
+  nixos =
+    { ... }:
+    {
+      boot.loader.enable = false;
+    };
+
   homeManager =
     { pkgs, ... }:
     {
@@ -8,7 +14,5 @@
 
       programs.home-manager.enable = true;
       home.stateVersion = "25.05";
-
-      boot.loader.enable = false;
     };
 }
