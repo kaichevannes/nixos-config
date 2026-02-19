@@ -21,7 +21,7 @@
             "$mod, M, exit"
           ];
 
-          inputs = {
+          input = {
             kb_layout = "gb";
           };
         };
