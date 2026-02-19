@@ -60,7 +60,7 @@
                       userConfig.homeManager
                       {
                         programs.home-manager.enable = true;
-                        home.stateVersion = "25.05";
+                        home.stateVersion = "25.11";
                       }
                     ]
                   );
@@ -71,7 +71,7 @@
               ./hosts/${hostname}/hardware-configuration.nix
 
               {
-                system.stateVersion = "25.05";
+                system.stateVersion = "25.11";
               }
             ]
             ++ nixosModules aspects
