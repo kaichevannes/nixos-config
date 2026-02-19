@@ -10,9 +10,6 @@
 
   programs.home-manager.enable = true;
 
-  home.username = "cheva";
-  home.homeDirectory = "/home/cheva";
-
   home.packages = with pkgs; [
     xclip
   ];
