@@ -6,11 +6,8 @@
         enable = true;
         enableZshIntegration = true;
         settings = {
-          general = {
-            background-opacity = 0.85;
-          };
-
           colors = {
+            alpha = 0.85;
             cursor = "391a02 af9a91";
             foreground = "af9a91";
             background = "121214";
