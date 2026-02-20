@@ -70,6 +70,13 @@
       programs.vicinae = {
         enable = true;
         package = pkgs.vicinae;
+        settings = {
+          font = {
+            normal = {
+              size = 12;
+            };
+          };
+        };
         # extensions = [
         #   (config.lib.vicinae.mkExtension {
         #     name = "nix";
