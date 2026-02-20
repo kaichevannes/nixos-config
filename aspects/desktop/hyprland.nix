@@ -24,6 +24,10 @@
           input = {
             kb_layout = "gb";
           };
+
+          misc = {
+            disable_hyprland_logo = true;
+          };
         };
       };
     };
