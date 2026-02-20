@@ -52,8 +52,12 @@ reboot
 sudo mv /root/nixos-config ~/.config/nixos-config
 sudo chown -R $USER:users ~/.config/nixos-config
 ```
+10. Symlink `flake.nix` to `/etc/nixos/flake.nix`
+```
+sudo ln -sf ~/.config/nixos-config/flake.nix /etc/nixos/flake.nix`
+```
 
-To rebuild use `sudo nixos-rebuild switch --flake ~/.config/nixos-config#camus`
+To rebuild use `sudo nixos-rebuild switch`. NixOS rebuilds the current host from `/etc/nixos/flake.nix`.
 
 ## WSL
 Install [Wezterm nightly](https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe)
