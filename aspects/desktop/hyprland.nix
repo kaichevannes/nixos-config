@@ -46,8 +46,8 @@
 
             border_size = 2;
 
-            "col.active_border" = "rgb(24273A)";
-            "col.inactive_border" = "rgb(131521)";
+            "col.active_border" = "rgb(131521)";
+            "col.inactive_border" = "rgb(07080f)";
           };
 
           decoration = {
