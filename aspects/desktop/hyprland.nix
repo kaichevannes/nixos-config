@@ -46,8 +46,8 @@
 
             border_size = 2;
 
-            "col.active_border" = "rgb(8aadf4) rgb(24273A) rgb(24273A) rgb(8aadf4) 45deg";
-            "col.inactive_border" = "rgb(24273A) rgb(24273A) rgb(24273A) rgb(27273A) 45deg";
+            "col.active_border" = "rgb(24273A)";
+            "col.inactive_border" = "rgb(131521)";
           };
 
           decoration = {
