@@ -53,18 +53,14 @@
 
           animations = {
             bezier = [
-              "wind, 0.05, 0.9, 0.1, 1.05"
-              "winIn, 0.1, 1.1, 0.1, 1.1"
-              "winOut, 0.3, -0.3, 0, 1"
-              "liner, 1, 1, 1, 1"
+              "myBezier, 0.05, 0.9, 0.1, 1.05"
             ];
             animation = [
-              "bezier = myBezier, 0.05, 0.9, 0.1, 1.05"
-              "animation = windows, 1, 5, myBezier, slide"
-              "animation = windowsOut, 1, 5, myBezier, slide"
-              "animation = windows, 1, 6, myBezier, popin 80%"
-              "animation = fade, 1, 7, default"
-              "animation = workspaces, 1, 6, default"
+              "windows, 1, 5, myBezier, slide"
+              "windowsOut, 1, 5, myBezier, slide"
+              "windows, 1, 6, myBezier, popin 80%"
+              "fade, 1, 7, default"
+              "workspaces, 1, 6, default"
             ];
           };
         };
@@ -87,19 +83,19 @@
       programs.vicinae = {
         enable = true;
         package = pkgs.vicinae;
-        # extensions = [
-        #   (config.lib.vicinae.mkExtension {
-        #     name = "nix";
-        #     src =
-        #       pkgs.fetchFromGithub {
-        #         owner = "vicinaehq";
-        #         repo = "vicinae-extensions";
-        #         rev = "cf30b80f619282d45b1748eb76e784a4f875bb01";
-        #         sha256 = "";
-        #       }
-        #       + "/extensions/nix";
-        #   })
-        # ];
+        extensions = [
+          (config.lib.vicinae.mkExtension {
+            name = "nix";
+            src =
+              pkgs.fetchFromGitHub {
+                owner = "vicinaehq";
+                repo = "extensions";
+                rev = "cf30b80f619282d45b1748eb76e784a4f875bb01";
+                sha256 = "sha256-KwNv+THKbNUey10q26NZPDMSzYTObRHaSDr81QP9CPY=";
+              }
+              + "/extensions/nix";
+          })
+        ];
       };
     };
 }
