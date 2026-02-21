@@ -16,6 +16,7 @@
 
         shellAliases = {
           ls = "eza";
+          cat = "bat";
         };
 
         initContent = ''
