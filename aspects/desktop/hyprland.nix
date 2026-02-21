@@ -22,10 +22,6 @@
             "desc:ASUSTek COMPUTER INC VG27A M3LMQS265113, 2560x1440@144, 0x0, 1"
           ];
 
-          exec-once = [
-            "vicinae server"
-          ];
-
           bind = [
             "$mod, T, exec, $terminal"
             "$mod, B, exec, $browser"
@@ -88,6 +84,19 @@
       programs.vicinae = {
         enable = true;
         package = pkgs.vicinae;
+        systemd = {
+          enable = true;
+          autoStart = true;
+        };
+        settings = {
+          close_on_focus_loss = true;
+          pop_to_root_on_close = true;
+          font = {
+            normal = {
+              size = 16;
+            };
+          };
+        };
         extensions = [
           (config.lib.vicinae.mkExtension {
             name = "nix";
