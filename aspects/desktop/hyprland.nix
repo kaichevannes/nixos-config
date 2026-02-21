@@ -18,6 +18,10 @@
           "$fileManager" = "yazi";
           "$browser" = "firefox";
 
+          monitor = [
+            "desc:ASUSTek COMPUTER INC VG27A M3LMQS265113, 2560x1440@144, 0x0, 1"
+          ];
+
           exec-once = [
             "vicinae server"
           ];
@@ -64,6 +68,7 @@
             ];
           };
         };
+
         extraConfig = ''
           layerrule {
             name = vicinae-blur
