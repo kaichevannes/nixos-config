@@ -50,6 +50,11 @@
                     useGlobalPkgs = true;
                     useUserPackages = true;
                   };
+
+                  nix.settings.experimental-features = [
+                    "nix-command"
+                    "flakes"
+                  ];
                 }
 
                 home-manager.nixosModules.home-manager
