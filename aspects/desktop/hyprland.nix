@@ -41,19 +41,19 @@
           };
 
           general = {
-            gaps_in = 5;
-            gaps_out = 5;
+            gaps_in = 8;
+            gaps_out = 8;
 
             border_size = 0;
           };
 
           decoration = {
-            rounding = 10;
+            rounding = 16;
           };
 
           animations = {
             bezier = [
-              "myBezier, 0.05, 0.9, 0.1, 1.05"
+              "myBezier, 0.05, 0.9, 0.1, 1.02"
             ];
             animation = [
               "windows, 1, 5, myBezier, slide"
