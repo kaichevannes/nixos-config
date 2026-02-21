@@ -9,12 +9,11 @@
       services.xserver.videoDrivers = [ "nvidia" ];
 
       hardware.nvidia = {
-        modesettings.enable = true;
+        modesetting.enable = true;
         nvidiaSettings = true;
         powerManagement.enable = false;
         powerManagement.finegrained = false;
+        open = true;
       };
-
-      boot.blacklistedKernelModules = [ "nouveau" ];
     };
 }

@@ -89,6 +89,7 @@
           hostname = "camus";
           aspects = [
             "nixos"
+            "nvidia"
             "desktop"
             "dev"
           ];
