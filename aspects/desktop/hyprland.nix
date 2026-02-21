@@ -62,14 +62,12 @@
               "liner, 1, 1, 1, 1"
             ];
             animation = [
-              "windows, 1, 6, wind, slide"
-              "windowsIn, 1, 6, winIn, slide"
-              "windowsOut, 1, 5, winOut, slide"
-              "windowsMove, 1, 5, wind, slide"
-              "border, 1, 1, liner"
-              "borderangle, 1, 30, liner, loop"
-              "fade, 1, 10, default"
-              "workspaces, 1, 5, wind"
+              "bezier = myBezier, 0.05, 0.9, 0.1, 1.05"
+              "animation = windows, 1, 5, myBezier, slide"
+              "animation = windowsOut, 1, 5, myBezier, slide"
+              "animation = windows, 1, 6, myBezier, popin 80%"
+              "animation = fade, 1, 7, default"
+              "animation = workspaces, 1, 6, default"
             ];
           };
         };
