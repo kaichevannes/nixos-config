@@ -15,7 +15,6 @@
         settings = {
           "$mod" = "SUPER";
           "$terminal" = "foot";
-          "$fileManager" = "yazi";
           "$browser" = "firefox";
 
           monitor = [
@@ -25,7 +24,6 @@
           bind = [
             "$mod, T, exec, $terminal"
             "$mod, B, exec, $browser"
-            "$mod, F, exec, $fileManager"
             "$mod, D, exec, vicinae toggle"
             "$mod, Q, killactive"
             "$mod, M, exit"
