@@ -2,6 +2,7 @@
   nixos =
     { config, pkgs, ... }:
     {
+      services.getty.autologinUser = "cheva";
       programs.zsh.enable = true;
       users = {
         defaultUserShell = pkgs.zsh;
