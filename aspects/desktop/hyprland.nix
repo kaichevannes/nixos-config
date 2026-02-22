@@ -64,21 +64,6 @@
             ];
           };
         };
-
-        extraConfig = ''
-          layerrule {
-            name = vicinae-blur
-            blur = on
-            ignore_alpha = 0
-            match:namespace = vicinae
-          }
-
-          layerrule {
-            name = vicinae-no-animation
-            no_anim = on
-            match:namespace = vicinae
-          }
-        '';
       };
 
       programs.vicinae = {
@@ -89,10 +74,11 @@
           autoStart = true;
         };
         settings = {
-          close_on_focus_loss = true;
           pop_to_root_on_close = true;
+          escape_key_behaviour = "close_window";
           font = {
             normal = {
+              family = "auto";
               size = 16;
             };
           };
