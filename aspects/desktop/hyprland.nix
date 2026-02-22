@@ -95,19 +95,6 @@
           decoration = {
             rounding = 16;
           };
-
-          animations = {
-            bezier = [
-              "myBezier, 0.05, 0.9, 0.1, 1.02"
-            ];
-            animation = [
-              "windows, 1, 5, myBezier, slide"
-              "windowsOut, 1, 5, myBezier, slide"
-              "windows, 1, 6, myBezier, popin 80%"
-              "fade, 1, 7, default"
-              "workspaces, 1, 6, default"
-            ];
-          };
         };
       };
 
