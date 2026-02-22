@@ -6,6 +6,12 @@
         enable = true;
         enableZshIntegration = true;
         settings = {
+          main = {
+            font = "monospace:size=22";
+          };
+          mouse = {
+            hide-when-typing = "yes";
+          };
           colors = {
             alpha = 0.85;
             cursor = "391a02 af9a91";
