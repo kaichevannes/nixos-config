@@ -1,4 +1,12 @@
 {
+  nixos =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [
+        qalculate-gtk
+      ];
+    };
+
   homeManager =
     { config, pkgs, ... }:
     {
