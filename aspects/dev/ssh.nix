@@ -22,7 +22,6 @@
           RestartSec = 5;
         };
 
-        # Stop restarting after 3 failed attempts.
         startLimitBurst = 3;
       };
 
