@@ -11,6 +11,7 @@
             "widget.wayland.vsync.enabled" = false;
           };
         };
+        profiles.work.id = 2;
       };
     };
 }

@@ -18,6 +18,7 @@
           "$mod" = "SUPER";
           "$terminal" = "foot";
           "$browser" = "firefox";
+          "$workbrowser" = "firefox -P work";
 
           monitor = [
             "desc:ASUSTek COMPUTER INC VG27A M3LMQS265113, 2560x1440@144, 0x0, 1"
@@ -33,6 +34,7 @@
           bind = [
             "$mod, T, exec, $terminal"
             "$mod, B, exec, $browser"
+            "$mod+Shift, B, exec, $workbrowser"
             "$mod, D, exec, vicinae toggle"
 
             "$mod, 1, workspace, 1"
@@ -95,10 +97,11 @@
           };
 
           general = {
+            resize_on_border = true;
             gaps_in = 8;
             gaps_out = 8;
-
             border_size = 0;
+            layout = "master";
           };
 
           decoration = {
