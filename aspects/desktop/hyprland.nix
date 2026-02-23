@@ -13,6 +13,7 @@
     {
       wayland.windowManager.hyprland = {
         enable = true;
+
         settings = {
           "$mod" = "SUPER";
           "$terminal" = "foot";
@@ -23,8 +24,9 @@
           ];
 
           exec-once = [
+            "hyprctl setcursor capitaine-cursors 32"
             "[workspace 1 silent] foot"
-            "[workspace 2 silent] firefox"
+            "[workspace 2 silent] firefox -P default"
             "[workspace 5 silent] MOZ_ENABLE_WAYLAND=0 firefox -P focumon https://focumon.com --kiosk"
           ];
 
@@ -73,9 +75,15 @@
             "$mod+Shift, up, swapwindow, u"
             "$mod+Shift, right, swapwindow, r"
 
+            "$mod, F, fullscreen, toggle"
             "$mod, Q, killactive"
             "$mod, M, exit"
           ];
+
+          cursor = {
+            no_warps = true;
+            hide_on_key_press = false;
+          };
 
           input = {
             kb_layout = "gb";
@@ -110,6 +118,7 @@
 
       home.packages = with pkgs; [
         wl-clipboard
+        capitaine-cursors
       ];
     };
 }
