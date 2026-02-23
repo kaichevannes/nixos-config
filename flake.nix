@@ -92,6 +92,7 @@
             "nvidia"
             "desktop"
             "dev"
+            "virtualisation"
           ];
           user = "cheva";
         };
