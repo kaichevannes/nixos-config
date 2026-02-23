@@ -36,7 +36,9 @@
     {
       programs.zsh.initContent = ''
         if [[ -o interactive ]] then
-          ( pass-cli test >/dev/null 2>&1 || echo "Proton Pass CLI is not authenticated. Run 'pass-cli login'." ) & disown
+          {
+            pass-cli test >/dev/null 2>&1 || echo "Proton Pass CLI is not authenticated. Run 'pass-cli login'."
+          } &!
         fi
       '';
 
