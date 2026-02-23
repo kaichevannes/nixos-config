@@ -1,13 +1,17 @@
 {
   nixos =
-    { ... }:
+    { pkgs, ... }:
     {
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
+      boot = {
+        loader.systemd-boot.enable = true;
+        loader.efi.canTouchEfiVariables = true;
 
-      boot.kernelParams = [
-        "quiet"
-        "loglevel=3"
-      ];
+        # Silent boot
+        initrd.systemd.enable = true;
+        consoleLogLevel = 0;
+        kernelParams = [
+          "quiet"
+        ];
+      };
     };
 }
