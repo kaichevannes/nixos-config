@@ -1,7 +1,9 @@
 {
-  nixos = {
-    programs.virt-manager = {
-      enable = true;
+  nixos =
+    { pkgs, ... }:
+    {
+      programs.virt-manager = {
+        enable = true;
+      };
     };
-  };
 }
