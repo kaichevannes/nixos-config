@@ -1,7 +1,7 @@
 {
   nixos =
-    { ... }:
+    { user, ... }:
     {
-      services.getty.autologinOnce = true;
+      services.getty.autologinUser = user;
     };
 }
