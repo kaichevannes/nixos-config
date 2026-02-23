@@ -1,10 +1,47 @@
 {
-  homeManager =
-    { ... }:
+  nixos =
+    { pkgs, ... }:
     {
-      services.ssh-agent = {
-        enable = true;
-        enableZshIntegration = true;
+      environment.systemPackages = with pkgs; [
+        proton-pass-cli
+      ];
+
+      environment.sessionVariables = {
+        PROTON_PASS_KEY_PROVIDER = "fs";
+      };
+
+      systemd.user.services.pass-cli-ssh-agent = {
+        description = "Load Proton Pass SSH keys";
+        after = [ "default.target" ];
+        wantedBy = [ "default.target" ];
+
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent start";
+          Restart = "on-failure";
+          RestartSec = 5;
+        };
+
+        # Stop restarting after 3 failed attempts.
+        startLimitBurst = 3;
+      };
+
+      environment.sessionVariables = {
+        SSH_AUTH_SOCK = "$HOME/.ssh/proton-pass-agent.sock";
+      };
+    };
+
+  homeManager =
+    { pkgs, ... }:
+    {
+      programs.zsh.initContent = ''
+        if [[ -o interactive ]] then
+          ( pass-cli test >/dev/null 2>&1 || echo "Proton Pass CLI is not authenticated. Run 'pass-cli login'." ) & disown
+        fi
+      '';
+
+      programs.zsh.shellAliases = {
+        pass-login = "pass-cli login && systemctl --user start proton-pass-ssh-agent";
       };
 
       programs.ssh = {
@@ -21,7 +58,6 @@
           controlMaster = "no";
           controlPath = "~/.ssh/master-%r@%n:%p";
           controlPersist = "no";
-          identityFile = "~/.ssh/id_ed25519";
         };
       };
 

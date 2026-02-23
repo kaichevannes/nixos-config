@@ -7,9 +7,9 @@
         settings = {
           pull.rebase = false;
           pull.ff = "only";
+          gpg.ssh.defaultKeyCommand = "ssh-add -L | awk '{print $2}' | head -n1";
         };
         signing = {
-          key = "~/.ssh/id_ed25519";
           format = "ssh";
           signByDefault = true;
         };
