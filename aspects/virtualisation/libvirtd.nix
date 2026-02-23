@@ -20,10 +20,10 @@
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           Type = "oneshot";
-          RemainAfterExit = true;
+          User = "root";
           ExecStart = "${pkgs.libvirt}/bin/virsh net-start default";
           ExecStop = "${pkgs.libvirt}/bin/virsh net-destroy default";
-          User = "root";
+          RemainAfterExit = true;
         };
       };
 
