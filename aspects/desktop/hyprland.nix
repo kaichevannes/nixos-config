@@ -11,6 +11,17 @@
   homeManager =
     { config, pkgs, ... }:
     {
+      home.packages = with pkgs; [
+        wl-clipboard
+        capitaine-cursors
+      ];
+
+      programs.zsh.profileExtra = ''
+        if [ -z "$WAYLAND_DISPLAY" ] && uwsm check may-start; then
+            exec uwsm start hyprland.desktop
+        fi
+      '';
+
       wayland.windowManager.hyprland = {
         enable = true;
 
@@ -109,19 +120,5 @@
           };
         };
       };
-
-      home.file.".zprofile" = {
-        text = ''
-          if [ -z "$WAYLAND_DISPLAY" ] && uwsm check may-start; then
-              exec uwsm start hyprland.desktop
-          fi
-        '';
-        force = true;
-      };
-
-      home.packages = with pkgs; [
-        wl-clipboard
-        capitaine-cursors
-      ];
     };
 }
