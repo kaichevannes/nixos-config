@@ -93,6 +93,7 @@
             "desktop"
             "dev"
             "virtualisation"
+            "art"
           ];
           user = "cheva";
         };
