@@ -19,7 +19,7 @@
           Type = "simple";
           ExecStart = "${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent start";
           Restart = "on-failure";
-          RestartSec = 5;
+          RestartSec = 10;
         };
 
         # Stop restarting after 3 failed attempts.
