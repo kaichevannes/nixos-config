@@ -91,12 +91,12 @@
         camus = mkHost {
           hostname = "camus";
           aspects = [
-            "nixos"
-            "nvidia"
-            "desktop"
+            "base-nixos"
+            "hardware-nvidia"
             "dev"
+            "desktop"
+            "desktop-art"
             "virtualisation"
-            "art"
           ];
           user = "cheva";
         };
@@ -104,7 +104,7 @@
         sartre = mkHost {
           hostname = "sartre";
           aspects = [
-            "wsl"
+            "base-wsl"
             "dev"
           ];
           user = "cheva";
