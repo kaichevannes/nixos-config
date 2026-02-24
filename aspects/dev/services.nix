@@ -1,13 +1,4 @@
 {
-  nixos =
-    { collectModulesFromKind, ... }:
-    {
-      imports = collectModulesFromKind "../../services" "nixos" "ssh";
-    };
-
-  homeManager =
-    { collectModulesFromKind, ... }:
-    {
-      imports = collectModulesFromKind "../../services" "homeManager" "ssh";
-    };
+  nixos = import ../../services/ssh/nixos.nix;
+  homeManager = import ../../services/ssh/home-manager.nix;
 }

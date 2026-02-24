@@ -22,17 +22,16 @@
     }@inputs:
     let
       collectModulesOfKind =
-        folder: kind: module:
+        kind: aspect:
         let
-          collectModules =
-            dir: map (file: import ./${dir}/${file}) ((builtins.attrNames (builtins.readDir ./${dir})));
+          modules = map (file: import ./aspects/${aspect}/${file}) (
+            (builtins.attrNames (builtins.readDir ./aspects/${aspect}))
+          );
         in
-        map (module: module.${kind}) (
-          builtins.filter (module: builtins.hasAttr kind module) (collectModules "${folder}/${module}")
-        );
+        map (module: module.${kind}) (builtins.filter (module: builtins.hasAttr kind module) modules);
 
-      homeModules = builtins.concatMap (collectModulesOfKind "aspects" "homeManager");
-      nixosModules = builtins.concatMap (collectModulesOfKind "aspects" "nixos");
+      homeModules = aspects: builtins.concatMap (collectModulesOfKind "homeManager") aspects;
+      nixosModules = aspects: builtins.concatMap (collectModulesOfKind "nixos") aspects;
 
       mkHost =
         {
@@ -41,14 +40,7 @@
           user ? null,
         }:
         nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit
-              inputs
-              hostname
-              user
-              collectModulesOfKind
-              ;
-          };
+          specialArgs = { inherit inputs hostname user; };
 
           modules =
             let
