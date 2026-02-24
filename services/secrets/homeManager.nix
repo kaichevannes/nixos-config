@@ -1,3 +1,3 @@
 {
-  imports = [ ../ssh/homeManager.nix ];
+  imports = [ ../proton-ssh/homeManager.nix ];
 }
