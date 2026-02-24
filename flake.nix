@@ -11,6 +11,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -18,6 +22,7 @@
       nixpkgs,
       nixos-wsl,
       home-manager,
+      sops-nix,
       ...
     }@inputs:
     let
@@ -81,6 +86,8 @@
               {
                 system.stateVersion = "25.11";
               }
+
+              sops-nix.nixosModules.default
             ]
             ++ nixosModules aspects
             ++ userModules;
