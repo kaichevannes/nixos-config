@@ -14,7 +14,7 @@
             auto-pairs = false;
             rulers = [ 80 ];
           };
-          keys = import ./keys.nix;
+          keys = import ./keys.nix { inherit pkgs; };
         };
         languages = import ./languages.nix;
         themes = import ./themes.nix;

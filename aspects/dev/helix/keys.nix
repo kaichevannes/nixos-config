@@ -1,3 +1,14 @@
+{ pkgs, ... }:
+let
+  blockTag = pkgs.writeShellScript "helix_block_tag" ''
+    echo "<xxx>"
+    cat
+    echo "</xxx>"
+  '';
+  inlineTag = pkgs.writeShellScript "helix_inline_tag" ''
+    printf '<xxx>%s</xxx>' "$(cat)"
+  '';
+in
 {
   normal = {
     C-g = [
@@ -15,5 +26,13 @@
       ":open %sh{cat /tmp/unique-file-helixyazi}"
       ":redraw"
     ];
+  };
+  normal.m.t = {
+    a = "@|${blockTag} t<ret>sxxx<ret>c";
+    i = "@|${inlineTag} i<ret>sxxx<ret>c";
+  };
+  select.m.t = {
+    a = "@|${blockTag} t<ret>sxxx<ret>c";
+    i = "@|${inlineTag} i<ret>sxxx<ret>c";
   };
 }
