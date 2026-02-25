@@ -7,7 +7,7 @@
         enableZshIntegration = true;
         settings = {
           main = {
-            font = "monospace:size=22";
+            font = "Dank Mono:size=25, monospace:size=22";
           };
           mouse = {
             hide-when-typing = "yes";
