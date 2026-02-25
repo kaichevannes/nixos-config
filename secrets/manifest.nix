@@ -1,23 +1,23 @@
 { user, ... }:
 {
-  DankMono-Regular-Custom = {
+  DankMonoNerdFont-Regular = {
     owner = user;
     format = "binary";
-    sopsFile = ./DankMono-Regular-Custom.otf.sops;
-    path = "/home/${user}/.local/share/fonts/DankMono-Regular-Custom.otf";
+    sopsFile = ./DankMonoNerdFont-Regular.otf.sops;
+    path = "/home/${user}/.local/share/fonts/DankMonoNerdFont-Regular.otf";
   };
 
-  DankMono-Italic-Custom = {
+  DankMonoNerdFont-Italic = {
     owner = user;
     format = "binary";
-    sopsFile = ./DankMono-Italic-Custom.otf.sops;
-    path = "/home/${user}/.local/share/fonts/DankMono-Italic-Custom.otf";
+    sopsFile = ./DankMonoNerdFont-Italic.otf.sops;
+    path = "/home/${user}/.local/share/fonts/DankMonoNerdFont-Italic.otf";
   };
 
-  DankMono-Bold-Custom = {
+  DankMonoNerdFont-Bold = {
     owner = user;
     format = "binary";
-    sopsFile = ./DankMono-Bold-Custom.otf.sops;
-    path = "/home/${user}/.local/share/fonts/DankMono-Bold-Custom.otf";
+    sopsFile = ./DankMonoNerdFont-Bold.otf.sops;
+    path = "/home/${user}/.local/share/fonts/DankMonoNerdFont-Bold.otf";
   };
 }
