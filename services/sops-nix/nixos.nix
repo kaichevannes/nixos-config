@@ -18,5 +18,5 @@
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.age.keyFile = "/home/${user}/.config/sops/age/keys.txt";
 
-  sops.secrets.example_key = { };
+  sops.secrets = (import ../../secrets/manifest.nix { inherit user; });
 }
