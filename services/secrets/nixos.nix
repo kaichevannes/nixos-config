@@ -1,6 +1,6 @@
 { pkgs, user, ... }:
 {
-  imports = [ ../proton-ssh/nixos.nix ];
+  imports = [ ../ssh/nixos.nix ];
 
   systemd.user.services.generate-age-key = {
     description = "Generate Age key from SSH agent via ssh-to-age.";

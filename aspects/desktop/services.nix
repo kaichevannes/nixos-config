@@ -1,4 +1,4 @@
 {
-  nixos = import ../../services/sops-nix/nixos.nix;
-  homeManager = import ../../services/sops-nix/homeManager.nix;
+  nixos = import ../../services/secrets/nixos.nix;
+  homeManager = import ../../services/secrets/homeManager.nix;
 }
