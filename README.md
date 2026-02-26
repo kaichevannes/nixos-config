@@ -81,8 +81,3 @@ wsl.exe -t NixOS
 wsl.exe -d NixOS --user root exit
 wsl.exe -t NixOS
 ```
-5. Initialise SSH key
-```
-ssh-keygen
-cat ~/.ssh/id_ed25519.pub
-```
