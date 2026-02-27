@@ -1,10 +1,16 @@
 {
   homeManager =
-    { pkgs, ... }:
+    {
+      inputs,
+      pkgs,
+      ...
+    }:
     {
       programs.helix = {
         enable = true;
         defaultEditor = true;
+        # Helix master from flake
+        package = inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.helix;
         settings = {
           theme = "gruvbox-material-transparent";
           editor = {
