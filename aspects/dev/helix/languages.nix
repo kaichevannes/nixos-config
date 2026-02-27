@@ -14,7 +14,7 @@
       formatter.command = "prettier";
       formatter.args = [
         "--parser"
-        "javascript"
+        "typescript"
       ];
       auto-format = true;
     }
