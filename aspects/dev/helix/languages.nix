@@ -10,6 +10,33 @@
       auto-format = true;
     }
     {
+      name = "javascript";
+      formatter.command = "prettier";
+      formatter.args = [
+        "--parser"
+        "javascript"
+      ];
+      auto-format = true;
+    }
+    {
+      name = "typescript";
+      formatter.command = "prettier";
+      formatter.args = [
+        "--parser"
+        "typescript"
+      ];
+      auto-format = true;
+    }
+    {
+      name = "tsx";
+      formatter.command = "prettier";
+      formatter.args = [
+        "--parser"
+        "typescript"
+      ];
+      auto-format = true;
+    }
+    {
       name = "css";
       formatter.command = "prettier";
       formatter.args = [
