@@ -10,14 +10,13 @@ let
   '';
 in
 {
-  normal = {
-    C-g = [
-      ":write-all"
-      ":insert-output lazygit >/dev/tty"
-      ":redraw"
-      ":reload-all"
-    ];
-  };
+  normal.C-g = [
+    ":write-all"
+    ":insert-output lazygit >/dev/tty"
+    ":redraw"
+    ":reload-all"
+  ];
+
   normal.space = {
     e = [
       ":sh rm -f /tmp/unique-file-helixyazi"
@@ -27,6 +26,7 @@ in
       ":redraw"
     ];
   };
+
   normal.m.t = {
     a = "@|${blockTag} t<ret>sxxx<ret>c";
     i = "@|${inlineTag} i<ret>sxxx<ret>c";
