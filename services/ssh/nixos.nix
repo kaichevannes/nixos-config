@@ -10,8 +10,8 @@
     wantedBy = [ "default.target" ];
 
     serviceConfig = {
-      Type = "forking";
-      ExecStart = "${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent start";
+      Type = "oneshot";
+      ExecStart = "${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent load";
       Restart = "on-failure";
       RestartSec = 10;
     };

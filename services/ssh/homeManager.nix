@@ -12,6 +12,11 @@
     pass-login = "pass-cli login && systemctl --user start proton-pass-ssh-agent";
   };
 
+  services.ssh-agent = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
