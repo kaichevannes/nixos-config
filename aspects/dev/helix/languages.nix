@@ -10,6 +10,26 @@
       auto-format = true;
     }
     {
+      name = "xml";
+      formatter.command = "xmllint";
+      formatter.args = [
+        "--format"
+        "-"
+      ];
+      auto-format = true;
+    }
+    # {
+    #   name = "svg";
+    #   scope = "source.xml";
+    #   file-types = [ "svg" ];
+    #   formatter.command = "prettier";
+    #   formatter.args = [
+    #     "--parser"
+    #     "html"
+    #   ];
+    #   auto-format = true;
+    # }
+    {
       name = "javascript";
       formatter.command = "prettier";
       formatter.args = [
