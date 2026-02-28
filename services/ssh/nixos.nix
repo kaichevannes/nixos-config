@@ -4,17 +4,13 @@
     proton-pass-cli
   ];
 
-  environment.sessionVariables = {
-    PROTON_PASS_KEY_PROVIDER = "fs";
-  };
-
   systemd.user.services.pass-cli-ssh-agent = {
     description = "Load Proton Pass SSH keys";
     after = [ "default.target" ];
     wantedBy = [ "default.target" ];
 
     serviceConfig = {
-      Type = "simple";
+      Type = "forking";
       ExecStart = "${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent start";
       Restart = "on-failure";
       RestartSec = 10;
@@ -25,6 +21,7 @@
   };
 
   environment.sessionVariables = {
+    PROTON_PASS_KEY_PROVIDER = "fs";
     SSH_AUTH_SOCK = "$HOME/.ssh/proton-pass-agent.sock";
   };
 }
