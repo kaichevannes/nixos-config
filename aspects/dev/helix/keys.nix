@@ -1,12 +1,20 @@
 { pkgs, ... }:
 let
   blockTag = pkgs.writeShellScript "helix_block_tag" ''
-    echo "<xxx>"
-    cat
-    echo "</xxx>"
+    input=$(cat)
+    indent=$(printf '%s' "$input" | head -1 | sed 's/[^ \t].*//')
+    indentedContent=$(printf '%s' "$input" | sed 's/^/  /')
+    printf '%s<xxx>\n%s\n%s</xxx>\n' "$indent" "$indentedContent" "$indent"
   '';
   inlineTag = pkgs.writeShellScript "helix_inline_tag" ''
-    printf '<xxx>%s</xxx>' "$(cat)"
+    IFS= read -r -d ''' input || true;
+    indent=$(printf '%s' "$input" | head -1 | sed 's/[^ \t].*//')
+
+    # Only indent if there is more than 1 space. Otherwise we are inside a tag.
+    [ ''${#indent} -ge 1 ] && prefix="$indent" || prefix=""
+    [[ ''${input: -1:1} == $'\n' ]] && trail=$'\n' || trail=""
+
+    printf '%s<xxx>%s</xxx>%s' "$prefix" "$(echo "$input" | xargs)" "$trail"
   '';
 in
 {
@@ -27,11 +35,11 @@ in
     ];
   };
 
-  normal.m.t = {
+  select.m.t = {
     a = "@|${blockTag} t<ret>sxxx<ret>c";
     i = "@|${inlineTag} i<ret>sxxx<ret>c";
   };
-  select.m.t = {
+  normal.m.t = {
     a = "@|${blockTag} t<ret>sxxx<ret>c";
     i = "@|${inlineTag} i<ret>sxxx<ret>c";
   };
