@@ -25,15 +25,15 @@ in
     ":reload-all"
   ];
 
-  normal.space = {
-    e = [
-      ":sh rm -f /tmp/unique-file-helixyazi"
-      ":insert-output yazi '%{buffer_name}' --chooser-file=/tmp/unique-file-helixyazi"
-      ":insert-output echo \"x1b[?1049h\" > /dev/tty"
-      ":open %sh{cat /tmp/unique-file-helixyazi}"
-      ":redraw"
-    ];
-  };
+  normal.space.e = [
+    ":sh rm -f /tmp/unique-file-helixyazi"
+    ":insert-output yazi '%{buffer_name}' --chooser-file=/tmp/unique-file-helixyazi"
+    ":insert-output echo \"x1b[?1049h\" > /dev/tty"
+    ":open %sh{cat /tmp/unique-file-helixyazi}"
+    ":redraw"
+  ];
+
+  normal.space.B = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}";
 
   select.m.t = {
     a = "@|${blockTag} t<ret>sxxx<ret>c";
