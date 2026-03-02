@@ -1,13 +1,26 @@
 {
+  language-server = {
+    emmet-lsp = {
+      command = "emmet-language-server";
+      args = [ "--stdio" ];
+    };
+  };
+
   language = [
     {
       name = "html";
+      roots = [ ".git" ];
       formatter.command = "prettier";
       formatter.args = [
         "--parser"
         "html"
       ];
       auto-format = true;
+
+      language-servers = [
+        "vscode-html-language-server"
+        "emmet-lsp"
+      ];
     }
     {
       name = "xml";
@@ -18,17 +31,6 @@
       ];
       auto-format = true;
     }
-    # {
-    #   name = "svg";
-    #   scope = "source.xml";
-    #   file-types = [ "svg" ];
-    #   formatter.command = "prettier";
-    #   formatter.args = [
-    #     "--parser"
-    #     "html"
-    #   ];
-    #   auto-format = true;
-    # }
     {
       name = "javascript";
       formatter.command = "prettier";
@@ -55,6 +57,11 @@
         "typescript"
       ];
       auto-format = true;
+
+      language-servers = [
+        "typescript-language-server"
+        "emmet-lsp"
+      ];
     }
     {
       name = "css";

@@ -38,6 +38,7 @@
         vscode-langservers-extracted # HTML / CSS / JSON
         prettier
         libxml2
+        emmet-language-server
       ];
     };
 
