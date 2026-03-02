@@ -9,7 +9,6 @@
   language = [
     {
       name = "html";
-      roots = [ ".git" ];
       formatter.command = "prettier";
       formatter.args = [
         "--parser"
