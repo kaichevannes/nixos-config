@@ -59,6 +59,7 @@
               "$mod, D, exec, vicinae toggle"
               "$mod+Shift, S, exec, grim -g \"$(slurp)\" - | wl-copy"
               "$mod, A, togglespecialworkspace, llm"
+              "Alt, A, togglespecialworkspace, llm"
 
               "$mod, 1, workspace, 1"
               "$mod, 2, workspace, 2"
