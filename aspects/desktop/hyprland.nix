@@ -50,6 +50,7 @@
 
             workspace = [
               "special:llm, on-created-empty:firefox --no-remote -P llm --new-window ${llmUrl}"
+              "special:whatsapp, on-created-empty:firefox --no-remote -P whatsapp --new-window https://web.whatsapp.com/"
             ];
 
             bind = [
@@ -60,6 +61,7 @@
               "$mod+Shift, S, exec, grim -g \"$(slurp)\" - | wl-copy"
               "$mod, A, togglespecialworkspace, llm"
               "Alt, A, togglespecialworkspace, llm"
+              "$mod, W, togglespecialworkspace, whatsapp"
 
               "$mod, 1, workspace, 1"
               "$mod, 2, workspace, 2"
@@ -108,6 +110,7 @@
 
             windowrule = [
               "match:workspace special:llm, float on, size 1200 1050, center on"
+              "match:workspace special:whatsapp, float on, size 1200 1050, center on"
             ];
 
             cursor = {
