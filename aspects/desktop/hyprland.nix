@@ -30,6 +30,7 @@
         settings =
           let
             llmUrl = "https://claude.ai";
+            floatingWindowSize = "1450 1050";
           in
           {
             "$mod" = "SUPER";
@@ -46,11 +47,18 @@
               "[workspace 1 silent] foot"
               "[workspace 2 silent] firefox -P default"
               "[workspace 5 silent] MOZ_ENABLE_WAYLAND=0 firefox -P focumon https://focumon.com --kiosk"
+              "[workspace special:llm silent; float; size ${floatingWindowSize}; center] firefox --no-remote -P llm --new-window ${llmUrl}"
+              "[workspace special:whatsapp silent; float; size ${floatingWindowSize}; center] firefox --no-remote -P whatsapp --new-window https://web.whatsapp.com/"
             ];
 
             workspace = [
               "special:llm, on-created-empty:firefox --no-remote -P llm --new-window ${llmUrl}"
               "special:whatsapp, on-created-empty:firefox --no-remote -P whatsapp --new-window https://web.whatsapp.com/"
+            ];
+
+            windowrule = [
+              "match:workspace special:llm, float on, size ${floatingWindowSize}, center on"
+              "match:workspace special:whatsapp, float on, size ${floatingWindowSize}, center on"
             ];
 
             bind = [
@@ -106,11 +114,6 @@
               "$mod, F, fullscreen, toggle"
               "$mod, Q, killactive"
               "$mod, M, exit"
-            ];
-
-            windowrule = [
-              "match:workspace special:llm, float on, size 1450 1050, center on"
-              "match:workspace special:whatsapp, float on, size 1450 1050, center on"
             ];
 
             cursor = {
