@@ -12,6 +12,17 @@
           };
         };
         profiles.work.id = 2;
+        profiles.llm = {
+          settings = {
+            "browser.tabs.inTitlebar" = 1;
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          };
+          userChrome = ''
+            #TabsToolbar { visibility: collapse !important; }
+            #nav-bar { visibility: collapse !important; }
+          '';
+          id = 3;
+        };
       };
     };
 }
