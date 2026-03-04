@@ -109,8 +109,8 @@
             ];
 
             windowrule = [
-              "match:workspace special:llm, float on, size 1200 1050, center on"
-              "match:workspace special:whatsapp, float on, size 1200 1050, center on"
+              "match:workspace special:llm, float on, size 1450 1050, center on"
+              "match:workspace special:whatsapp, float on, size 1450 1050, center on"
             ];
 
             cursor = {
