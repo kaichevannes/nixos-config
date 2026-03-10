@@ -35,6 +35,7 @@
           {
             "$mod" = "SUPER";
             "$terminal" = "foot";
+            "$bootstrapTerminal" = "foot --font=monospace:size=22";
             "$browser" = "firefox";
             "$workbrowser" = "firefox -P work";
 
@@ -44,7 +45,7 @@
 
             exec-once = [
               "hyprctl setcursor capitaine-cursors 32"
-              "[workspace 1 silent] foot"
+              "[workspace 1 silent] $terminal || $bootstrapTerminal"
               "[workspace 2 silent] firefox -P default"
               "[workspace 5 silent] MOZ_ENABLE_WAYLAND=0 firefox -P focumon https://focumon.com --kiosk"
               "[workspace special:llm silent; float; size ${floatingWindowSize}; center] firefox --no-remote -P llm --new-window ${llmUrl}"
@@ -62,7 +63,7 @@
             ];
 
             bind = [
-              "$mod, T, exec, $terminal"
+              "$mod, T, exec, $terminal || $bootstrapTerminal"
               "$mod, B, exec, $browser"
               "$mod+Shift, B, exec, $workbrowser"
               "$mod, D, exec, vicinae toggle"
