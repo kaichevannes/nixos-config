@@ -45,7 +45,7 @@
 
             exec-once = [
               "hyprctl setcursor capitaine-cursors 32"
-              "[workspace 1 silent] $terminal || $bootstrapTerminal"
+              "[workspace 1 silent] if fc-list | grep -q DankMono; then exec $terminal; else exec $bootstrapTerminal; fi"
               "[workspace 2 silent] firefox -P default"
               "[workspace 5 silent] MOZ_ENABLE_WAYLAND=0 firefox -P focumon https://focumon.com --kiosk"
               "[workspace special:llm silent; float; size ${floatingWindowSize}; center] firefox --no-remote -P llm --new-window ${llmUrl}"
@@ -63,7 +63,7 @@
             ];
 
             bind = [
-              "$mod, T, exec, $terminal || $bootstrapTerminal"
+              "$mod, T, exec, if fc-list | grep -q DankMono; then exec $terminal; else exec $bootstrapTerminal; fi"
               "$mod, B, exec, $browser"
               "$mod+Shift, B, exec, $workbrowser"
               "$mod, D, exec, vicinae toggle"
