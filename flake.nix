@@ -15,6 +15,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -23,6 +27,7 @@
       nixos-wsl,
       home-manager,
       sops-nix,
+      helix,
       ...
     }@inputs:
     let
@@ -67,6 +72,7 @@
 
                 home-manager.nixosModules.home-manager
                 {
+                  home-manager.extraSpecialArgs = { inherit inputs; };
                   home-manager.users.${user} = nixpkgs.lib.mkMerge (
                     homeModules aspects
                     ++ [
