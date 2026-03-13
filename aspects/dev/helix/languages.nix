@@ -4,6 +4,10 @@
       command = "emmet-language-server";
       args = [ "--stdio" ];
     };
+    clangd = {
+      command = "clangd";
+      args = [ "--query-driver=/nix/store/*/bin/clang++" ];
+    };
   };
 
   language = [
