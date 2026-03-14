@@ -64,6 +64,7 @@
 
             bind = [
               "$mod, T, exec, if fc-list | grep -q DankMono; then exec $terminal; else exec $bootstrapTerminal; fi"
+              "$mod+Shift, T, exec, $terminal 2>/tmp/terminal-error.log"
               "$mod, B, exec, $browser"
               "$mod+Shift, B, exec, $workbrowser"
               "$mod, D, exec, vicinae toggle"
