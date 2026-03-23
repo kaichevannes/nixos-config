@@ -27,8 +27,8 @@
       };
 
       home.packages = with pkgs; [
+        # LSP
         nil
-        nixfmt
         gopls
         delve
         gotools
@@ -38,9 +38,16 @@
         typescript
         typescript-language-server
         vscode-langservers-extracted # HTML / CSS / JSON
-        prettier
-        libxml2
         emmet-language-server
+        texlab
+
+        # Formatter
+        prettier
+        nixfmt
+        libxml2
+        tex-fmt
+
+        # Debugger
         lldb
       ];
     };

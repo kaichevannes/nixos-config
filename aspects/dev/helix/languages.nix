@@ -107,5 +107,11 @@
       formatter.command = "nixfmt";
       auto-format = true;
     }
+    {
+      name = "latex";
+      formatter.command = "tex-fmt";
+      formatter.args = [ "--stdin" ];
+      auto-format = true;
+    }
   ];
 }
