@@ -27,27 +27,29 @@
       };
 
       home.packages = with pkgs; [
+        # Format
+        libxml2
+        prettier
+        tex-fmt
+        nixfmt
+
         # LSP
-        nil
-        gopls
         delve
+        docker-compose-language-service
+        emmet-language-server
+        gopls
         gotools
         golangci-lint
         golangci-lint-langserver
+        nil
         neocmakelsp
+        texlab
         typescript
         typescript-language-server
         vscode-langservers-extracted # HTML / CSS / JSON
-        emmet-language-server
-        texlab
+        yaml-language-server
 
-        # Formatter
-        prettier
-        nixfmt
-        libxml2
-        tex-fmt
-
-        # Debugger
+        # Debug
         lldb
       ];
     };
