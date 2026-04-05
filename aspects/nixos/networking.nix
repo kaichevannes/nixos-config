@@ -3,7 +3,11 @@
     { hostname, ... }:
     {
       networking.hostName = hostname;
-      networking.networkmanager.enable = true;
-      networking.networkmanager.dhcp = "dhcpcd";
+      networking.networkmanager = {
+        enable = true;
+        dhcp = "dhcpcd";
+        dns = "systemd-resolved";
+      };
+      services.resolved.enable = true;
     };
 }
