@@ -38,39 +38,20 @@
           user,
         }:
         nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs hostname user; };
+          specialArgs = { inherit inputs user; };
 
           modules = [
             ./hosts/${hostname}/hardware-configuration.nix
             ./users/${user}.nix
+            { networking.hostName = hostname; }
           ]
           ++ map (aspect: ./aspects/${aspect}) aspects;
         };
     in
     {
       nixosConfigurations = {
-        camus = mkHost {
-          hostname = "camus";
-          aspects = [
-            "base"
-            "nixos"
-            "nvidia"
-            "dev"
-            "desktop"
-            "art"
-            "virtualisation"
-          ];
-          user = "cheva";
-        };
-
-        sartre = mkHost {
-          hostname = "sartre";
-          aspects = [
-            "wsl"
-            "dev"
-          ];
-          user = "cheva";
-        };
+        camus = mkHost (import ./hosts/camus/spec.nix);
+        sartre = mkHost (import ./hosts/sartre/spex.nix);
       };
     };
 }
