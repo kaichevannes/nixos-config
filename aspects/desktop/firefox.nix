@@ -1,6 +1,6 @@
+{ ... }:
 {
-  homeManager =
-    { ... }:
+  home-manager.sharedModules = [
     {
       programs.firefox = {
         enable = true;
@@ -35,5 +35,6 @@
           id = 4;
         };
       };
-    };
+    }
+  ];
 }

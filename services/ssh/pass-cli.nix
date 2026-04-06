@@ -24,4 +24,20 @@
     PROTON_PASS_KEY_PROVIDER = "fs";
     SSH_AUTH_SOCK = "$HOME/.ssh/proton-pass-agent.sock";
   };
+
+  home-manager.sharedModules = [
+    {
+      programs.zsh.initContent = ''
+        if [[ -o interactive ]] then
+          {
+            pass-cli test >/dev/null 2>&1 || echo "Proton Pass CLI is not authenticated. Run 'pass-cli login'."
+          } &!
+        fi
+      '';
+
+      programs.zsh.shellAliases = {
+        pass-login = "pass-cli login && systemctl --user start proton-pass-ssh-agent";
+      };
+    }
+  ];
 }

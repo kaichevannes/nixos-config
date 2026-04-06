@@ -1,15 +1,11 @@
+{ pkgs, ... }:
 {
-  nixos =
-    { ... }:
-    {
-      programs.hyprland = {
-        enable = true;
-        withUWSM = true;
-      };
-    };
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
 
-  homeManager =
-    { config, pkgs, ... }:
+  home-manager.sharedModules = [
     {
       home.packages = with pkgs; [
         wl-clipboard
@@ -154,5 +150,6 @@
             };
           };
       };
-    };
+    }
+  ];
 }

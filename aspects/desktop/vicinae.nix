@@ -1,14 +1,10 @@
+{ config, pkgs, ... }:
 {
-  nixos =
-    { pkgs, ... }:
-    {
-      environment.systemPackages = with pkgs; [
-        qalculate-gtk
-      ];
-    };
+  environment.systemPackages = with pkgs; [
+    qalculate-gtk
+  ];
 
-  homeManager =
-    { config, pkgs, ... }:
+  home-manager.sharedModules = [
     {
       programs.vicinae = {
         enable = true;
@@ -81,5 +77,6 @@
           }
         '';
       };
-    };
+    }
+  ];
 }

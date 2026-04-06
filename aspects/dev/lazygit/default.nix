@@ -1,6 +1,6 @@
+{ ... }:
 {
-  homeManager =
-    { ... }:
+  home-manager.sharedModules = [
     {
       programs.lazygit = {
         enable = true;
@@ -10,5 +10,6 @@
           customCommands = import ./custom_commands.nix;
         };
       };
-    };
+    }
+  ];
 }
