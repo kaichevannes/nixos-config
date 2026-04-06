@@ -1,6 +1,6 @@
+{ ... }:
 {
-  homeManager =
-    { ... }:
+  home-manager.sharedModules = [
     {
       programs.starship = {
         enable = true;
@@ -36,5 +36,6 @@
           format = "$all$fill$cmd_duration$status$line_break$character";
         };
       };
-    };
+    }
+  ];
 }

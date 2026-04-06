@@ -1,9 +1,6 @@
+{ pkgs, ... }:
 {
-  nixos =
-    { pkgs, ... }:
-    {
-      environment.systemPackages = with pkgs; [
-        krita
-      ];
-    };
+  environment.systemPackages = with pkgs; [
+    krita
+  ];
 }

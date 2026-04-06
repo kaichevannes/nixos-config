@@ -1,7 +1,10 @@
+{ ... }:
 {
-  homeManager = {
-    programs.bat = {
-      enable = true;
-    };
-  };
+  home-manager.sharedModules = [
+    {
+      programs.bat = {
+        enable = true;
+      };
+    }
+  ];
 }

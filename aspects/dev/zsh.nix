@@ -1,11 +1,9 @@
+{ ... }:
 {
-  nixos = {
-    # Completion for system packages
-    environment.pathsToLink = [ "/share/zsh" ];
-  };
+  # Completion for system packages
+  environment.pathsToLink = [ "/share/zsh" ];
 
-  homeManager =
-    { pkgs, ... }:
+  home-manager.sharedModules = [
     {
       programs.zsh = {
         enable = true;
@@ -33,5 +31,6 @@
           }
         '';
       };
-    };
+    }
+  ];
 }

@@ -1,3 +1,0 @@
-{
-  imports = [ ../ssh/homeManager.nix ];
-}

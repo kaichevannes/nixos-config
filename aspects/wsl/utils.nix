@@ -1,9 +1,10 @@
+{ pkgs, ... }:
 {
-  homeManager =
-    { pkgs, ... }:
+  home-manager.sharedModules = [
     {
       home.packages = with pkgs; [
         xclip
       ];
-    };
+    }
+  ];
 }

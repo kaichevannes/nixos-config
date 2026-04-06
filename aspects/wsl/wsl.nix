@@ -1,10 +1,7 @@
+{ inputs, ... }:
 {
-  nixos =
-    { inputs, ... }:
-    {
-      imports = [ inputs.nixos-wsl.nixosModules.default ];
+  imports = [ inputs.nixos-wsl.nixosModules.default ];
 
-      wsl.enable = true;
-      wsl.defaultUser = "cheva";
-    };
+  wsl.enable = true;
+  wsl.defaultUser = "cheva";
 }

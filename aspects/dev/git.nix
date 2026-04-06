@@ -1,6 +1,6 @@
+{ ... }:
 {
-  homeManager =
-    { ... }:
+  home-manager.sharedModules = [
     {
       programs.git = {
         enable = true;
@@ -14,5 +14,6 @@
           signByDefault = true;
         };
       };
-    };
+    }
+  ];
 }

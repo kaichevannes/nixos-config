@@ -1,6 +1,6 @@
+{ pkgs, ... }:
 {
-  homeManager =
-    { pkgs, ... }:
+  home-manager.sharedModules = [
     {
       programs.tmux =
         let
@@ -28,5 +28,6 @@
             bind-key a run-shell "${claudeToggle} '#{pane_current_path}'"
           '';
         };
-    };
+    }
+  ];
 }

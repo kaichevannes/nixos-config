@@ -1,7 +1,4 @@
+{ user, ... }:
 {
-  nixos =
-    { user, ... }:
-    {
-      services.getty.autologinUser = user;
-    };
+  services.getty.autologinUser = user;
 }

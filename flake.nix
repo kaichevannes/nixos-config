@@ -30,98 +30,41 @@
       helix,
       ...
     }@inputs:
-    let
-      collectModulesOfKind =
-        kind: aspect:
-        let
-          modules = map (file: import ./aspects/${aspect}/${file}) (
-            (builtins.attrNames (builtins.readDir ./aspects/${aspect}))
-          );
-        in
-        map (module: module.${kind}) (builtins.filter (module: builtins.hasAttr kind module) modules);
-
-      homeModules = aspects: builtins.concatMap (collectModulesOfKind "homeManager") aspects;
-      nixosModules = aspects: builtins.concatMap (collectModulesOfKind "nixos") aspects;
-
-      mkHost =
-        {
-          aspects,
-          hostname,
-          user ? null,
-        }:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs hostname user; };
-
-          modules =
-            let
-              userConfig = import ./users/${user}.nix;
-              userModules = nixpkgs.lib.optionals (user != null) [
-                userConfig.nixos
-
-                {
-                  home-manager = {
-                    useGlobalPkgs = true;
-                    useUserPackages = true;
-                  };
-
-                  nix.settings.experimental-features = [
-                    "nix-command"
-                    "flakes"
-                  ];
-                }
-
-                home-manager.nixosModules.home-manager
-                {
-                  home-manager.extraSpecialArgs = { inherit inputs; };
-                  home-manager.users.${user} = nixpkgs.lib.mkMerge (
-                    homeModules aspects
-                    ++ [
-                      userConfig.homeManager
-                      {
-                        programs.home-manager.enable = true;
-                        home.stateVersion = "25.11";
-                      }
-                    ]
-                  );
-                }
-              ];
-            in
-            [
-              ./hosts/${hostname}/hardware-configuration.nix
-
-              {
-                system.stateVersion = "25.11";
-              }
-
-              sops-nix.nixosModules.default
-            ]
-            ++ nixosModules aspects
-            ++ userModules;
-        };
-    in
     {
       nixosConfigurations = {
-        camus = mkHost {
-          hostname = "camus";
-          aspects = [
-            "nixos"
-            "nvidia"
-            "dev"
-            "desktop"
-            "art"
-            "virtualisation"
-          ];
-          user = "cheva";
-        };
+        camus =
+          let
+            hostname = "camus";
+            user = "cheva";
+          in
+          nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs hostname user; };
 
-        sartre = mkHost {
-          hostname = "sartre";
-          aspects = [
-            "wsl"
-            "dev"
-          ];
-          user = "cheva";
-        };
+            modules = [
+              ./hosts/camus/hardware-configuration.nix
+
+              ./users/cheva.nix
+
+              ./aspects/base
+              ./aspects/nixos
+              ./aspects/nvidia
+              ./aspects/dev
+              ./aspects/desktop
+              ./aspects/art
+              ./aspects/virtualisation
+
+              sops-nix.nixosModules.default
+            ];
+          };
+
+        # sartre = mkHost {
+        #   hostname = "sartre";
+        #   aspects = [
+        #     "wsl"
+        #     "dev"
+        #   ];
+        #   user = "cheva";
+        # };
       };
     };
 }
