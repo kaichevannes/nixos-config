@@ -1,7 +1,7 @@
 {
   imports = [
     # Capabilities
-    ../../services/ssh
+    ../_capabilities/ssh
 
     # Modules
     ./bat.nix

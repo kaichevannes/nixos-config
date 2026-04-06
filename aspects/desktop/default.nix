@@ -1,7 +1,7 @@
 {
   imports = [
     # Capabilities
-    ../../services/secrets
+    ../_capabilities/secrets
 
     # Modules
     ./autologin.nix
