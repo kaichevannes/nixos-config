@@ -6,7 +6,7 @@
   };
 
   imports = [
-    # Capabilities
+    # Requires
     ../_capabilities/user
     ../_capabilities/ssh
 

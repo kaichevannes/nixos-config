@@ -1,6 +1,6 @@
 {
   imports = [
-    # Capabilities
+    # Requires
     ../_capabilities/user
 
     # Modules
