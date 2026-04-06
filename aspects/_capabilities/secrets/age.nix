@@ -17,8 +17,8 @@ in
     };
   };
 
-  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.defaultSopsFile = ../../../secrets/secrets.yaml;
   sops.age.keyFile = ageKeyFile;
 
-  sops.secrets = (import ../../secrets/manifest.nix { inherit user; });
+  sops.secrets = (import ../../../secrets/manifest.nix { inherit user; });
 }

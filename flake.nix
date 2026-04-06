@@ -30,41 +30,47 @@
       helix,
       ...
     }@inputs:
+    let
+      mkHost =
+        {
+          aspects,
+          hostname,
+          user,
+        }:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs hostname user; };
+
+          modules = [
+            ./hosts/${hostname}/hardware-configuration.nix
+            ./users/${user}.nix
+          ]
+          ++ map (aspect: ./aspects/${aspect}) aspects;
+        };
+    in
     {
       nixosConfigurations = {
-        camus =
-          let
-            hostname = "camus";
-            user = "cheva";
-          in
-          nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs hostname user; };
+        camus = mkHost {
+          hostname = "camus";
+          aspects = [
+            "base"
+            "nixos"
+            "nvidia"
+            "dev"
+            "desktop"
+            "art"
+            "virtualisation"
+          ];
+          user = "cheva";
+        };
 
-            modules = [
-              ./hosts/camus/hardware-configuration.nix
-
-              ./users/cheva.nix
-
-              ./aspects/base
-              ./aspects/nixos
-              ./aspects/nvidia
-              ./aspects/dev
-              ./aspects/desktop
-              ./aspects/art
-              ./aspects/virtualisation
-
-              sops-nix.nixosModules.default
-            ];
-          };
-
-        # sartre = mkHost {
-        #   hostname = "sartre";
-        #   aspects = [
-        #     "wsl"
-        #     "dev"
-        #   ];
-        #   user = "cheva";
-        # };
+        sartre = mkHost {
+          hostname = "sartre";
+          aspects = [
+            "wsl"
+            "dev"
+          ];
+          user = "cheva";
+        };
       };
     };
 }
