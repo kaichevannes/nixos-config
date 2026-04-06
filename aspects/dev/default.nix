@@ -1,7 +1,7 @@
 {
   imports = [
     # Capabilities
-    ../../services
+    ../../services/ssh
 
     # Modules
     ./bat.nix
@@ -16,5 +16,6 @@
     ./utils.nix
     ./yazi
     ./zoxide.nix
+    ./zsh.nix
   ];
 }

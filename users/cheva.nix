@@ -17,12 +17,12 @@
     };
   };
 
-  home-manager.sharedModules =
-    { ... }:
+  home-manager.sharedModules = [
     {
       programs.git.settings = {
         user.name = "Kai Chevannes";
         user.email = "chevannes.kai@gmail.com";
       };
-    };
+    }
+  ];
 }
