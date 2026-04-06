@@ -47,11 +47,12 @@
           ]
           ++ map (aspect: ./aspects/${aspect}) aspects;
         };
+
     in
     {
-      nixosConfigurations = {
-        camus = mkHost (import ./hosts/camus/spec.nix);
-        sartre = mkHost (import ./hosts/sartre/spex.nix);
-      };
+      # https://github.com/mgit-at/nix-unify/?tab=readme-ov-file#adding-a-nixos-flakenix-to-your-ansible-repo
+      nixosConfigurations = nixpkgs.lib.mapAttrs (host: _: mkHost (import ./hosts/${host}/spec.nix)) (
+        builtins.readDir ./hosts
+      );
     };
 }
