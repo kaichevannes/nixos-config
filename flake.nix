@@ -30,29 +30,22 @@
       helix,
       ...
     }@inputs:
-    let
-      mkHost =
-        {
-          aspects,
-          hostname,
-          user,
-        }:
+    {
+      nixosConfigurations = nixpkgs.lib.mapAttrs (
+        host: _:
+        let
+          inherit (import ./hosts/${host}/spec.nix) user aspects;
+        in
         nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs user; };
 
           modules = [
-            ./hosts/${hostname}/hardware-configuration.nix
+            ./hosts/${host}/hardware-configuration.nix
             ./users/${user}.nix
-            { networking.hostName = hostname; }
+            { networking.hostName = host; }
           ]
           ++ map (aspect: ./aspects/${aspect}) aspects;
-        };
-
-    in
-    {
-      # https://github.com/mgit-at/nix-unify/?tab=readme-ov-file#adding-a-nixos-flakenix-to-your-ansible-repo
-      nixosConfigurations = nixpkgs.lib.mapAttrs (host: _: mkHost (import ./hosts/${host}/spec.nix)) (
-        builtins.readDir ./hosts
-      );
+        }
+      ) (builtins.readDir ./hosts);
     };
 }
