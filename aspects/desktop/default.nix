@@ -1,6 +1,7 @@
 {
   imports = [
     # Capabilities
+    ../_capabilities/user
     ../_capabilities/secrets
 
     # Modules

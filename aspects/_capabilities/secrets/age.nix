@@ -1,6 +1,6 @@
-{ pkgs, user, ... }:
+{ config, pkgs, ... }:
 let
-  ageKeyDir = "/home/${user}/.config/sops/age";
+  ageKeyDir = "/home/${config.meta.username}/.config/sops/age";
   ageKeyFile = "${ageKeyDir}/keys.txt";
 in
 {
@@ -20,5 +20,5 @@ in
   sops.defaultSopsFile = ../../../secrets/secrets.yaml;
   sops.age.keyFile = ageKeyFile;
 
-  sops.secrets = (import ../../../secrets/manifest.nix { inherit user; });
+  sops.secrets = (import ../../../secrets/manifest.nix { inherit config; });
 }

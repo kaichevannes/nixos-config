@@ -1,5 +1,4 @@
 {
-  user = "cheva";
   aspects = [
     "nvidia"
     "dev"
@@ -7,4 +6,9 @@
     "art"
     "virtualisation"
   ];
+  meta = {
+    username = "cheva";
+    gitHubUsername = "Kai Chevannes";
+    gitHubEmail = "chevannes.kai@gmail.com";
+  };
 }

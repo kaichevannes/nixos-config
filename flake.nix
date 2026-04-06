@@ -32,15 +32,18 @@
     }@inputs:
     let
       mkHost =
-        hostname: user: aspects:
+        hostname: aspects: meta:
         nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs user; };
+          specialArgs = { inherit inputs; };
 
           modules = [
             ./hosts/${hostname}/hardware-configuration.nix
-            ./users/${user}.nix
             ./aspects/_base
-            { networking.hostName = hostname; }
+            {
+              meta = meta // {
+                inherit hostname;
+              };
+            }
           ]
           ++ map (aspect: ./aspects/${aspect}) aspects;
         };
@@ -54,7 +57,7 @@
         let
           spec = import ./hosts/${hostname}/spec.nix;
         in
-        mkHost hostname spec.user spec.aspects
+        mkHost hostname spec.aspects spec.meta
       ) (builtins.readDir ./hosts);
     };
 }

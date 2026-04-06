@@ -1,6 +1,13 @@
+{ lib, ... }:
 {
+  options.meta = {
+    gitHubUsername = lib.mkOption { type = lib.types.str; };
+    gitHubEmail = lib.mkOption { type = lib.types.str; };
+  };
+
   imports = [
     # Capabilities
+    ../_capabilities/user
     ../_capabilities/ssh
 
     # Modules

@@ -1,4 +1,4 @@
-{ user, ... }:
+{ config, ... }:
 {
-  services.getty.autologinUser = user;
+  services.getty.autologinUser = config.meta.username;
 }

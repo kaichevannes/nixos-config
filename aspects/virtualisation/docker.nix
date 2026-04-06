@@ -1,5 +1,5 @@
-{ user, ... }:
+{ config, ... }:
 {
   virtualisation.docker.enable = true;
-  users.users.${user}.extraGroups = [ "docker" ];
+  users.users.${config.meta.username}.extraGroups = [ "docker" ];
 }

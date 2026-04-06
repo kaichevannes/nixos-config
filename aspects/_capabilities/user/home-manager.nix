@@ -1,4 +1,4 @@
-{ inputs, user, ... }:
+{ inputs, config, ... }:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
@@ -7,7 +7,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    users.${user} = {
+    users.${config.meta.username} = {
       programs.home-manager.enable = true;
       home.stateVersion = "25.11";
     };

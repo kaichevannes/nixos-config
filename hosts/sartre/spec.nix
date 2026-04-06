@@ -1,7 +1,9 @@
 {
-  user = "cheva";
   aspects = [
     "wsl"
     "dev"
   ];
+  meta = {
+    username = "cheva";
+  };
 }

@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ config, pkgs, ... }:
 {
   virtualisation.libvirtd = {
     enable = true;
@@ -8,8 +8,8 @@
     };
   };
 
-  users.groups.libvirtd.members = [ user ];
-  users.groups.kvm.members = [ user ];
+  users.groups.libvirtd.members = [ config.meta.username ];
+  users.groups.kvm.members = [ config.meta.username ];
 
   networking.firewall.trustedInterfaces = [ "virbr0" ];
   systemd.services.libvirt-default-network = {

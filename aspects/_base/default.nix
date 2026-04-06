@@ -1,11 +1,17 @@
+{ lib, ... }:
 {
+  options.meta = {
+    hostname = lib.mkOption { type = lib.types.str; };
+  };
+
   imports = [
-    ./home-manager.nix
     ./i18n.nix
     ./networking.nix
     ./nix.nix
     ./systemd-boot.nix
   ];
 
-  system.stateVersion = "25.11";
+  config = {
+    system.stateVersion = "25.11";
+  };
 }
