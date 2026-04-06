@@ -30,22 +30,31 @@
       helix,
       ...
     }@inputs:
-    {
-      nixosConfigurations = nixpkgs.lib.mapAttrs (
-        host: _:
-        let
-          inherit (import ./hosts/${host}/spec.nix) user aspects;
-        in
+    let
+      mkHost =
+        hostname: user: aspects:
         nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs user; };
 
           modules = [
-            ./hosts/${host}/hardware-configuration.nix
+            ./hosts/${hostname}/hardware-configuration.nix
             ./users/${user}.nix
-            { networking.hostName = host; }
+            ./aspects/_base
+            { networking.hostName = hostname; }
           ]
           ++ map (aspect: ./aspects/${aspect}) aspects;
-        }
+        };
+    in
+    {
+      nixosConfigurations = nixpkgs.lib.mapAttrs (
+        # e.g. ["camus" = "directory", "sartre" = "directory"]
+        # is   [hostname = _, hostname = _]
+        # Replace _ with the nixos system configuration for this host.
+        hostname: _:
+        let
+          spec = import ./hosts/${hostname}/spec.nix;
+        in
+        mkHost hostname spec.user spec.aspects
       ) (builtins.readDir ./hosts);
     };
 }

@@ -2,6 +2,11 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   # https://github.com/anotherhadi/nixy/blob/main/nixos/nix.nix#L24-L54
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
@@ -9,6 +14,7 @@
     extraOptions = ''
       warn-dirty = false
     '';
+
     settings = {
       download-buffer-size = 262144000; # 250 MB (250 * 1024 * 1024)
       auto-optimise-store = true;

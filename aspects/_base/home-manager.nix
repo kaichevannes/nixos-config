@@ -1,14 +1,6 @@
 { inputs, user, ... }:
 {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-  system.stateVersion = "25.11";
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
