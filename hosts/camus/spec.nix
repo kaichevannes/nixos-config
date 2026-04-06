@@ -1,5 +1,4 @@
 {
-  hostname = "camus";
   user = "cheva";
   aspects = [
     "nvidia"
