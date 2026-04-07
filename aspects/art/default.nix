@@ -1,9 +1,6 @@
+{ requires, ... }:
 {
-  imports = [
-    # Requires
-    ../_capabilities/gui
-
-    # Modules
+  imports = requires [ "gui" ] ++ [
     ./krita.nix
     ./opentabletdriver.nix
   ];

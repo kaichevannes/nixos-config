@@ -1,5 +1,6 @@
+{ requires, ... }:
 {
-  imports = [
+  imports = requires [ ] ++ [
     ./utils.nix
     ./wsl.nix
     ./wezterm

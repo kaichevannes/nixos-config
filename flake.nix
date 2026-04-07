@@ -31,10 +31,12 @@
       ...
     }@inputs:
     let
+      requires = map (capability: ./aspects/_capabilities/${capability});
+
       mkHost =
         hostname: aspects: meta:
         nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs requires; };
 
           modules = [
             ./hosts/${hostname}/hardware-configuration.nix

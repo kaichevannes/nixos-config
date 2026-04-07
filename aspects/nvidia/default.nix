@@ -1,5 +1,6 @@
+{ requires, ... }:
 {
-  imports = [
+  imports = requires [ ] ++ [
     ./drivers.nix
   ];
 }

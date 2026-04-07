@@ -1,12 +1,13 @@
+{ requires, ... }:
 {
-  imports = [
-    # Requires
-    ../user
-    ../secrets
-
-    # Modules
-    ./foot.nix
-    ./hyprland.nix
-    ./vicinae.nix
-  ];
+  imports =
+    requires [
+      "user"
+      "secrets"
+    ]
+    ++ [
+      ./foot.nix
+      ./hyprland.nix
+      ./vicinae.nix
+    ];
 }

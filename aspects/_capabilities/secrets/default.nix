@@ -1,13 +1,7 @@
-{ inputs, ... }:
+{ inputs, requires, ... }:
 {
-  imports = [
-    # Requires
-    ../ssh
-
-    # Modules
+  imports = requires [ "ssh" ] ++ [
     ./age.nix
-
-    # sops-nix
     inputs.sops-nix.nixosModules.default
   ];
 }

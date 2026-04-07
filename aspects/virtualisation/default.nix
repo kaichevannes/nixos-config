@@ -1,12 +1,13 @@
+{ requires, ... }:
 {
-  imports = [
-    # Requires
-    ../_capabilities/user
-    ../_capabilities/gui
-
-    # Modules
-    ./docker.nix
-    ./libvirtd.nix
-    ./virt-manager.nix
-  ];
+  imports =
+    requires [
+      "user"
+      "gui"
+    ]
+    ++ [
+      ./docker.nix
+      ./libvirtd.nix
+      ./virt-manager.nix
+    ];
 }

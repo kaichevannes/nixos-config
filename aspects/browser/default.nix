@@ -1,11 +1,12 @@
+{ requires, ... }:
 {
-  imports = [
-    # Requires
-    ../_capabilities/user
-    ../_capabilities/gui
-
-    # Modules
-    ./chromium.nix
-    ./firefox.nix
-  ];
+  imports =
+    requires [
+      "user"
+      "gui"
+    ]
+    ++ [
+      ./chromium.nix
+      ./firefox.nix
+    ];
 }

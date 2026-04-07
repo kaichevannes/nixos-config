@@ -1,14 +1,10 @@
-{ lib, ... }:
+{ lib, requires, ... }:
 {
   options.meta = {
     username = lib.mkOption { type = lib.types.str; };
   };
 
-  imports = [
-    # Requires
-    ../secrets
-
-    # Modules
+  imports = requires [ "secrets" ] ++ [
     ./home-manager.nix
     ./user.nix
   ];

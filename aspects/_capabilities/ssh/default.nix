@@ -1,6 +1,6 @@
+{ requires, ... }:
 {
-  imports = [
-    # Modules
+  imports = requires [ ] ++ [
     ./ssh.nix
     ./pass-cli.nix
   ];
