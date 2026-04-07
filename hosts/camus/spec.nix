@@ -1,6 +1,5 @@
 {
   aspects = [
-    "nvidia"
     "dev"
     "browser"
     "art"
