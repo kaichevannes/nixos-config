@@ -1,0 +1,1331 @@
+{
+  "version": 1,
+  "system": "x86_64-linux",
+  "virtualisation": "wsl",
+  "uefi": {
+    "supported": false
+  },
+  "hardware": {
+    "bios": {
+      "apm_info": {
+        "supported": false,
+        "enabled": false,
+        "version": 0,
+        "sub_version": 0,
+        "bios_flags": 0
+      },
+      "vbe_info": {
+        "version": 0,
+        "video_memory": 0
+      },
+      "pnp": false,
+      "pnp_id": 0,
+      "lba_support": false,
+      "low_memory_size": 0,
+      "smbios_version": 0
+    },
+    "cpu": [
+      {
+        "architecture": "x86_64",
+        "vendor_name": "AuthenticAMD",
+        "model_name": "AMD Ryzen 5 5600X 6-Core Processor",
+        "family": 25,
+        "model": 33,
+        "stepping": 0,
+        "features": [
+          "fpu",
+          "vme",
+          "de",
+          "pse",
+          "tsc",
+          "msr",
+          "pae",
+          "mce",
+          "cx8",
+          "apic",
+          "sep",
+          "mtrr",
+          "pge",
+          "mca",
+          "cmov",
+          "pat",
+          "pse36",
+          "clflush",
+          "mmx",
+          "fxsr",
+          "sse",
+          "sse2",
+          "ht",
+          "syscall",
+          "nx",
+          "mmxext",
+          "fxsr_opt",
+          "pdpe1gb",
+          "rdtscp",
+          "lm",
+          "rep_good",
+          "nopl",
+          "cpuid",
+          "extd_apicid",
+          "tsc_known_freq",
+          "pni",
+          "pclmulqdq",
+          "ssse3",
+          "fma",
+          "cx16",
+          "sse4_1",
+          "sse4_2",
+          "movbe",
+          "popcnt",
+          "aes",
+          "xsave",
+          "avx",
+          "f16c",
+          "rdrand",
+          "hypervisor",
+          "lahf_lm",
+          "cmp_legacy",
+          "cr8_legacy",
+          "abm",
+          "sse4a",
+          "misalignsse",
+          "3dnowprefetch",
+          "osvw",
+          "topoext",
+          "perfctr_core",
+          "ssbd",
+          "ibrs",
+          "ibpb",
+          "stibp",
+          "vmmcall",
+          "fsgsbase",
+          "bmi1",
+          "avx2",
+          "smep",
+          "bmi2",
+          "erms",
+          "rdseed",
+          "adx",
+          "smap",
+          "clflushopt",
+          "clwb",
+          "sha_ni",
+          "xsaveopt",
+          "xsavec",
+          "xgetbv1",
+          "xsaves",
+          "clzero",
+          "xsaveerptr",
+          "arat",
+          "umip",
+          "vaes",
+          "vpclmulqdq",
+          "rdpid",
+          "fsrm"
+        ],
+        "bugs": [
+          "sysret_ss_attrs",
+          "null_seg",
+          "spectre_v1",
+          "spectre_v2",
+          "spec_store_bypass",
+          "srso",
+          "ibpb_no_ret"
+        ],
+        "power_management": [
+          ""
+        ],
+        "bogo": 5558,
+        "cache": 512,
+        "units": 2,
+        "page_size": 4096,
+        "physical_id": 0,
+        "siblings": 2,
+        "cores": 2,
+        "fpu": false,
+        "fpu_exception": false,
+        "cpuid_level": 13,
+        "write_protect": false,
+        "tlb_size": 1024,
+        "clflush_size": 64,
+        "cache_alignment": 64,
+        "address_sizes": {
+          "physical": "0x30",
+          "virtual": "0x30"
+        }
+      }
+    ],
+    "disk": [
+      {
+        "index": 12,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram2",
+        "unix_device_names": [
+          "/dev/ram2"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 13,
+        "attached_to": 8,
+        "class_list": [
+          "disk",
+          "scsi",
+          "block_device"
+        ],
+        "bus_type": {
+          "hex": "0084",
+          "name": "SCSI",
+          "value": 132
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "vendor": {
+          "hex": "0000",
+          "name": "Msft",
+          "value": 0
+        },
+        "device": {
+          "hex": "0000",
+          "name": "Virtual Disk",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "1.0",
+          "value": 0
+        },
+        "model": "Msft Virtual Disk",
+        "sysfs_id": "/class/block/sdd",
+        "sysfs_bus_id": "0:0:0:3",
+        "sysfs_device_link": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/fd1d2cbd-ce7c-535c-966b-eb5f811c95f0/host0/target0:0:0/0:0:0:3",
+        "unix_device_names": [
+          "/dev/disk/by-id/scsi-3600224806a1e9ad0f9a9d38098572ce4",
+          "/dev/disk/by-id/wwn-0x600224806a1e9ad0f9a9d38098572ce4",
+          "/dev/disk/by-path/acpi-MSFT1000:00-scsi-0:0:0:3",
+          "/dev/disk/by-uuid/ab7eb364-bf11-47a6-80c3-9c81a4232458",
+          "/dev/sdd"
+        ],
+        "unix_device_name2": "/dev/sg3",
+        "resources": [
+          {
+            "type": "disk_geo",
+            "cylinders": 133674,
+            "heads": 255,
+            "sectors": 63,
+            "size": "0x0",
+            "geo_type": "logical"
+          },
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 2147483648,
+            "value_2": 512
+          }
+        ],
+        "driver": "hv_storvsc",
+        "drivers": [
+          "hv_storvsc",
+          "sd"
+        ]
+      },
+      {
+        "index": 14,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram0",
+        "unix_device_names": [
+          "/dev/ram0"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 15,
+        "attached_to": 8,
+        "class_list": [
+          "disk",
+          "scsi",
+          "block_device"
+        ],
+        "bus_type": {
+          "hex": "0084",
+          "name": "SCSI",
+          "value": 132
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "vendor": {
+          "hex": "0000",
+          "name": "Msft",
+          "value": 0
+        },
+        "device": {
+          "hex": "0000",
+          "name": "Virtual Disk",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "1.0",
+          "value": 0
+        },
+        "model": "Msft Virtual Disk",
+        "sysfs_id": "/class/block/sdb",
+        "sysfs_bus_id": "0:0:0:1",
+        "sysfs_device_link": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/fd1d2cbd-ce7c-535c-966b-eb5f811c95f0/host0/target0:0:0/0:0:0:1",
+        "unix_device_names": [
+          "/dev/disk/by-id/scsi-3600224805b5ac507b80a045bc3303ae1",
+          "/dev/disk/by-id/wwn-0x600224805b5ac507b80a045bc3303ae1",
+          "/dev/disk/by-path/acpi-MSFT1000:00-scsi-0:0:0:1",
+          "/dev/sdb"
+        ],
+        "unix_device_name2": "/dev/sg1",
+        "resources": [
+          {
+            "type": "disk_geo",
+            "cylinders": 23,
+            "heads": 255,
+            "sectors": 63,
+            "size": "0x0",
+            "geo_type": "logical"
+          },
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 381016,
+            "value_2": 512
+          }
+        ],
+        "driver": "hv_storvsc",
+        "drivers": [
+          "hv_storvsc",
+          "sd"
+        ]
+      },
+      {
+        "index": 16,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram9",
+        "unix_device_names": [
+          "/dev/ram9"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 17,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram14",
+        "unix_device_names": [
+          "/dev/ram14"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 18,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram7",
+        "unix_device_names": [
+          "/dev/ram7"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 19,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram12",
+        "unix_device_names": [
+          "/dev/ram12"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 20,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram5",
+        "unix_device_names": [
+          "/dev/ram5"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 21,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram10",
+        "unix_device_names": [
+          "/dev/ram10"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 22,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram3",
+        "unix_device_names": [
+          "/dev/ram3"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 23,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram1",
+        "unix_device_names": [
+          "/dev/ram1"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 24,
+        "attached_to": 8,
+        "class_list": [
+          "disk",
+          "scsi",
+          "block_device"
+        ],
+        "bus_type": {
+          "hex": "0084",
+          "name": "SCSI",
+          "value": 132
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "vendor": {
+          "hex": "0000",
+          "name": "Msft",
+          "value": 0
+        },
+        "device": {
+          "hex": "0000",
+          "name": "Virtual Disk",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "1.0",
+          "value": 0
+        },
+        "model": "Msft Virtual Disk",
+        "sysfs_id": "/class/block/sdc",
+        "sysfs_bus_id": "0:0:0:2",
+        "sysfs_device_link": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/fd1d2cbd-ce7c-535c-966b-eb5f811c95f0/host0/target0:0:0/0:0:0:2",
+        "unix_device_names": [
+          "/dev/disk/by-id/scsi-3600224806b6ad2bf820fc1856d5bba00",
+          "/dev/disk/by-id/wwn-0x600224806b6ad2bf820fc1856d5bba00",
+          "/dev/disk/by-path/acpi-MSFT1000:00-scsi-0:0:0:2",
+          "/dev/disk/by-uuid/41184d1f-036c-480d-8b91-8c23ed55866d",
+          "/dev/sdc"
+        ],
+        "unix_device_name2": "/dev/sg2",
+        "resources": [
+          {
+            "type": "disk_geo",
+            "cylinders": 130,
+            "heads": 255,
+            "sectors": 63,
+            "size": "0x0",
+            "geo_type": "logical"
+          },
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 2097160,
+            "value_2": 512
+          }
+        ],
+        "driver": "hv_storvsc",
+        "drivers": [
+          "hv_storvsc",
+          "sd"
+        ]
+      },
+      {
+        "index": 25,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram15",
+        "unix_device_names": [
+          "/dev/ram15"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 26,
+        "attached_to": 8,
+        "class_list": [
+          "disk",
+          "scsi",
+          "block_device"
+        ],
+        "bus_type": {
+          "hex": "0084",
+          "name": "SCSI",
+          "value": 132
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "vendor": {
+          "hex": "0000",
+          "name": "Msft",
+          "value": 0
+        },
+        "device": {
+          "hex": "0000",
+          "name": "Virtual Disk",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "1.0",
+          "value": 0
+        },
+        "model": "Msft Virtual Disk",
+        "sysfs_id": "/class/block/sda",
+        "sysfs_bus_id": "0:0:0:0",
+        "sysfs_device_link": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/fd1d2cbd-ce7c-535c-966b-eb5f811c95f0/host0/target0:0:0/0:0:0:0",
+        "unix_device_names": [
+          "/dev/disk/by-id/scsi-360022480728b63b9f0b8d5e28f1d4859",
+          "/dev/disk/by-id/wwn-0x60022480728b63b9f0b8d5e28f1d4859",
+          "/dev/disk/by-path/acpi-MSFT1000:00-scsi-0:0:0:0",
+          "/dev/sda"
+        ],
+        "unix_device_name2": "/dev/sg0",
+        "resources": [
+          {
+            "type": "disk_geo",
+            "cylinders": 49,
+            "heads": 255,
+            "sectors": 63,
+            "size": "0x0",
+            "geo_type": "logical"
+          },
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 795880,
+            "value_2": 512
+          }
+        ],
+        "driver": "hv_storvsc",
+        "drivers": [
+          "hv_storvsc",
+          "sd"
+        ]
+      },
+      {
+        "index": 27,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram8",
+        "unix_device_names": [
+          "/dev/ram8"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 28,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram13",
+        "unix_device_names": [
+          "/dev/ram13"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 29,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram6",
+        "unix_device_names": [
+          "/dev/ram6"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 30,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram11",
+        "unix_device_names": [
+          "/dev/ram11"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      },
+      {
+        "index": 31,
+        "attached_to": 0,
+        "class_list": [
+          "disk",
+          "block_device"
+        ],
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "model": "Disk",
+        "sysfs_id": "/class/block/ram4",
+        "unix_device_names": [
+          "/dev/ram4"
+        ],
+        "resources": [
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8192,
+            "value_2": 512
+          }
+        ]
+      }
+    ],
+    "memory": [
+      {
+        "index": 5,
+        "attached_to": 0,
+        "class_list": [
+          "memory"
+        ],
+        "base_class": {
+          "hex": "0101",
+          "name": "Internally Used Class",
+          "value": 257
+        },
+        "sub_class": {
+          "hex": "0002",
+          "name": "Main Memory",
+          "value": 2
+        },
+        "model": "Main Memory",
+        "resources": [
+          {
+            "type": "phys_mem",
+            "range": 4026531840
+          }
+        ]
+      }
+    ],
+    "network_controller": [
+      {
+        "index": 9,
+        "attached_to": 0,
+        "class_list": [
+          "network_controller"
+        ],
+        "base_class": {
+          "hex": "0002",
+          "name": "Network controller",
+          "value": 2
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Ethernet controller",
+          "value": 0
+        },
+        "vendor": "Virtual",
+        "device": "Virtual Ethernet Card 0",
+        "model": "Virtual Ethernet Card 0",
+        "sysfs_id": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/ee719f1a-323c-4113-b508-983b18579713",
+        "sysfs_bus_id": "ee719f1a-323c-4113-b508-983b18579713",
+        "unix_device_names": [
+          "eth0"
+        ],
+        "resources": [
+          {
+            "type": "hwaddr",
+            "address": 48
+          },
+          {
+            "type": "phwaddr",
+            "address": 48
+          }
+        ],
+        "driver": "hv_netvsc",
+        "drivers": [
+          "hv_netvsc"
+        ],
+        "driver_info": {
+          "type": "module",
+          "db_entry_0": [
+            "hv_netvsc"
+          ],
+          "active": true,
+          "modprobe": true,
+          "names": [
+            "hv_netvsc"
+          ],
+          "module_args": [
+            ""
+          ],
+          "conf": ""
+        }
+      }
+    ],
+    "network_interface": [
+      {
+        "index": 32,
+        "attached_to": 0,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Loopback",
+          "value": 0
+        },
+        "model": "Loopback network interface",
+        "sysfs_id": "/class/net/lo",
+        "unix_device_names": [
+          "lo"
+        ]
+      },
+      {
+        "index": 33,
+        "attached_to": 9,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0001",
+          "name": "Ethernet",
+          "value": 1
+        },
+        "model": "Ethernet network interface",
+        "sysfs_id": "/class/net/eth0",
+        "sysfs_device_link": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/ee719f1a-323c-4113-b508-983b18579713",
+        "unix_device_names": [
+          "eth0"
+        ],
+        "resources": [
+          {
+            "type": "hwaddr",
+            "address": 48
+          },
+          {
+            "type": "phwaddr",
+            "address": 48
+          }
+        ],
+        "driver": "hv_netvsc",
+        "drivers": [
+          "hv_netvsc"
+        ]
+      }
+    ],
+    "pci": [
+      {
+        "index": 7,
+        "attached_to": 0,
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "slot": {
+          "bus": 10594048,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0008",
+          "name": "Generic system peripheral",
+          "value": 8
+        },
+        "sub_class": {
+          "hex": "0080",
+          "name": "System peripheral",
+          "value": 128
+        },
+        "vendor": {
+          "hex": "1af4",
+          "value": 6900
+        },
+        "sub_vendor": {
+          "hex": "1af4",
+          "value": 6900
+        },
+        "device": {
+          "hex": "105a",
+          "value": 4186
+        },
+        "sub_device": {
+          "hex": "0040",
+          "value": 64
+        },
+        "revision": {
+          "hex": "0001",
+          "value": 1
+        },
+        "model": "System peripheral",
+        "sysfs_id": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/c216be5b-a1a7-4092-a626-aebb0e574630/pcia1a7:00/a1a7:00:00.0",
+        "sysfs_bus_id": "a1a7:00:00.0",
+        "detail": {
+          "function": 0,
+          "command": 1030,
+          "header_type": 0,
+          "secondary_bus": 0,
+          "prog_if": 0
+        },
+        "driver": "virtio-pci",
+        "drivers": [
+          "virtio-pci"
+        ],
+        "module_alias": "pci:v00001AF4d0000105Asv00001AF4sd00000040bc08sc80i00"
+      }
+    ],
+    "storage_controller": [
+      {
+        "index": 6,
+        "attached_to": 0,
+        "class_list": [
+          "storage_controller",
+          "pci"
+        ],
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "slot": {
+          "bus": 5603840,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0001",
+          "name": "Mass storage controller",
+          "value": 1
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "SCSI storage controller",
+          "value": 0
+        },
+        "vendor": {
+          "hex": "1af4",
+          "value": 6900
+        },
+        "sub_vendor": {
+          "hex": "1af4",
+          "value": 6900
+        },
+        "device": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sub_device": {
+          "hex": "0040",
+          "value": 64
+        },
+        "revision": {
+          "hex": "0001",
+          "value": 1
+        },
+        "model": "SCSI storage controller",
+        "sysfs_id": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/c4b741f5-5582-4c98-8f8b-2e082933c396/pci5582:00/5582:00:00.0",
+        "sysfs_bus_id": "5582:00:00.0",
+        "detail": {
+          "function": 0,
+          "command": 1030,
+          "header_type": 0,
+          "secondary_bus": 0,
+          "prog_if": 0
+        },
+        "driver": "virtio-pci",
+        "drivers": [
+          "virtio-pci"
+        ],
+        "module_alias": "pci:v00001AF4d00001043sv00001AF4sd00000040bc01sc00i00"
+      },
+      {
+        "index": 8,
+        "attached_to": 0,
+        "class_list": [
+          "storage_controller"
+        ],
+        "base_class": {
+          "hex": "0001",
+          "name": "Mass storage controller",
+          "value": 1
+        },
+        "sub_class": {
+          "hex": "0080",
+          "name": "Storage controller",
+          "value": 128
+        },
+        "vendor": "Virtual",
+        "device": "Storage 0",
+        "model": "Virtual Storage 0",
+        "sysfs_id": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/fd1d2cbd-ce7c-535c-966b-eb5f811c95f0",
+        "sysfs_bus_id": "fd1d2cbd-ce7c-535c-966b-eb5f811c95f0",
+        "driver": "hv_storvsc",
+        "drivers": [
+          "hv_storvsc"
+        ],
+        "driver_info": {
+          "type": "module",
+          "db_entry_0": [
+            "hv_storvsc"
+          ],
+          "active": true,
+          "modprobe": true,
+          "names": [
+            "hv_storvsc"
+          ],
+          "module_args": [
+            ""
+          ],
+          "conf": ""
+        }
+      }
+    ],
+    "system": {
+      "form_factor": "desktop"
+    },
+    "unknown": [
+      {
+        "index": 10,
+        "attached_to": 7,
+        "class_list": [
+          "unknown"
+        ],
+        "base_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "vendor": "Virtio",
+        "device": "",
+        "model": "Virtio Unclassified device",
+        "sysfs_id": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/c216be5b-a1a7-4092-a626-aebb0e574630/pcia1a7:00/a1a7:00:00.0/virtio1",
+        "sysfs_bus_id": "virtio1",
+        "driver": "virtiofs",
+        "drivers": [
+          "virtiofs"
+        ],
+        "module_alias": "virtio:d0000001Av00001AF4"
+      },
+      {
+        "index": 11,
+        "attached_to": 6,
+        "class_list": [
+          "unknown"
+        ],
+        "base_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "vendor": "Virtio",
+        "device": "",
+        "model": "Virtio Unclassified device",
+        "sysfs_id": "/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/c4b741f5-5582-4c98-8f8b-2e082933c396/pci5582:00/5582:00:00.0/virtio0",
+        "sysfs_bus_id": "virtio0",
+        "driver": "virtio_console",
+        "drivers": [
+          "virtio_console"
+        ],
+        "module_alias": "virtio:d00000003v00001AF4"
+      }
+    ]
+  },
+  "smbios": {}
+}
