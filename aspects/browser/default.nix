@@ -2,14 +2,10 @@
   imports = [
     # Requires
     ../_capabilities/user
-    ../_capabilities/secrets
+    ../_capabilities/gui
 
     # Modules
-    ./autologin.nix
     ./chromium.nix
     ./firefox.nix
-    ./foot.nix
-    ./hyprland.nix
-    ./vicinae.nix
   ];
 }

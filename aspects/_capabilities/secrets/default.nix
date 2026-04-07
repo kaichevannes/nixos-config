@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    # Capabilities
+    # Requires
     ../ssh
 
     # Modules

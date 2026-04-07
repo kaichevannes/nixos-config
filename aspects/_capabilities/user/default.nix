@@ -5,7 +5,7 @@
   };
 
   imports = [
-    # Capabilities
+    # Requires
     ../secrets
 
     # Modules

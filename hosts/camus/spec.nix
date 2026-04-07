@@ -2,7 +2,7 @@
   aspects = [
     "nvidia"
     "dev"
-    "desktop"
+    "browser"
     "art"
     "virtualisation"
   ];
