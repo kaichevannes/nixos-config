@@ -1,5 +1,8 @@
 # nixos-config
 
+## Facter
+`sudo nix run --option experimental-features "nix-command flakes" nixpkgs#nixos-facter -- -o facter.json`
+
 ## Secrets
 `nix-shell -p sops --run "sops secrets/secrets.yaml"`
 
