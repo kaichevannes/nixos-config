@@ -83,7 +83,7 @@ wsl.exe --install --no-distribution
 2. Download and run `nixos.wsl` from [the latest release](https://github.com/nix-community/NixOS-WSL/releases/latest)
 3. Initialise system
 ```
-sudo nixos-rebuild boot --flake github:kaichevannes/nixos-config#wsl
+sudo nixos-rebuild boot --flake github:kaichevannes/nixos-config#sartre
 ```
 4. Reset default username
 ```
