@@ -35,7 +35,7 @@
       ...
     }@inputs:
     let
-      requires = map (capability: ./aspects/_capabilities/${capability});
+      requires = map (name: ./aspects/_common/${name});
 
       mkHost =
         hostname: aspects: meta:
@@ -43,8 +43,8 @@
           specialArgs = { inherit inputs requires; };
 
           modules = [
+            ./aspects/_common/base
             ./hosts/${hostname}/filesystem.nix
-            ./aspects/_base
             {
               meta = meta // {
                 inherit hostname;
