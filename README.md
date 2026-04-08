@@ -7,9 +7,7 @@
 `nix-shell -p sops --run "sops secrets/secrets.yaml"`
 
 ### Linux User Password
-Store the result of `mkpasswd -m yescrypt <password>` in secrets.yaml and add
-to user config with `sops.secrets.password_<user>.neededForUsers = true;` and
-`hashedPasswordFile = config.sops.secrets.password_<user>.path;`.
+Store the result of `mkpasswd -m yescrypt <password>` in secrets.yaml under `password_<user>`.
 
 ## NixOS (Minimal ISO)
 https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning
