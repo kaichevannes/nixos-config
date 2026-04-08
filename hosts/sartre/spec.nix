@@ -1,6 +1,5 @@
 {
   aspects = [
-    "wsl"
     "dev"
   ];
   meta = {
