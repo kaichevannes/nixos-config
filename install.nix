@@ -13,26 +13,31 @@
     text = ''
       readonly HOST="''${1:?Usage: ...#install -- <hostname>}"
 
-      echo "Partitioning disk with disko"
-      disko --flake "github:kaichevannes/nixos-config#$HOST" --mode disko
+      if nix eval "github:kaichevannes/nixos-config#nixosConfigurations.$HOST.config.disko.devices" --json 2>/dev/null | grep -q '{'; then
+        echo "Partitioning disk with disko"
+        disko --flake "github:kaichevannes/nixos-config#$HOST" --mode disko
+      else
+        echo "No disko config found, skipping partitioning"
+      fi
 
       echo "Cloning config"
       git clone "https://github.com/kaichevannes/nixos-config.git" "/mnt/persist/etc/nixos"
       git -C "/mnt/persist/etc/nixos" remote set-url origin "git@github.com:kaichevannes/nixos-config.git"
+      chown -R 1000:1000 "/mnt/persist/etc/nixos"
 
       echo "Initialising facter.json"
       nixos-facter -o "/mnt/persist/etc/nixos/hosts/$HOST/facter.json"
       git -C "/mnt/persist/etc/nixos" add "hosts/$HOST/facter.json"
 
       echo "Initialising age key"
-      mkdir -p "/mnt/persist/sops/age"
+      mkdir -p "/mnt/persist/var/lib/sops-nix"
       pass-cli login --interactive
       pass-cli item view \
         --vault-name Keys \
         --item-title id_ed25519 \
         --field private_key \
-        | ssh-to-age -private-key -i - > "/mnt/persist/sops/age/keys.txt"
-      chmod 400 "/mnt/persist/sops/age/keys.txt"
+        | ssh-to-age -private-key -i - > "/mnt/persist/var/lib/sops-nix/key.txt"
+      chmod 400 "/mnt/persist/var/lib/sops-nix/key.txt"
 
       echo "Installing NixOS"
       nixos-install --flake "git+file:///mnt/persist/etc/nixos#$HOST" --no-root-passwd

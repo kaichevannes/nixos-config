@@ -1,24 +1,8 @@
-{ config, pkgs, ... }:
-let
-  ageKeyDir = "/home/${config.meta.username}/.config/sops/age";
-  ageKeyFile = "${ageKeyDir}/keys.txt";
-in
+{ config, ... }:
 {
-  systemd.user.services.generate-age-key = {
-    description = "Generate Age key from SSH agent via ssh-to-age.";
-    after = [ "graphical-session.target" ];
-    wantedBy = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = [
-        "/run/current-system/sw/bin/mkdir -p ${ageKeyDir}"
-        "/run/current-system/sw/bin/bash -c \"${pkgs.proton-pass-cli}/bin/pass-cli item view --vault-name Keys --item-title id_ed25519 --field private_key | ${pkgs.ssh-to-age}/bin/ssh-to-age -private-key -i - > ${ageKeyFile}\""
-      ];
-    };
-  };
-
   sops.defaultSopsFile = ../../../secrets/secrets.yaml;
-  sops.age.keyFile = ageKeyFile;
-
+  sops.age.keyFile = "/var/lib/sops-nix/key.txt";
   sops.secrets = (import ../../../secrets/manifest.nix { inherit config; });
+
+  environment.variables.SOPS_AGE_KEY_FILE = "/var/lib/sops-nix/key.txt";
 }

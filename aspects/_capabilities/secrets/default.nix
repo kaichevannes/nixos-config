@@ -1,6 +1,6 @@
 { inputs, requires, ... }:
 {
-  imports = requires [ "ssh" ] ++ [
+  imports = requires [ ] ++ [
     ./age.nix
     inputs.sops-nix.nixosModules.default
   ];
