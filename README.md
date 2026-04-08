@@ -2,7 +2,9 @@
 
 ## Installation
 
-### NixOS (Minimal ISO)
+### NixOS
+Boot into [Minimal ISO](https://nixos.org/download/)
+
 ```bash
 sudo nix --extra-experimental-features "nix-command flakes" run github:kaichevannes/dotfiles#install -- <host>
 ```
