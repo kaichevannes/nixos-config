@@ -1,14 +1,8 @@
 # nixos-config
 
-## Secrets
-```bash
-nix-shell -p sops --run "sops secrets/secrets.yaml"
-```
+## Installation
 
-### Linux User Password
-Store the result of `mkpasswd -m yescrypt <password>` in `secrets.yaml` under `password_<user>`.
-
-## NixOS (Minimal ISO)
+### NixOS (Minimal ISO)
 ```bash
 sudo nix --extra-experimental-features "nix-command flakes" run github:kaichevannes/dotfiles#install -- <host>
 ```
@@ -16,7 +10,7 @@ sudo nix --extra-experimental-features "nix-command flakes" run github:kaichevan
 To rebuild use `sudo nixos-rebuild switch`. 
 To rollback use `sudo nixos-rebuild switch --rollback`.
 
-## WSL
+### WSL
 Install [Wezterm nightly](https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe)
 
 1. Enable WSL
@@ -29,3 +23,12 @@ wsl.exe --install --no-distribution
 ```bash
 sudo nix --extra-experimental-features "nix-command flakes" run github:kaichevannes/nixos-config#install -- sartre
 ```
+
+## Secrets
+```bash
+nix-shell -p sops --run "sops secrets/secrets.yaml"
+```
+
+### Linux User Password
+Store the result of `mkpasswd -m yescrypt <password>` in `secrets.yaml` under `password_<user>`.
+
