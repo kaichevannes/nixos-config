@@ -4,6 +4,7 @@
     name = "install";
     runtimeInputs = with pkgs; [
       git
+      nixos-facter
       proton-pass-cli
       ssh-to-age
       disko
@@ -18,6 +19,10 @@
       echo "Cloning config"
       git clone "https://github.com/kaichevannes/nixos-config.git" "/mnt/persist/etc/nixos"
       git -C "/mnt/persist/etc/nixos" remote set-url origin "git@github.com:kaichevannes/nixos-config.git"
+
+      echo "Initialising facter.json"
+      nixos-facter -o "/mnt/persist/etc/nixos/hosts/$HOST/facter.json"
+      git -C "/mnt/persist/etc/nixos" add "hosts/$HOST/facter.json"
 
       echo "Initialising age key"
       mkdir -p "/mnt/persist/sops/age"
