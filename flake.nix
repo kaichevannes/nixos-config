@@ -61,5 +61,16 @@
         in
         mkHost hostname spec.aspects spec.meta
       ) (builtins.readDir ./hosts);
+
+      # Install script for all system (e.g. x86_64-linux, aarch64-linux, ...)
+      packages = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        {
+          install = import ./install.nix { inherit pkgs; };
+        }
+      );
     };
 }
