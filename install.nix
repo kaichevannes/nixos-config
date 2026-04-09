@@ -26,7 +26,7 @@ pkgs.writeShellApplication {
     echo "Initialising age key"
     echo "Log into Proton Pass:"
     mkdir -p "/mnt/persist/var/lib/sops-nix"
-    pass-cli test && pass-cli logout
+    pass-cli test 2>/dev/null && pass-cli logout
     pass-cli login --interactive
     pass-cli item view \
       --vault-name Keys \
