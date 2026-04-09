@@ -6,7 +6,7 @@
 Boot into [Minimal ISO](https://nixos.org/download/)
 
 ```bash
-sudo nix --extra-experimental-features "nix-command flakes" run github:kaichevannes/dotfiles#install -- <host>
+sudo nix --extra-experimental-features "nix-command flakes" run github:kaichevannes/nixos-config#install -- <host>
 ```
 
 To rebuild use `sudo nixos-rebuild switch`. 
