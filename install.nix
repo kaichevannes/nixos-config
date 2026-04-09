@@ -26,7 +26,7 @@
 
       echo "Initialising facter.json"
       nixos-facter -o "/mnt/persist/etc/nixos/hosts/$HOST/facter.json"
-      git -C "/mnt/persist/etc/nixos" add "hosts/$HOST/facter.json" "host/$HOST/filesystem.nix"
+      git -C "/mnt/persist/etc/nixos" add "hosts/$HOST/facter.json" "hosts/$HOST/filesystem.nix"
 
       echo "Initialising age key"
       mkdir -p "/mnt/persist/var/lib/sops-nix"
