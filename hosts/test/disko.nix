@@ -1,4 +1,6 @@
 {
+  filesystems."/persist".neededForBoot = true;
+
   disko.devices = {
     disk.main = {
       type = "disk";
@@ -48,7 +50,6 @@
                     "compress=zstd"
                     "noatime"
                   ];
-                  neededForBoot = true;
                 };
               };
             };
