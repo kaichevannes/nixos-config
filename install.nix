@@ -23,11 +23,10 @@
       echo "Cloning config"
       git clone "https://github.com/kaichevannes/nixos-config.git" "/mnt/persist/etc/nixos"
       git -C "/mnt/persist/etc/nixos" remote set-url origin "git@github.com:kaichevannes/nixos-config.git"
-      chown -R 1000:1000 "/mnt/persist/etc/nixos"
 
       echo "Initialising facter.json"
       nixos-facter -o "/mnt/persist/etc/nixos/hosts/$HOST/facter.json"
-      git -C "/mnt/persist/etc/nixos" add "hosts/$HOST/facter.json"
+      git -C "/mnt/persist/etc/nixos" add "hosts/$HOST/facter.json" "host/$HOST/filesystem.nix"
 
       echo "Initialising age key"
       mkdir -p "/mnt/persist/var/lib/sops-nix"

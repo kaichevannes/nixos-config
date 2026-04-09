@@ -17,7 +17,9 @@
     };
     impermanence = {
       url = "github:nix-community/impermanence";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # Dev-only dependencies
+      inputs.nixpkgs.follows = "";
+      inputs.home-manager.follows = "";
     };
     helix = {
       url = "github:helix-editor/helix";
