@@ -5,7 +5,10 @@
   ...
 }:
 {
-  imports = [ inputs.impermanence.nixosModules.impermanence ];
+  imports = [
+    inputs.disko.nixosModules.disko
+    inputs.impermanence.nixosModules.impermanence
+  ];
 
   environment.persistence."/persist" = {
     enable = true;
