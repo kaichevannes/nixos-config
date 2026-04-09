@@ -13,7 +13,7 @@
     text = ''
       readonly HOST="''${1:?Usage: ...#install -- <hostname>}"
 
-      if nix eval "github:kaichevannes/nixos-config#nixosConfigurations.$HOST.config.disko.devices" --json 2>/dev/null | grep -q '{'; then
+      if nix eval "github:kaichevannes/nixos-config#nixosConfigurations.$HOST.config.disko.devices" >/dev/null 2>&1; then
         echo "Partitioning disk with disko"
         disko --flake "github:kaichevannes/nixos-config#$HOST" --mode destroy,format,mount
       else
