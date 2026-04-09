@@ -21,7 +21,7 @@ pkgs.writeShellApplication {
 
     echo "Initialising facter.json"
     nixos-facter -o "/mnt/persist/etc/nixos/hosts/$HOST/facter.json"
-    git -C "/mnt/persist/etc/nixos" add "hosts/$HOST/facter.json" "hosts/$HOST/filesystem.nix"
+    git -C "/mnt/persist/etc/nixos" add "hosts/$HOST/facter.json"
 
     echo "Initialising age key"
     echo "Log into Proton Pass:"
