@@ -33,6 +33,7 @@
       nixos-wsl,
       home-manager,
       sops-nix,
+      impermanence,
       helix,
       ...
     }@inputs:
