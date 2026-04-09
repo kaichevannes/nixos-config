@@ -27,7 +27,9 @@ pkgs.writeShellApplication {
     echo "Log into Proton Pass:"
     mkdir -p "/mnt/persist/var/lib/sops-nix"
     pass-cli test 2>/dev/null && pass-cli logout
-    pass-cli login --interactive
+    until pass-cli login --interactive; do
+      echo "Login failed, try again"
+    done
     pass-cli item view \
       --vault-name Keys \
       --item-title id_ed25519 \
