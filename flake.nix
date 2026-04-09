@@ -73,9 +73,9 @@
         mkHost hostname spec.aspects spec.meta
       ) (builtins.readDir ./hosts);
 
-      diskoConfigurations = nixpkgs.lib.mapAttrs (
-        hostname: _: import ./hosts/${hostname}/filesystem.nix
-      ) (builtins.readDir ./hosts);
+      diskoConfigurations = nixpkgs.lib.mapAttrs (hostname: _: import ./hosts/${hostname}/disko.nix) (
+        builtins.readDir ./hosts
+      );
 
       # Install script for all system (e.g. x86_64-linux, aarch64-linux, ...)
       packages = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
