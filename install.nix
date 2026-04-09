@@ -11,14 +11,13 @@ pkgs.writeShellApplication {
   ];
   text = ''
     readonly HOST="''${1:?Usage: ...#install -- <hostname>}"
-    readonly REPO="nixos-config/disko"
 
     echo "Partitioning disk with disko"
-    disko --flake "github:kaichevannes/$REPO#$HOST" --mode destroy,format,mount
+    disko --flake "github:kaichevannes/nixos-config#$HOST" --mode destroy,format,mount
 
     echo "Cloning config"
-    git clone "https://github.com/kaichevannes/$REPO.git" "/mnt/persist/etc/nixos"
-    git -C "/mnt/persist/etc/nixos" remote set-url origin "git@github.com:kaichevannes/$REPO.git"
+    git clone "https://github.com/kaichevannes/nixos-config.git" "/mnt/persist/etc/nixos"
+    git -C "/mnt/persist/etc/nixos" remote set-url origin "git@github.com:kaichevannes/nixos-config.git"
 
     echo "Initialising facter.json"
     nixos-facter -o "/mnt/persist/etc/nixos/hosts/$HOST/facter.json"
