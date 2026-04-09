@@ -3,7 +3,7 @@
     "dev"
   ];
   meta = {
-    username = "nixos";
+    username = "cheva";
     gitHubUsername = "Kai Chevannes";
     gitHubEmail = "chevannes.kai@gmail.com";
   };

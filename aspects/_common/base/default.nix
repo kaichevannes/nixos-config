@@ -6,7 +6,7 @@
 
   imports = [
     ./autologin.nix
-    ./hardware
+    ./facter
     ./i18n.nix
     ./networking.nix
     ./nix.nix

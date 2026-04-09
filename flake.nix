@@ -11,6 +11,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      # Dev-only dependencies
+      inputs.nixpkgs.follows = "";
+      inputs.home-manager.follows = "";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,11 +37,12 @@
       nixos-wsl,
       home-manager,
       sops-nix,
+      impermanence,
       helix,
       ...
     }@inputs:
     let
-      requires = map (capability: ./aspects/_capabilities/${capability});
+      requires = map (name: ./aspects/_common/${name});
 
       mkHost =
         hostname: aspects: meta:
@@ -39,8 +50,8 @@
           specialArgs = { inherit inputs requires; };
 
           modules = [
-            ./hosts/${hostname}/hardware-configuration.nix
-            ./aspects/_base
+            ./aspects/_common/base
+            ./hosts/${hostname}/filesystem.nix
             {
               meta = meta // {
                 inherit hostname;
@@ -61,5 +72,23 @@
         in
         mkHost hostname spec.aspects spec.meta
       ) (builtins.readDir ./hosts);
+
+      diskoConfigurations = nixpkgs.lib.mapAttrs (hostname: _: import ./hosts/${hostname}/disko.nix) (
+        builtins.readDir ./hosts
+      );
+
+      # Install script for all system (e.g. x86_64-linux, aarch64-linux, ...)
+      packages = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
+        system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        in
+        {
+          install = import ./install.nix { inherit pkgs; };
+        }
+      );
     };
 }

@@ -2042,7 +2042,7 @@
           "[13]",
           "[14]"
         ],
-        "bogo": 7400,
+        "bogo": 7399,
         "cache": 512,
         "units": 12,
         "page_size": 4096,
@@ -3666,7 +3666,7 @@
         "resources": [
           {
             "type": "hwaddr",
-            "address": 98
+            "address": 55
           },
           {
             "type": "phwaddr",
@@ -3863,8 +3863,8 @@
     ],
     "network_interface": [
       {
-        "index": 85,
-        "attached_to": 50,
+        "index": 86,
+        "attached_to": 45,
         "class_list": [
           "network_interface"
         ],
@@ -3879,32 +3879,32 @@
           "value": 1
         },
         "model": "Ethernet network interface",
-        "sysfs_id": "/class/net/wlp4s0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.2/0000:02:00.2/0000:03:06.0/0000:04:00.0",
+        "sysfs_id": "/class/net/enp5s0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.2/0000:02:00.2/0000:03:07.0/0000:05:00.0",
         "unix_device_names": [
-          "wlp4s0"
+          "enp5s0"
         ],
         "resources": [
           {
             "type": "hwaddr",
-            "address": 98
+            "address": 100
           },
           {
             "type": "phwaddr",
-            "address": 55
+            "address": 100
           }
         ],
-        "driver": "iwlwifi",
-        "driver_module": "iwlwifi",
+        "driver": "r8169",
+        "driver_module": "r8169",
         "drivers": [
-          "iwlwifi"
+          "r8169"
         ],
         "driver_modules": [
-          "iwlwifi"
+          "r8169"
         ]
       },
       {
-        "index": 87,
+        "index": 88,
         "attached_to": 55,
         "class_list": [
           "network_interface"
@@ -3946,6 +3946,47 @@
       },
       {
         "index": 89,
+        "attached_to": 50,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0001",
+          "name": "Ethernet",
+          "value": 1
+        },
+        "model": "Ethernet network interface",
+        "sysfs_id": "/class/net/wlp4s0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.2/0000:02:00.2/0000:03:06.0/0000:04:00.0",
+        "unix_device_names": [
+          "wlp4s0"
+        ],
+        "resources": [
+          {
+            "type": "hwaddr",
+            "address": 55
+          },
+          {
+            "type": "phwaddr",
+            "address": 55
+          }
+        ],
+        "driver": "iwlwifi",
+        "driver_module": "iwlwifi",
+        "drivers": [
+          "iwlwifi"
+        ],
+        "driver_modules": [
+          "iwlwifi"
+        ]
+      },
+      {
+        "index": 91,
         "attached_to": 0,
         "class_list": [
           "network_interface"
@@ -3964,47 +4005,6 @@
         "sysfs_id": "/class/net/lo",
         "unix_device_names": [
           "lo"
-        ]
-      },
-      {
-        "index": 92,
-        "attached_to": 45,
-        "class_list": [
-          "network_interface"
-        ],
-        "base_class": {
-          "hex": "0107",
-          "name": "Network Interface",
-          "value": 263
-        },
-        "sub_class": {
-          "hex": "0001",
-          "name": "Ethernet",
-          "value": 1
-        },
-        "model": "Ethernet network interface",
-        "sysfs_id": "/class/net/enp5s0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.2/0000:02:00.2/0000:03:07.0/0000:05:00.0",
-        "unix_device_names": [
-          "enp5s0"
-        ],
-        "resources": [
-          {
-            "type": "hwaddr",
-            "address": 100
-          },
-          {
-            "type": "phwaddr",
-            "address": 100
-          }
-        ],
-        "driver": "r8169",
-        "driver_module": "r8169",
-        "drivers": [
-          "r8169"
-        ],
-        "driver_modules": [
-          "r8169"
         ]
       }
     ],
@@ -5359,7 +5359,7 @@
           "/dev/input/by-id/usb-MSI_MYSTIC_LIGHT_A020200512A3-event-if00",
           "/dev/input/by-path/pci-0000:02:00.0-usb-0:8:1.0-event",
           "/dev/input/by-path/pci-0000:02:00.0-usbv2-0:8:1.0-event",
-          "/dev/input/event8"
+          "/dev/input/event6"
         ],
         "resources": [
           {
