@@ -15,7 +15,7 @@
 
       if nix eval "github:kaichevannes/nixos-config#nixosConfigurations.$HOST.config.disko.devices" --json 2>/dev/null | grep -q '{'; then
         echo "Partitioning disk with disko"
-        disko --flake "github:kaichevannes/nixos-config#$HOST" --mode disko
+        disko --flake "github:kaichevannes/nixos-config#$HOST" --mode destroy,format,mount
       else
         echo "No disko config found, skipping partitioning"
       fi
