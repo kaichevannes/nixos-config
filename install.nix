@@ -24,7 +24,9 @@ pkgs.writeShellApplication {
     git -C "/mnt/persist/etc/nixos" add "hosts/$HOST/facter.json" "hosts/$HOST/filesystem.nix"
 
     echo "Initialising age key"
+    echo "Log into Proton Pass:"
     mkdir -p "/mnt/persist/var/lib/sops-nix"
+    pass-cli logout
     pass-cli login --interactive
     pass-cli item view \
       --vault-name Keys \
