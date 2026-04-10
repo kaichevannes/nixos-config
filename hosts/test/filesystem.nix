@@ -10,6 +10,8 @@
     ./disko.nix
   ];
 
+  services.openssh.enable = true;
+
   # environment.persistence."/persist" = {
   #   enable = true;
   #   hideMounts = true;
