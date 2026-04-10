@@ -1,6 +1,6 @@
 {
   aspects = [
-    "dev"
+    "_common/user"
   ];
   meta = {
     username = "cheva";
