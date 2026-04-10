@@ -6,6 +6,7 @@
 Boot into [Minimal ISO](https://nixos.org/download/)
 
 ```bash
+sudo loadkeys uk
 sudo nix --extra-experimental-features "nix-command flakes" run github:kaichevannes/nixos-config#install -- <host>
 ```
 
