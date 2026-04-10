@@ -1,5 +1,4 @@
 {
-  lib,
   config,
   inputs,
   ...
@@ -30,14 +29,6 @@
     files = [
       # Necessary system state
       "/etc/machine-id"
-
-      # Age key
-      {
-        file = "/var/lib/sops-nix/key.txt";
-        parentDirectory = {
-          mode = "0700";
-        };
-      }
     ];
     users.${config.meta.username} = {
       directories = [
