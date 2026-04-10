@@ -8,7 +8,6 @@
     inputs.disko.nixosModules.disko
     inputs.impermanence.nixosModules.impermanence
     ./disko.nix
-    ./testing.nix
   ];
 
   environment.persistence."/persist" = {

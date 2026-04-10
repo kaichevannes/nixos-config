@@ -5,7 +5,7 @@
   };
 
   imports = [
-    ./autologin.nix
+    # ./autologin.nix
     ./facter
     ./i18n.nix
     ./networking.nix
