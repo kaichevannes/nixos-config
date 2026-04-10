@@ -1,7 +1,6 @@
-{ inputs, requires, ... }:
+{ requires, ... }:
 {
   imports = requires [ ] ++ [
-    ./age.nix
-    inputs.sops-nix.nixosModules.default
+    ./sops-nix.nix
   ];
 }
