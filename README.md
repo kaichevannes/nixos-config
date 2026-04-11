@@ -34,4 +34,3 @@ nix-shell -p sops --run "sops secrets/secrets.yaml"
 
 ### Linux User Password
 Store the result of `mkpasswd -m yescrypt <password>` in `secrets.yaml` under `password_<user>`.
-
