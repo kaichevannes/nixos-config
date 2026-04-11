@@ -1,16 +1,14 @@
 {
-  fileSystems."/persist".neededForBoot = true;
-
   disko.devices = {
     disk.main = {
-      type = "disk";
       device = "/dev/vda";
+      type = "disk";
       content = {
         type = "gpt";
         partitions = {
           ESP = {
-            size = "512M";
             type = "EF00";
+            size = "500M";
             content = {
               type = "filesystem";
               format = "vfat";
@@ -18,40 +16,12 @@
               mountOptions = [ "umask=0077" ];
             };
           };
-          swap = {
-            size = "8G";
-            content = {
-              type = "swap";
-            };
-          };
           root = {
             size = "100%";
             content = {
-              type = "btrfs";
-              extraArgs = [ "-f" ];
-              subvolumes = {
-                "/root" = {
-                  mountpoint = "/";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "/nix" = {
-                  mountpoint = "/nix";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "/persist" = {
-                  mountpoint = "/persist";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-              };
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
             };
           };
         };
