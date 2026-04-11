@@ -20,9 +20,9 @@ pkgs.writeShellApplication {
     git clone "https://github.com/kaichevannes/nixos-config.git" "/mnt$PERSIST_DIR/etc/nixos"
     git -C "/mnt$PERSIST_DIR/etc/nixos" remote set-url origin "git@github.com:kaichevannes/nixos-config.git"
 
-    # echo "Initialising facter.json"
-    # nixos-facter -o "/mnt$PERSIST_DIR/etc/nixos/hosts/$HOST/facter.json"
-    # git -C "/mnt$PERSIST_DIR/etc/nixos" add "hosts/$HOST/facter.json"
+    echo "Initialising facter.json"
+    nixos-facter -o "/mnt$PERSIST_DIR/etc/nixos/hosts/$HOST/facter.json"
+    git -C "/mnt$PERSIST_DIR/etc/nixos" add "hosts/$HOST/facter.json"
 
     # echo "Initialising age key"
     # echo "Log into Proton Pass:"

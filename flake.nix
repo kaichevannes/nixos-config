@@ -73,21 +73,6 @@
         mkHost hostname spec.aspects spec.meta
       ) (builtins.readDir ./hosts);
 
-      # nixosConfigurations = {
-      #   test = nixpkgs.lib.nixosSystem {
-      #     specialArgs = { inherit inputs; };
-
-      #     modules = [
-      #       ./hosts/test/filesystem.nix
-      #       {
-      #         meta = {
-      #           hostname = "test";
-      #         };
-      #       }
-      #     ];
-      #   };
-      # };
-
       diskoConfigurations = nixpkgs.lib.mapAttrs (hostname: _: import ./hosts/${hostname}/disko.nix) (
         builtins.readDir ./hosts
       );
