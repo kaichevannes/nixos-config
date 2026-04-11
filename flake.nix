@@ -62,31 +62,31 @@
         };
     in
     {
-      # nixosConfigurations = nixpkgs.lib.mapAttrs (
-      #   # e.g. ["camus" = "directory", "sartre" = "directory"]
-      #   # is   [hostname = _, hostname = _]
-      #   # Replace _ with the nixos system configuration for this host.
-      #   hostname: _:
-      #   let
-      #     spec = import ./hosts/${hostname}/spec.nix;
-      #   in
-      #   mkHost hostname spec.aspects spec.meta
-      # ) (builtins.readDir ./hosts);
+      nixosConfigurations = nixpkgs.lib.mapAttrs (
+        # e.g. ["camus" = "directory", "sartre" = "directory"]
+        # is   [hostname = _, hostname = _]
+        # Replace _ with the nixos system configuration for this host.
+        hostname: _:
+        let
+          spec = import ./hosts/${hostname}/spec.nix;
+        in
+        mkHost hostname spec.aspects spec.meta
+      ) (builtins.readDir ./hosts);
 
-      nixosConfigurations = {
-        test = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+      # nixosConfigurations = {
+      #   test = nixpkgs.lib.nixosSystem {
+      #     specialArgs = { inherit inputs; };
 
-          modules = [
-            ./hosts/test/filesystem.nix
-            {
-              meta = {
-                hostname = "test";
-              };
-            }
-          ];
-        };
-      };
+      #     modules = [
+      #       ./hosts/test/filesystem.nix
+      #       {
+      #         meta = {
+      #           hostname = "test";
+      #         };
+      #       }
+      #     ];
+      #   };
+      # };
 
       diskoConfigurations = nixpkgs.lib.mapAttrs (hostname: _: import ./hosts/${hostname}/disko.nix) (
         builtins.readDir ./hosts
