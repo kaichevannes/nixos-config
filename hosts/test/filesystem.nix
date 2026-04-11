@@ -4,7 +4,6 @@
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     ./disko.nix
-    ../../aspects/_common/base
   ];
 
   services.openssh.enable = true;

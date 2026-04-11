@@ -8,7 +8,7 @@ in
 
   sops.defaultSopsFile = ../../../secrets/secrets.yaml;
   sops.age.keyFile = ageKeyFile;
-  sops.secrets = (import ../../../secrets/manifest.nix { inherit config; });
+  # sops.secrets = (import ../../../secrets/manifest.nix { inherit config; });
 
   environment.variables.SOPS_AGE_KEY_FILE = ageKeyFile;
 }
