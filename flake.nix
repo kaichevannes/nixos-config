@@ -78,7 +78,12 @@
           specialArgs = { inherit inputs; };
 
           modules = [
-            ./hosts/test/configuration.nix
+            ./hosts/test/filesystem.nix
+            {
+              meta = {
+                hostname = "test";
+              };
+            }
           ];
         };
       };

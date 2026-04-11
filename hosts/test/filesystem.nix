@@ -7,10 +7,6 @@
     ../../aspects/_common/base
   ];
 
-  meta = {
-    hostname = "test";
-  };
-
   services.openssh.enable = true;
 
   users.users.cheva = {
