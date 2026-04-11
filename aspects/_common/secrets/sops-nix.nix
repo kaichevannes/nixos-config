@@ -1,13 +1,9 @@
 { lib, inputs, ... }:
-let
-  # ageKeyFile = "/persist/var/lib/sops-nix/key.txt";
-  ageKeyFile = "/var/lib/sops-nix/key.txt";
-in
 {
   imports = [ inputs.sops-nix.nixosModules.default ];
 
-  sops.age.keyFile = ageKeyFile;
-  environment.variables.SOPS_AGE_KEY_FILE = ageKeyFile;
+  sops.age.keyFile = "/persist/var/lib/sops-nix/key.txt";
+  environment.variables.SOPS_AGE_KEY_FILE = "/persist/var/lib/sops-nix/key.txt";
 
   sops.defaultSopsFile = ../../../secrets/secrets.yaml;
 

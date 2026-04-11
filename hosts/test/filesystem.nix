@@ -2,7 +2,8 @@
 {
   imports = [
     inputs.disko.nixosModules.disko
-    inputs.home-manager.nixosModules.home-manager
+    inputs.impermanence.nixosModules.impermanence
     ./disko.nix
+    ../camus/persist.nix
   ];
 }
