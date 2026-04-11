@@ -1,5 +1,27 @@
-{ ... }:
+{ config, ... }:
+let
+  inherit (config.meta) username;
+in
 {
+  sops.secrets = {
+    "DankMonoNerdFont-Regular.otf".owner = username;
+    "DankMonoNerdFont-Italic.otf".owner = username;
+    "DankMonoNerdFont-Bold.otf".owner = username;
+  };
+
+  home-manager.sharedModules = [
+    {
+      home.file = {
+        ".local/share/fonts/DankMonoNerdFont-Regular.otf".source =
+          config.sops.secrets."DankMonoNerdFont-Regular.otf".path;
+        ".local/share/fonts/DankMonoNerdFont-Italic.otf".source =
+          config.sops.secrets."DankMonoNerdFont-Italic.otf".path;
+        ".local/share/fonts/DankMonoNerdFont-Bold.otf".source =
+          config.sops.secrets."DankMonoNerdFont-Bold.otf".path;
+      };
+    }
+  ];
+
   programs.foot = {
     enable = true;
     enableZshIntegration = true;
