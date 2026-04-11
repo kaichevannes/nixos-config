@@ -4,10 +4,13 @@
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     ./disko.nix
+    ../../aspects/_common/base
   ];
 
-  hardware.facter.reportPath = ./facter.json;
-  boot.loader.systemd-boot.enable = true;
+  meta = {
+    hostname = "test";
+  };
+
   services.openssh.enable = true;
 
   users.users.cheva = {
@@ -29,6 +32,4 @@
       home.stateVersion = "25.11";
     };
   };
-
-  system.stateVersion = "25.11";
 }

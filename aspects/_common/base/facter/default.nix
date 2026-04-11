@@ -7,6 +7,5 @@
   # Custom facter modules
   imports = [
     ./nvidia.nix
-    ./wsl
   ];
 }
