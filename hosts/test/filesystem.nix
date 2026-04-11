@@ -6,4 +6,6 @@
     ./disko.nix
     ../camus/persist.nix
   ];
+
+  services.openssh.enable = true;
 }
