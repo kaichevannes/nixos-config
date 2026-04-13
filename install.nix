@@ -38,6 +38,7 @@ pkgs.writeShellApplication {
     echo "Moving git repo to /mnt/persist/etc/nixos"
     mkdir -p "/mnt/persist/etc"
     mv "/tmp/nixos-config" "/mnt/persist/etc/nixos"
+    chown -R 1000:100 "/mnt/persist/etc/nixos"
 
     echo "Initialising age key"
     mkdir -p "/mnt/persist/var/lib/sops-nix"
@@ -46,7 +47,7 @@ pkgs.writeShellApplication {
       --item-title id_ed25519 \
       --field private_key \
       | ssh-to-age -private-key -i - > "/mnt/persist/var/lib/sops-nix/key.txt"
-    chmod 400 "/mnt/persist/var/lib/sops-nix/key.txt"
+    chmod 644 "/mnt/persist/var/lib/sops-nix/key.txt"
 
     echo "Initialising temporary zram to avoid OOM on bootstrap"
     modprobe zram
