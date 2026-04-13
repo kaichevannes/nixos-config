@@ -9,6 +9,7 @@
     ./i18n.nix
     ./networking.nix
     ./nix.nix
+    ./polkit.nix
     ./systemd-boot.nix
   ];
 
