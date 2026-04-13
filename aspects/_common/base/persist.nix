@@ -39,13 +39,13 @@
   boot.initrd.systemd.services.wipe-root = {
     description = "Wipe BTRFS root subvolume on boot";
     wantedBy = [ "initrd.target" ];
-    after = [ "sysroot.mount" ];
+    after = [ "systemd-cryptsetup@cryptroot.service" ];
     before = [ "initrd-root-fs.target" ];
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
     script = ''
       mkdir -p /btrfs_tmp
-      mount /dev/disk/by-partlabel/disk-main-root /btrfs_tmp
+      mount /dev/mapper/cryptroot /btrfs_tmp
       if [[ -e /btrfs_tmp/root ]]; then
           mkdir -p /btrfs_tmp/old_roots
           timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
