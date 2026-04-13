@@ -49,12 +49,6 @@ pkgs.writeShellApplication {
       | ssh-to-age -private-key -i - > "/mnt/persist/var/lib/sops-nix/key.txt"
     chmod 644 "/mnt/persist/var/lib/sops-nix/key.txt"
 
-    echo "Initialising temporary zram to avoid OOM on bootstrap"
-    modprobe zram
-    zramctl /dev/zram0 --size 16G --algorithm zstd
-    mkswap /dev/zram0
-    swapon /dev/zram0
-
     echo "Installing NixOS"
     nixos-install --flake "git+file:///mnt/persist/etc/nixos#$HOST" --no-root-passwd
   '';
