@@ -4,6 +4,9 @@
     enable = true;
     hideMounts = true;
     directories = [
+      # Logs
+      "/var/log"
+
       # Necessary system state
       "/var/lib/nixos"
       "/var/lib/systemd"
