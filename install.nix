@@ -48,7 +48,15 @@ pkgs.writeShellApplication {
       | ssh-to-age -private-key -i - > "/mnt/persist/var/lib/sops-nix/key.txt"
     chmod 400 "/mnt/persist/var/lib/sops-nix/key.txt"
 
+    echo "Initialising temporary swap to avoid OOM on bootstrap"
+    btrfs filesystem mkswapfile --size 32G --uuid clear /mnt/.swapvol/tempswap
+    swapon /mnt/.swapvol/tempswap
+
     echo "Installing NixOS"
     nixos-install --flake "git+file:///mnt/persist/etc/nixos#$HOST" --no-root-passwd
+
+    echo "Cleaning up temporary swap"
+    swapoff /mnt/.swapvol/tempswap
+    rm /mnt/.swapvol/tempswap
   '';
 }
