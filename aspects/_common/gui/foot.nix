@@ -1,25 +1,30 @@
-{ config, ... }:
-let
-  inherit (config.meta) username;
-in
+{ ... }:
 {
-  sops.secrets = {
-    "DankMonoNerdFont-Regular.otf".owner = username;
-    "DankMonoNerdFont-Italic.otf".owner = username;
-    "DankMonoNerdFont-Bold.otf".owner = username;
-  };
-
   home-manager.sharedModules = [
-    {
-      home.file = {
-        ".local/share/fonts/DankMonoNerdFont-Regular.otf".source =
-          config.sops.secrets."DankMonoNerdFont-Regular.otf".path;
-        ".local/share/fonts/DankMonoNerdFont-Italic.otf".source =
-          config.sops.secrets."DankMonoNerdFont-Italic.otf".path;
-        ".local/share/fonts/DankMonoNerdFont-Bold.otf".source =
-          config.sops.secrets."DankMonoNerdFont-Bold.otf".path;
-      };
-    }
+    (
+      { config, ... }:
+      {
+        sops.secrets = {
+          DankMonoNerdFont-Regular = {
+            format = "binary";
+            sopsFile = ../../../secrets/DankMonoNerdFont-Regular.otf.sops;
+            path = "${config.home.homeDirectory}/.local/share/fonts/DankMonoNerdFont-Regular.otf";
+          };
+
+          DankMonoNerdFont-Italic = {
+            format = "binary";
+            sopsFile = ../../../secrets/DankMonoNerdFont-Italic.otf.sops;
+            path = "${config.home.homeDirectory}/.local/share/fonts/DankMonoNerdFont-Italic.otf";
+          };
+
+          DankMonoNerdFont-Bold = {
+            format = "binary";
+            sopsFile = ../../../secrets/DankMonoNerdFont-Bold.otf.sops;
+            path = "${config.home.homeDirectory}/.local/share/fonts/DankMonoNerdFont-Bold.otf";
+          };
+        };
+      }
+    )
   ];
 
   programs.foot = {
