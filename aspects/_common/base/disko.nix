@@ -12,7 +12,7 @@ let
         (builtins.head facterReport.hardware.memory).resources
     )).range;
 
-  swapSize = "${toString (memoryBytes / (1024 * 1024 * 1024))}G";
+  swapSize = "${toString (memoryBytes / (1024 * 1024))}M";
 in
 {
   imports = [ inputs.disko.nixosModules.disko ];
