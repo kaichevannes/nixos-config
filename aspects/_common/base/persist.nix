@@ -1,8 +1,39 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 {
   imports = [ inputs.impermanence.nixosModules.impermanence ];
 
   fileSystems."/persist".neededForBoot = true;
+
+  environment.persistence."/persist" = {
+    enable = true;
+    hideMounts = true;
+    directories = [
+      # Logs
+      "/var/log"
+
+      # Necessary system state
+      "/var/lib/nixos"
+      "/var/lib/systemd"
+
+      # Nix config
+      {
+        directory = "/etc/nixos";
+        user = config.meta.username;
+        group = config.users.users.${config.meta.username}.group;
+      }
+    ];
+    files = [
+      # Necessary system state
+      "/etc/machine-id"
+    ];
+    users.${config.meta.username} = {
+      directories = [
+        "Downloads"
+        "Projects"
+        "iso"
+      ];
+    };
+  };
 
   # https://github.com/nix-community/impermanence?tab=readme-ov-file#btrfs-subvolumes
   boot.initrd.systemd.services.wipe-root = {
