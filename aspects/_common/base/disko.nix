@@ -19,6 +19,7 @@ in
 
   fileSystems."/persist".neededForBoot = true;
 
+  # https://github.com/nix-community/disko/blob/master/example/luks-btrfs-subvolumes.nix
   disko.devices = {
     disk.main = {
       type = "disk";
@@ -43,7 +44,7 @@ in
               name = "cryptroot";
               settings = {
                 allowDiscards = true;
-                crypttabExtraOpts = [ "tpm2-device=auto" ];
+                keyFile = "/tmp/secret.key";
               };
               content = {
                 type = "btrfs";
