@@ -1,4 +1,5 @@
 {
+  description = "NixOS Desktop";
   aspects = [
     "dev"
     "browser"

@@ -5,10 +5,12 @@
   };
 
   imports = [
+    ./disko.nix
     ./facter
     ./i18n.nix
     ./networking.nix
     ./nix.nix
+    ./persist.nix
     ./polkit.nix
     ./systemd-boot.nix
   ];

@@ -1,4 +1,5 @@
 {
+  description = "WSL";
   aspects = [
     "dev"
   ];
