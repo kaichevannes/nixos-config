@@ -4,31 +4,42 @@
     proton-pass-cli
   ];
 
-  # sops.secrets.proton_pass_encryption_key = { };
-  # sops.secrets.proton_pass_personal_access_token = { };
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
-  # sops.templates.proton-pass-env.content = ''
-  #   PROTON_PASS_KEY_PROVIDER=env
-  #   PROTON_PASS_ENCRYPTION_KEY=${config.sops.placeholder.proton_pass_encryption_key}
-  #   PROTON_PASS_PERSONAL_ACCESS_TOKEN=${config.sops.placeholder.proton_pass_personal_access_token}
-  # '';
-
+  # https://protonpass.github.io/pass-cli/commands/ssh-agent/#setting-ssh_auth_sock-automatically-on-login
   systemd.user.services.proton-pass-ssh-agent = {
     description = "Proton Pass SSH Agent";
-    after = [ "graphical-session.target" ];
-    wantedBy = [ "graphical-session.target" ];
-
+    wantedBy = [ "default.target" ];
     serviceConfig = {
-      # EnvironmentFile = config.sops.templates.proton-pass-env.path;
-      ExecStartPre = "${pkgs.proton-pass-cli}/bin/pass-cli pass-cli login";
-      ExecStart = "${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent start";
+      ExecStart = "${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent start --socket-path %t/proton-pass-agent.sock";
       Restart = "on-failure";
-      RestartSec = 5;
     };
   };
 
   environment.sessionVariables = {
-    PROTON_PASS_KEY_PROVIDER = "fs";
-    SSH_AUTH_SOCK = "$HOME/.ssh/proton-pass-agent.sock";
+    PROTON_PASS_KEY_PROVIDER = "keyring";
+    PROTON_PASS_LINUX_KEYRING = "dbus";
+    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/proton-pass-agent.sock";
   };
+
+  home-manager.sharedModules = [
+    {
+      programs.zsh.initContent = ''
+        if ! systemctl --user is-active --quiet proton-pass-ssh-agent; then
+          echo "Proton Pass SSH Agent isn't running, run pass-ssh to start"
+        fi
+
+        pass-ssh() {
+          if ! pass-cli test &>/dev/null; then
+            echo "→ Proton Pass Login..."
+            pass-cli login || return 1
+          fi
+          echo "→ Starting SSH Agent..."
+          systemctl --user start proton-pass-ssh-agent
+          systemctl --user status proton-pass-ssh-agent --no-pager
+        }
+      '';
+    }
+  ];
 }
