@@ -13,4 +13,6 @@ in
       "wheel"
     ];
   };
+
+  security.sudo.extraConfig = "Defaults lecture=never";
 }
