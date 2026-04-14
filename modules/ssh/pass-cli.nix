@@ -1,5 +1,10 @@
-{ config, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+lib.mkIf config.modules.secrets.enable {
   environment.systemPackages = with pkgs; [
     proton-pass-cli
   ];

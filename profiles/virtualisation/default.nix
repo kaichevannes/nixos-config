@@ -1,13 +1,17 @@
-{ requires, ... }:
+{ config, lib, ... }:
 {
-  imports =
-    requires [
-      "user"
-      "gui"
-    ]
-    ++ [
-      ./docker.nix
-      ./libvirtd.nix
-      ./virt-manager.nix
-    ];
+  options.profiles.virtualisation = {
+    enable = lib.mkEnableOption "virtualisation";
+  };
+
+  config = lib.mkIf config.profiles.virtualisation.enable {
+    modules.user.enable = true;
+    modules.gui.enable = true;
+  };
+
+  imports = [
+    ./docker.nix
+    ./libvirtd.nix
+    ./virt-manager.nix
+  ];
 }

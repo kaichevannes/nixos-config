@@ -1,5 +1,10 @@
-{ pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+lib.mkIf config.profiles.dev.enable {
   home-manager.sharedModules = [
     {
       programs.tmux =

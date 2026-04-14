@@ -4,6 +4,5 @@
     ./browser
     ./dev
     ./virtualisation
-    ./wsl
   ];
 }

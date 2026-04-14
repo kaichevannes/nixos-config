@@ -5,5 +5,6 @@
     ./secrets
     ./ssh
     ./user
+    ./wsl
   ];
 }

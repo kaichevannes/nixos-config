@@ -1,5 +1,10 @@
-{ pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+lib.mkIf config.modules.gui.enable {
   services.greetd = {
     enable = true;
     settings = {

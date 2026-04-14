@@ -1,5 +1,5 @@
-{ ... }:
-{
+{ config, lib, ... }:
+lib.mkIf config.modules.secrets.enable {
   home-manager.sharedModules = [
     {
       programs.ssh = {

@@ -1,5 +1,10 @@
-{ pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+lib.mkIf config.profiles.dev.enable {
   # Completion for system packages
   environment.pathsToLink = [ "/share/zsh" ];
 
@@ -19,7 +24,6 @@
 
         shellAliases = {
           ls = "eza";
-          cat = "bat";
         };
 
         initContent = ''

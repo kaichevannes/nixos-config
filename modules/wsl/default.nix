@@ -6,16 +6,16 @@
   ...
 }:
 {
-  options.hardware.facter.detected.virtualisation.wsl =
-    lib.mkEnableOption "Enable the WSL virtualisation module"
-    // {
-      default = config.hardware.facter.report.virtualisation == "wsl";
-      defaultText = "environment dependent";
-    };
+  options.hardware.facter.detected.virtualisation.wsl = lib.mkEnableOption "wsl" // {
+    default = config.hardware.facter.report.virtualisation == "wsl";
+    defaultText = "environment dependent";
+  };
 
   imports = [ inputs.nixos-wsl.nixosModules.default ];
 
   config = lib.mkIf config.hardware.facter.detected.virtualisation.wsl {
+    modules.user.enable = true;
+
     wsl.enable = true;
     wsl.defaultUser = config.meta.username;
 

@@ -1,5 +1,5 @@
-{ ... }:
-{
+{ config, lib, ... }:
+lib.mkIf config.modules.gui.enable {
   home-manager.sharedModules = [
     (
       { config, ... }:
@@ -7,19 +7,19 @@
         sops.secrets = {
           DankMonoNerdFont-Regular = {
             format = "binary";
-            sopsFile = ../../../secrets/DankMonoNerdFont-Regular.otf.sops;
+            sopsFile = ../../secrets/DankMonoNerdFont-Regular.otf.sops;
             path = "${config.home.homeDirectory}/.local/share/fonts/DankMonoNerdFont-Regular.otf";
           };
 
           DankMonoNerdFont-Italic = {
             format = "binary";
-            sopsFile = ../../../secrets/DankMonoNerdFont-Italic.otf.sops;
+            sopsFile = ../../secrets/DankMonoNerdFont-Italic.otf.sops;
             path = "${config.home.homeDirectory}/.local/share/fonts/DankMonoNerdFont-Italic.otf";
           };
 
           DankMonoNerdFont-Bold = {
             format = "binary";
-            sopsFile = ../../../secrets/DankMonoNerdFont-Bold.otf.sops;
+            sopsFile = ../../secrets/DankMonoNerdFont-Bold.otf.sops;
             path = "${config.home.homeDirectory}/.local/share/fonts/DankMonoNerdFont-Bold.otf";
           };
         };
