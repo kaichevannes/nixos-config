@@ -31,6 +31,12 @@
           directory = ".local/share/keyrings";
           mode = "0700";
         }
+        ".local/share/zoxide"
+      ];
+      files = [
+        ".zsh_history"
+        ".local/share/helix/trusted_workspaces"
+        ".local/share/helix/excluded_workspaces"
       ];
     };
   };
