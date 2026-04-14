@@ -23,6 +23,14 @@
         "Projects"
         "iso"
         ".mozilla"
+        {
+          directory = ".local/share/proton-pass-cli";
+          mode = "0700";
+        }
+        {
+          directory = ".local/share/keyrings";
+          mode = "0700";
+        }
       ];
     };
   };
