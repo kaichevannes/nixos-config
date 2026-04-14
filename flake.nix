@@ -42,7 +42,7 @@
       ...
     }@inputs:
     let
-      requires = map (name: ./modules/_common/${name});
+      requires = map (name: ./core/${name});
 
       mkHost =
         hostname: aspects: meta:
