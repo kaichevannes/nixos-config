@@ -41,38 +41,21 @@
       helix,
       ...
     }@inputs:
-    let
-      requires = map (name: ./core/${name});
-
-      mkHost =
-        hostname: aspects: meta:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs requires; };
-
-          modules = [
-            ./aspects/_common/base
-            {
-              meta = meta // {
-                inherit hostname;
-              };
-            }
-          ]
-          ++ map (aspect: ./aspects/${aspect}) aspects;
-        };
-    in
     {
       nixosConfigurations = nixpkgs.lib.mapAttrs (
-        # e.g. ["camus" = "directory", "sartre" = "directory"]
-        # is   [hostname = _, hostname = _]
-        # Replace _ with the nixos system configuration for this host.
         hostname: _:
-        let
-          spec = import ./hosts/${hostname}/spec.nix;
-        in
-        mkHost hostname spec.aspects spec.meta
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/${hostname}
+            ./modules
+            ./profiles
+            { meta.hostname = hostname; }
+          ];
+        }
       ) (builtins.readDir ./hosts);
 
-      # Install script for all system (e.g. x86_64-linux, aarch64-linux, ...)
+      # Install script for all systems (e.g. x86_64-linux, aarch64-linux, ...)
       packages = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
         system:
         let
