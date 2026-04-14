@@ -32,6 +32,8 @@
           mode = "0700";
         }
         ".local/share/zoxide"
+        # yazi
+        ".local/share/Trash"
       ];
       files = [
         ".zsh_history"
