@@ -8,9 +8,10 @@
     enable = true;
     hideMounts = true;
     directories = [
-      "/var/log"
+      "/root/.cache/nix"
       "/var/lib/nixos"
       "/var/lib/systemd"
+      "/var/log"
       "/etc/nixos"
     ];
     files = [
@@ -21,6 +22,7 @@
         "Downloads"
         "Projects"
         "iso"
+        ".mozilla"
       ];
     };
   };
