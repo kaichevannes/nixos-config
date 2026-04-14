@@ -1,5 +1,10 @@
-{ config, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+lib.mkIf config.profiles.virtualisation.enable {
   virtualisation.libvirtd = {
     enable = true;
 

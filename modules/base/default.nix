@@ -2,6 +2,7 @@
 {
   options.meta = {
     hostname = lib.mkOption { type = lib.types.str; };
+    description = lib.mkOption { type = lib.types.str; };
   };
 
   imports = [

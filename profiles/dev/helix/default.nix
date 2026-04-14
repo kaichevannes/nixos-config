@@ -1,5 +1,11 @@
-{ inputs, pkgs, ... }:
 {
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+lib.mkIf config.profiles.dev.enable {
   home-manager.sharedModules = [
     {
       programs.helix = {

@@ -1,6 +1,10 @@
-{ requires, ... }:
+{ lib, ... }:
 {
-  imports = requires [ ] ++ [
+  options.modules.ssh = {
+    enable = lib.mkEnableOption "ssh";
+  };
+
+  imports = [
     ./ssh.nix
     ./pass-cli.nix
   ];

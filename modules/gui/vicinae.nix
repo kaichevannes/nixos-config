@@ -1,5 +1,10 @@
-{ pkgs, ... }:
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+lib.mkIf config.modules.gui.enable {
   environment.systemPackages = with pkgs; [
     qalculate-gtk
   ];

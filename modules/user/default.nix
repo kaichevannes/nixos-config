@@ -1,10 +1,17 @@
-{ lib, requires, ... }:
+{ config, lib, ... }:
 {
-  options.meta = {
-    username = lib.mkOption { type = lib.types.str; };
+  options = {
+    meta.username = lib.mkOption { type = lib.types.str; };
+    modules.user = {
+      enable = lib.mkEnableOption "user";
+    };
   };
 
-  imports = requires [ "secrets" ] ++ [
+  config = lib.mkIf config.modules.user.enable {
+    modules.secrets.enable = true;
+  };
+
+  imports = [
     ./home-manager.nix
     ./user.nix
   ];
