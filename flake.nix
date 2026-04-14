@@ -1,5 +1,5 @@
 {
-  description = "Dendritic pattern without flake-parts or import-tree.";
+  description = "Dendritic pattern with nix modules.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
