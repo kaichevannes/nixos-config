@@ -22,7 +22,7 @@ lib.mkIf config.profiles.dev.enable {
             auto-pairs = false;
             rulers = [ 80 ];
           };
-          keys = import ./keys.nix { inherit pkgs; };
+          keys = import ./keybindings.nix { inherit pkgs; };
         };
         languages = import ./languages.nix;
         themes = import ./themes.nix;

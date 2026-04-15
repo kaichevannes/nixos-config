@@ -1,7 +1,7 @@
 {
   imports = [
     ./art
-    ./browser
+    ./desktop
     ./dev
     ./virtualisation
   ];

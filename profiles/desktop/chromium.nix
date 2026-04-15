@@ -1,5 +1,5 @@
 { config, lib, ... }:
-lib.mkIf config.profiles.browser.enable {
+lib.mkIf config.profiles.desktop.enable {
   home-manager.sharedModules = [
     {
       programs.chromium = {

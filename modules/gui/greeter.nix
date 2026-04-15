@@ -9,7 +9,7 @@ lib.mkIf config.modules.gui.enable {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd}/bin/agreety --cmd start-hyprland";
+        command = "${pkgs.greetd}/bin/agreety --cmd exec uwsm start hyprland.desktop";
       };
     };
   };

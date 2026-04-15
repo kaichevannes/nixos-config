@@ -7,7 +7,7 @@ lib.mkIf config.profiles.dev.enable {
         enableZshIntegration = true;
         settings = {
           git.overrideGpg = true;
-          customCommands = import ./custom_commands.nix;
+          customCommands = import ./custom-commands.nix;
           disableStartupPopups = true;
         };
       };

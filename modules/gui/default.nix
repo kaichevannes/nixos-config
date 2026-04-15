@@ -10,9 +10,9 @@
   };
 
   imports = [
-    ./foot.nix
-    ./greetd.nix
-    ./hyprland.nix
-    ./vicinae.nix
+    ./application-launcher.nix
+    ./graphical-session.nix
+    ./greeter.nix
+    ./terminal.nix
   ];
 }

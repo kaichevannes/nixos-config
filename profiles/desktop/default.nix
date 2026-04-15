@@ -1,10 +1,10 @@
 { config, lib, ... }:
 {
-  options.profiles.browser = {
-    enable = lib.mkEnableOption "browser";
+  options.profiles.desktop = {
+    enable = lib.mkEnableOption "desktop";
   };
 
-  config = lib.mkIf config.profiles.browser.enable {
+  config = lib.mkIf config.profiles.desktop.enable {
     modules.user.enable = true;
     modules.gui.enable = true;
   };

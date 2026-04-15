@@ -19,14 +19,9 @@ lib.mkIf config.modules.gui.enable {
         slurp
       ];
 
-      programs.zsh.profileExtra = ''
-        if [ -z "$WAYLAND_DISPLAY" ] && uwsm check may-start; then
-            exec uwsm start hyprland.desktop
-        fi
-      '';
-
       wayland.windowManager.hyprland = {
         enable = true;
+        systemd.enable = false;
 
         settings =
           let
@@ -36,7 +31,6 @@ lib.mkIf config.modules.gui.enable {
           {
             "$mod" = "SUPER";
             "$terminal" = "foot";
-            "$bootstrapTerminal" = "foot --font=monospace:size=22";
             "$browser" = "firefox";
             "$workbrowser" = "firefox -P work";
 
@@ -46,7 +40,7 @@ lib.mkIf config.modules.gui.enable {
 
             exec-once = [
               "hyprctl setcursor capitaine-cursors 32"
-              "[workspace 1 silent] if fc-list | grep -q DankMono; then exec $terminal; else exec $bootstrapTerminal; fi"
+              "[workspace 1 silent] $terminal"
               "[workspace 2 silent] firefox -P default"
               "[workspace 5 silent] MOZ_ENABLE_WAYLAND=0 firefox -P focumon https://focumon.com --kiosk"
               "[workspace special:llm silent; float; size ${floatingWindowSize}; center] firefox --no-remote -P llm --new-window ${llmUrl}"
@@ -64,9 +58,7 @@ lib.mkIf config.modules.gui.enable {
             ];
 
             bind = [
-              "$mod, T, exec, if fc-list | grep -q DankMono; then exec $terminal; else exec $bootstrapTerminal; fi"
-              "$mod+Shift, T, exec, bash -c \"$terminal 2>/tmp/terminal-error.log\""
-              "$mod+Ctrl, T, exec, $bootstrapTerminal"
+              "$mod, T, exec, $terminal"
               "$mod, B, exec, $browser"
               "$mod+Shift, B, exec, $workbrowser"
               "$mod, D, exec, vicinae toggle"
