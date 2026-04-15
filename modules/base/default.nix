@@ -15,7 +15,7 @@
 
   imports = [
     ./boot.nix
-    ./filesystem
+    ./disk-partition.nix
     ./hardware
     ./localisation.nix
     ./nix.nix
