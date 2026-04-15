@@ -20,12 +20,22 @@
     home-manager.sharedModules = [
       {
         home.packages = with pkgs; [
-          eza
-          fzf
           ripgrep
           tokei
-          zoxide
         ];
+
+        programs.eza = {
+          enable = true;
+          enableZshIntegration = true;
+        };
+        programs.fzf = {
+          enable = true;
+          enableZshIntegration = true;
+        };
+        programs.zoxide = {
+          enable = true;
+          enableZshIntegration = true;
+        };
       }
     ];
   };

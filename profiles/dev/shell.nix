@@ -22,10 +22,6 @@ lib.mkIf config.profiles.dev.enable {
         syntaxHighlighting.enable = true;
         history.size = 10000;
 
-        shellAliases = {
-          ls = "eza";
-        };
-
         initContent = ''
           eval "$(starship init zsh)"
 
