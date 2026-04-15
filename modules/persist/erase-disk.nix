@@ -1,7 +1,7 @@
 { ... }:
 {
   # https://github.com/nix-community/impermanence?tab=readme-ov-file#btrfs-subvolumes
-  boot.initrd.systemd.services.erase-root = {
+  boot.initrd.systemd.services.erase-disk = {
     description = "Erase BTRFS root subvolume on boot";
     wantedBy = [ "initrd.target" ];
     after = [ "systemd-cryptsetup@cryptroot.service" ];
