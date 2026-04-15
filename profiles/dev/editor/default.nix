@@ -6,6 +6,11 @@
   ...
 }:
 lib.mkIf config.profiles.dev.enable {
+  modules.persist.userFiles = [
+    ".local/share/helix/trusted_workspaces"
+    ".local/share/helix/excluded_workspaces"
+  ];
+
   home-manager.sharedModules = [
     {
       programs.helix = {

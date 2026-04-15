@@ -25,24 +25,12 @@
     };
     userDirectories = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [
-        "Downloads"
-        "Projects"
-        "iso"
-        ".mozilla"
-        ".local/share/proton-pass-cli"
-        ".local/share/keyrings"
-        ".local/share/zoxide"
-      ];
+      default = [ ];
       description = "User directories to persist.";
     };
     userFiles = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [
-        ".zsh_history"
-        ".local/share/helix/trusted_workspaces"
-        ".local/share/helix/excluded_workspaces"
-      ];
+      default = [ ];
       description = "User files to persist.";
     };
   };

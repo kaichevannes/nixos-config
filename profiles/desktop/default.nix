@@ -7,6 +7,11 @@
   config = lib.mkIf config.profiles.desktop.enable {
     modules.user.enable = true;
     modules.gui.enable = true;
+
+    modules.persist.userDirectories = [
+      "Downloads"
+      "Projects"
+    ];
   };
 
   imports = [

@@ -17,6 +17,8 @@
     modules.user.enable = true;
     modules.ssh.enable = true;
 
+    modules.persist.userDirectories = [ ".local/share/zoxide" ];
+
     home-manager.sharedModules = [
       {
         home.packages = with pkgs; [

@@ -1,5 +1,7 @@
 { config, lib, ... }:
 lib.mkIf config.profiles.desktop.enable {
+  modules.persist.userDirectories = [ ".mozilla" ];
+
   home-manager.sharedModules = [
     {
       programs.firefox = {

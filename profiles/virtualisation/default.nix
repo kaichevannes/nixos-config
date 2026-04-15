@@ -7,6 +7,8 @@
   config = lib.mkIf config.profiles.virtualisation.enable {
     modules.user.enable = true;
     modules.gui.enable = true;
+
+    modules.persist.userDirectories = [ "iso" ];
   };
 
   imports = [

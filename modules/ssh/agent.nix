@@ -5,6 +5,11 @@
   ...
 }:
 lib.mkIf config.modules.secrets.enable {
+  modules.persist.userDirectories = [
+    ".local/share/proton-pass-cli"
+    ".local/share/keyrings"
+  ];
+
   environment.systemPackages = with pkgs; [
     proton-pass-cli
   ];
