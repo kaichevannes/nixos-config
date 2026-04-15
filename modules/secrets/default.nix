@@ -7,21 +7,56 @@
 {
   options.modules.secrets = {
     enable = lib.mkEnableOption "secrets";
+    systemFiles = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+    };
+    homeFiles = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+    };
   };
 
-  config = lib.mkIf config.modules.secrets.enable {
-    sops.age.keyFile = "/persist/var/lib/sops-nix/key.txt";
-    environment.variables.SOPS_AGE_KEY_FILE = "/persist/var/lib/sops-nix/key.txt";
+  config =
+    let
+      cfg = config.modules.secrets;
+    in
+    lib.mkIf cfg.enable {
+      sops.defaultSopsFile = ../../secrets/secrets.yaml;
+      sops.age.keyFile = "/persist/var/lib/sops-nix/key.txt";
+      sops.secrets = builtins.listToAttrs (
+        map (path: {
+          name = builtins.baseNameOf path;
+          value = {
+            format = "binary";
+            sopsFile = ../../secrets/${builtins.baseNameOf path}.sops;
+            path = path;
+          };
+        }) cfg.systemFiles
+      );
 
-    sops.defaultSopsFile = ../../secrets/secrets.yaml;
+      home-manager.sharedModules = [
+        inputs.sops-nix.homeManagerModules.sops
+        (
+          { config, ... }:
+          {
+            sops.age.keyFile = "/persist/var/lib/sops-nix/key.txt";
+            sops.secrets = builtins.listToAttrs (
+              map (path: {
+                name = builtins.baseNameOf path;
+                value = {
+                  format = "binary";
+                  sopsFile = ../../secrets/${builtins.baseNameOf path}.sops;
+                  path = "${config.home.homeDirectory}/${path}";
+                };
+              }) cfg.homeFiles
+            );
+          }
+        )
+      ];
 
-    home-manager.sharedModules = [
-      inputs.sops-nix.homeManagerModules.sops
-      {
-        sops.age.keyFile = "/persist/var/lib/sops-nix/key.txt";
-      }
-    ];
-  };
+      environment.variables.SOPS_AGE_KEY_FILE = "/persist/var/lib/sops-nix/key.txt";
+    };
 
   imports = [ inputs.sops-nix.nixosModules.default ];
 }
