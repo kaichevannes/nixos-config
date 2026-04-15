@@ -34,8 +34,6 @@
         ".local/share/proton-pass-cli"
         ".local/share/keyrings"
         ".local/share/zoxide"
-        # yazi
-        ".local/share/Trash"
       ];
       description = "User directories to persist.";
     };

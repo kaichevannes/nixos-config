@@ -2,6 +2,10 @@
 lib.mkIf config.profiles.dev.enable {
   home-manager.sharedModules = [
     {
+      programs.git.ignores = [
+        ".Trash-*"
+      ];
+
       programs.yazi = {
         enable = true;
         enableZshIntegration = true;
