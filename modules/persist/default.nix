@@ -14,7 +14,6 @@
         "/root/.cache/nix"
         "/var/lib/nixos"
         "/var/lib/systemd"
-        "/var/log"
         "/etc/nixos"
       ];
       description = "System directories to persist.";

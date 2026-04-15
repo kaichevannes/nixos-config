@@ -17,8 +17,6 @@ in
 {
   imports = [ inputs.disko.nixosModules.disko ];
 
-  fileSystems."/persist".neededForBoot = true;
-
   # https://github.com/nix-community/disko/blob/master/example/luks-btrfs-subvolumes.nix
   disko.devices = {
     disk.main = {
@@ -66,6 +64,13 @@ in
                   };
                   "/persist" = {
                     mountpoint = "/persist";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                  "/log" = {
+                    mountpoint = "/var/log";
                     mountOptions = [
                       "compress=zstd"
                       "noatime"
