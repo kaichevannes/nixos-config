@@ -1837,7 +1837,7 @@
           "[13]",
           "[14]"
         ],
-        "bogo": 7400,
+        "bogo": 7399,
         "cache": 512,
         "units": 12,
         "page_size": 4096,
@@ -2743,7 +2743,7 @@
           "/dev/input/by-id/usb-Logitech_USB_Receiver-event-kbd",
           "/dev/input/by-path/pci-0000:02:00.0-usb-0:6:1.0-event-kbd",
           "/dev/input/by-path/pci-0000:02:00.0-usbv2-0:6:1.0-event-kbd",
-          "/dev/input/event1"
+          "/dev/input/event0"
         ],
         "resources": [
           {
@@ -2846,7 +2846,7 @@
           "/dev/input/by-id/usb-MoErgo_Glove80_Left_moergo.com:GLV80-D95B2B6DB3D9B70C-event-kbd",
           "/dev/input/by-path/pci-0000:02:00.0-usb-0:5:1.0-event-kbd",
           "/dev/input/by-path/pci-0000:02:00.0-usbv2-0:5:1.0-event-kbd",
-          "/dev/input/event0"
+          "/dev/input/event6"
         ],
         "resources": [
           {
@@ -3397,9 +3397,9 @@
           "name": "USB_Receiver",
           "value": 50504
         },
-        "sysfs_id": "/devices/pci0000:00/0000:00:01.2/0000:02:00.0/usb1/1-6/1-6:1.3/0003:046D:C548.0005/input/input10",
+        "sysfs_id": "/devices/pci0000:00/0000:00:01.2/0000:02:00.0/usb1/1-6/1-6:1.3/0003:046D:C548.0004/input/input10",
         "unix_device_names": [
-          "/dev/input/event6",
+          "/dev/input/event5",
           "/dev/input/ + handler"
         ]
       }
@@ -3551,7 +3551,7 @@
         "resources": [
           {
             "type": "hwaddr",
-            "address": 50
+            "address": 54
           },
           {
             "type": "phwaddr",
@@ -3749,69 +3749,6 @@
     "network_interface": [
       {
         "index": 83,
-        "attached_to": 55,
-        "class_list": [
-          "network_interface"
-        ],
-        "base_class": {
-          "hex": "0107",
-          "name": "Network Interface",
-          "value": 263
-        },
-        "sub_class": {
-          "hex": "0001",
-          "name": "Ethernet",
-          "value": 1
-        },
-        "model": "Ethernet network interface",
-        "sysfs_id": "/class/net/enp42s0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.2/0000:02:00.2/0000:03:09.0/0000:2a:00.0",
-        "unix_device_names": [
-          "enp42s0"
-        ],
-        "resources": [
-          {
-            "type": "hwaddr",
-            "address": 100
-          },
-          {
-            "type": "phwaddr",
-            "address": 100
-          }
-        ],
-        "driver": "r8169",
-        "driver_module": "r8169",
-        "drivers": [
-          "r8169"
-        ],
-        "driver_modules": [
-          "r8169"
-        ]
-      },
-      {
-        "index": 84,
-        "attached_to": 0,
-        "class_list": [
-          "network_interface"
-        ],
-        "base_class": {
-          "hex": "0107",
-          "name": "Network Interface",
-          "value": 263
-        },
-        "sub_class": {
-          "hex": "0000",
-          "name": "Loopback",
-          "value": 0
-        },
-        "model": "Loopback network interface",
-        "sysfs_id": "/class/net/lo",
-        "unix_device_names": [
-          "lo"
-        ]
-      },
-      {
-        "index": 85,
         "attached_to": 45,
         "class_list": [
           "network_interface"
@@ -3852,7 +3789,7 @@
         ]
       },
       {
-        "index": 86,
+        "index": 84,
         "attached_to": 50,
         "class_list": [
           "network_interface"
@@ -3876,7 +3813,7 @@
         "resources": [
           {
             "type": "hwaddr",
-            "address": 50
+            "address": 54
           },
           {
             "type": "phwaddr",
@@ -3890,6 +3827,69 @@
         ],
         "driver_modules": [
           "iwlwifi"
+        ]
+      },
+      {
+        "index": 85,
+        "attached_to": 0,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Loopback",
+          "value": 0
+        },
+        "model": "Loopback network interface",
+        "sysfs_id": "/class/net/lo",
+        "unix_device_names": [
+          "lo"
+        ]
+      },
+      {
+        "index": 86,
+        "attached_to": 55,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0001",
+          "name": "Ethernet",
+          "value": 1
+        },
+        "model": "Ethernet network interface",
+        "sysfs_id": "/class/net/enp42s0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.2/0000:02:00.2/0000:03:09.0/0000:2a:00.0",
+        "unix_device_names": [
+          "enp42s0"
+        ],
+        "resources": [
+          {
+            "type": "hwaddr",
+            "address": 100
+          },
+          {
+            "type": "phwaddr",
+            "address": 100
+          }
+        ],
+        "driver": "r8169",
+        "driver_module": "r8169",
+        "drivers": [
+          "r8169"
+        ],
+        "driver_modules": [
+          "r8169"
         ]
       }
     ],
