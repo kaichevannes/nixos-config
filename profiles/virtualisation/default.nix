@@ -8,7 +8,7 @@
     modules.user.enable = true;
     modules.gui.enable = true;
 
-    modules.persist.userDirectories = [ "iso" ];
+    modules.persist.homeDirectories = [ "iso" ];
   };
 
   imports = [

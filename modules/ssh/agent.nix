@@ -5,7 +5,7 @@
   ...
 }:
 lib.mkIf config.modules.secrets.enable {
-  modules.persist.userDirectories = [
+  modules.persist.homeDirectories = [
     ".local/share/proton-pass-cli"
     ".local/share/keyrings"
   ];

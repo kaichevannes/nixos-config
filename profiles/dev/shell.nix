@@ -5,7 +5,7 @@
   ...
 }:
 lib.mkIf config.profiles.dev.enable {
-  modules.persist.userFiles = [ ".zsh_history" ];
+  modules.persist.homeFiles = [ ".zsh_history" ];
 
   # Completion for system packages
   environment.pathsToLink = [ "/share/zsh" ];

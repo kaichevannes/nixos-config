@@ -23,15 +23,15 @@
       default = [ "/etc/machine-id" ];
       description = "System files to persist.";
     };
-    userDirectories = lib.mkOption {
+    homeDirectories = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ ];
-      description = "User directories to persist.";
+      description = "Home directories to persist.";
     };
-    userFiles = lib.mkOption {
+    homeFiles = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ ];
-      description = "User files to persist.";
+      description = "Home files to persist.";
     };
   };
 
@@ -43,8 +43,8 @@
       directories = config.modules.persist.systemDirectories;
       files = config.modules.persist.systemFiles;
       users.${config.meta.username} = {
-        directories = config.modules.persist.userDirectories;
-        files = config.modules.persist.userFiles;
+        directories = config.modules.persist.homeDirectories;
+        files = config.modules.persist.homeFiles;
       };
     };
   };

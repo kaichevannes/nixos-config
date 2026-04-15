@@ -1,6 +1,6 @@
 { config, lib, ... }:
 lib.mkIf config.profiles.desktop.enable {
-  modules.persist.userDirectories = [ ".mozilla" ];
+  modules.persist.homeDirectories = [ ".mozilla" ];
 
   home-manager.sharedModules = [
     {

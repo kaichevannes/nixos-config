@@ -6,7 +6,7 @@
   ...
 }:
 lib.mkIf config.profiles.dev.enable {
-  modules.persist.userFiles = [
+  modules.persist.homeFiles = [
     ".local/share/helix/trusted_workspaces"
     ".local/share/helix/excluded_workspaces"
   ];
