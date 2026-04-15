@@ -11,8 +11,8 @@
 
   imports = [
     ./application-launcher.nix
-    ./graphical-session.nix
     ./greeter.nix
     ./terminal.nix
+    ./window-manager.nix
   ];
 }

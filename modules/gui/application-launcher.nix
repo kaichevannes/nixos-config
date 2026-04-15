@@ -9,6 +9,11 @@ lib.mkIf config.modules.gui.enable {
     qalculate-gtk
   ];
 
+  modules.gui.wm.applications.vicinae = {
+    command = "vicinae toggle";
+    keybindings = [ "$mod, D" ];
+  };
+
   home-manager.sharedModules = [
     (
       { config, pkgs, ... }:

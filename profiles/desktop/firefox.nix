@@ -10,11 +10,17 @@ lib.mkIf config.profiles.desktop.enable {
         profiles.focumon = {
           id = 1;
           settings = {
-            "widget.wayland.vsync.enabled" = false;
+            "browser.tabs.inTitlebar" = 1;
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
+          userChrome = ''
+            #TabsToolbar { visibility: collapse !important; }
+            #nav-bar { visibility: collapse !important; }
+          '';
         };
         profiles.work.id = 2;
         profiles.llm = {
+          id = 3;
           settings = {
             "browser.tabs.inTitlebar" = 1;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -23,9 +29,9 @@ lib.mkIf config.profiles.desktop.enable {
             #TabsToolbar { visibility: collapse !important; }
             #nav-bar { visibility: collapse !important; }
           '';
-          id = 3;
         };
         profiles.whatsapp = {
+          id = 4;
           settings = {
             "browser.tabs.inTitlebar" = 1;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -34,7 +40,6 @@ lib.mkIf config.profiles.desktop.enable {
             #TabsToolbar { visibility: collapse !important; }
             #nav-bar { visibility: collapse !important; }
           '';
-          id = 4;
         };
       };
     }
