@@ -8,7 +8,6 @@ lib.mkIf config.modules.gui.enable {
 
   programs.foot = {
     enable = true;
-    enableZshIntegration = true;
     settings = {
       main = {
         font = "DankMono Nerd Font:size=25";
