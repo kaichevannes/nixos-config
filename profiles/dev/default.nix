@@ -47,6 +47,7 @@
 
   imports = [
     ./ai.nix
+    ./docker
     ./editor
     ./file-explorer
     ./git

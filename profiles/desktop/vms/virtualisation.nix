@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:
-lib.mkIf config.profiles.virtualisation.enable {
+lib.mkIf config.profiles.desktop.vms.enable {
   virtualisation.libvirtd = {
     enable = true;
 
@@ -14,7 +14,6 @@ lib.mkIf config.profiles.virtualisation.enable {
   };
 
   users.groups.libvirtd.members = [ config.meta.username ];
-  users.groups.kvm.members = [ config.meta.username ];
 
   networking.firewall.trustedInterfaces = [ "virbr0" ];
   systemd.services.libvirt-default-network = {

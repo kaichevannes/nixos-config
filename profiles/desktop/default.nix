@@ -4,6 +4,13 @@
   ...
 }:
 {
+  imports = [
+    ./art.nix
+    ./browser.nix
+    ./screenshot.nix
+    ./vms
+  ];
+
   options.profiles.desktop = {
     enable = lib.mkEnableOption "desktop";
   };
@@ -41,9 +48,4 @@
       };
     };
   };
-
-  imports = [
-    ./browser.nix
-    ./screenshot.nix
-  ];
 }

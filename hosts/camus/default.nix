@@ -5,13 +5,16 @@
   };
 
   profiles = {
-    art.enable = true;
-    desktop.enable = true;
+    desktop = {
+      enable = true;
+      art.enable = true;
+      vms.enable = true;
+    };
     dev = {
       enable = true;
+      docker.enable = true;
       gitUsername = "Kai Chevannes";
       gitEmail = "chevannes.kai@gmail.com";
     };
-    virtualisation.enable = true;
   };
 }
