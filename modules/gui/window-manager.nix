@@ -31,47 +31,45 @@
           };
         }
       );
-      default = {
-        terminal = {
-          workspace = 1;
-          command = "foot";
-          keybindings = [ "$mod, T" ];
-        };
-        browser = {
-          workspace = 2;
-          command = "firefox -P default";
-          keybindings = [ "$mod, B" ];
-        };
-        work-browser = {
-          command = "firefox -P work";
-          keybindings = [ "$mod+Shift, B" ];
-        };
-        focumon = {
-          workspace = 5;
-          command = "firefox --no-remote -P focumon --new-window https://focumon.com";
-        };
-        screenshot = {
-          command = "grim -g \"$(slurp)\" - | wl-copy";
-          keybindings = [ "$mod+Shift, S" ];
-        };
-        llm = {
-          floating = true;
-          command = "firefox --no-remote -P llm --new-window https://claude.ai";
-          keybindings = [
-            "$mod, A"
-            "Alt, A"
-          ];
-        };
-        whatsapp = {
-          floating = true;
-          command = "firefox --no-remote -P whatsapp --new-window https://web.whatsapp.com/";
-          keybindings = [ "$mod, W" ];
-        };
-      };
+      default = { };
     };
   };
 
   config = lib.mkIf config.modules.gui.enable {
+    modules.gui.wm.applications = {
+      terminal = {
+        workspace = 1;
+        command = "foot";
+        keybindings = [ "$mod, T" ];
+      };
+      browser = {
+        workspace = 2;
+        command = "firefox -P default";
+        keybindings = [ "$mod, B" ];
+      };
+      work-browser = {
+        command = "firefox -P work";
+        keybindings = [ "$mod+Shift, B" ];
+      };
+      screenshot = {
+        command = "grim -g \"$(slurp)\" - | wl-copy";
+        keybindings = [ "$mod+Shift, S" ];
+      };
+      llm = {
+        floating = true;
+        command = "firefox --no-remote -P llm --new-window https://claude.ai";
+        keybindings = [
+          "$mod, A"
+          "Alt, A"
+        ];
+      };
+      whatsapp = {
+        floating = true;
+        command = "firefox --no-remote -P whatsapp --new-window https://web.whatsapp.com/";
+        keybindings = [ "$mod, W" ];
+      };
+    };
+
     programs.hyprland = {
       enable = true;
       withUWSM = true;
@@ -127,13 +125,14 @@
                 lib.concatLists (
                   lib.mapAttrsToList (
                     name: app: map (keybinding: "${keybinding}, exec, ${app.command}") app.keybindings
-                  ) launchers
+                  ) (lib.filterAttrs (_name: app: !app.floating) launchers)
+                )
+                ++ lib.concatLists (
+                  lib.mapAttrsToList (
+                    name: app: map (keybinding: "${keybinding}, togglespecialworkspace, ${name}") app.keybindings
+                  ) (lib.filterAttrs (_name: app: app.floating) launchers)
                 )
                 ++ [
-                  "$mod, A, togglespecialworkspace, llm"
-                  "Alt, A, togglespecialworkspace, llm"
-                  "$mod, W, togglespecialworkspace, whatsapp"
-
                   "$mod, 1, workspace, 1"
                   "$mod, 2, workspace, 2"
                   "$mod, 3, workspace, 3"
