@@ -13,8 +13,10 @@
     dev = {
       enable = true;
       docker.enable = true;
-      gitUsername = "Kai Chevannes";
-      gitEmail = "chevannes.kai@gmail.com";
+      git = {
+        username = "Kai Chevannes";
+        email = "chevannes.kai@gmail.com";
+      };
     };
   };
 }
