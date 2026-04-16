@@ -88,7 +88,7 @@
               ) floating;
 
               windowrule = lib.mapAttrsToList (
-                name: app: "match:workspace special:${name}, float on, size 1450 1050; center on"
+                name: app: "match:workspace special:${name}, float on, size 1450 1050, center on"
               ) floating;
 
               bind =
