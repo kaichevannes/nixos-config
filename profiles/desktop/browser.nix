@@ -4,6 +4,8 @@ lib.mkIf config.profiles.desktop.enable {
 
   home-manager.sharedModules = [
     {
+      programs.chromium.enable = true;
+
       programs.firefox = {
         enable = true;
         profiles.default.id = 0;
