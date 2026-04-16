@@ -15,7 +15,6 @@
 
     modules.persist.homeDirectories = [
       "Downloads"
-      "Projects"
     ];
 
     modules.gui.wm.applications = {
