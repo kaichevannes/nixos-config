@@ -18,15 +18,6 @@
       "Projects"
     ];
 
-    home-manager.sharedModules = [
-      {
-        home.packages = with pkgs; [
-          grim
-          slurp
-        ];
-      }
-    ];
-
     modules.gui.wm.applications = {
       browser = {
         workspace = 2;
@@ -40,10 +31,6 @@
       focumon = {
         workspace = 5;
         command = "firefox --no-remote -P focumon --new-window https://focumon.com";
-      };
-      screenshot = {
-        command = "grim -g \"$(slurp)\" - | wl-copy";
-        keybindings = [ "$mod+Shift, S" ];
       };
       llm = {
         floating = true;
@@ -62,7 +49,7 @@
   };
 
   imports = [
-    ./chromium.nix
-    ./firefox.nix
+    ./browser.nix
+    ./screenshot.nix
   ];
 }
