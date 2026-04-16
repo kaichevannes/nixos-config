@@ -17,10 +17,7 @@
     modules.user.enable = true;
     modules.ssh.enable = true;
 
-    modules.persist.homeDirectories = [
-      "Projects"
-      ".local/share/zoxide"
-    ];
+    modules.persist.homeDirectories = [ "Projects" ];
 
     home-manager.sharedModules = [
       {
@@ -28,19 +25,6 @@
           ripgrep
           tokei
         ];
-
-        programs.eza = {
-          enable = true;
-          enableZshIntegration = true;
-        };
-        programs.fzf = {
-          enable = true;
-          enableZshIntegration = true;
-        };
-        programs.zoxide = {
-          enable = true;
-          enableZshIntegration = true;
-        };
       }
     ];
   };
