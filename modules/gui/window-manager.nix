@@ -36,38 +36,10 @@
   };
 
   config = lib.mkIf config.modules.gui.enable {
-    modules.gui.wm.applications = {
-      terminal = {
-        workspace = 1;
-        command = "foot";
-        keybindings = [ "$mod, T" ];
-      };
-      browser = {
-        workspace = 2;
-        command = "firefox -P default";
-        keybindings = [ "$mod, B" ];
-      };
-      work-browser = {
-        command = "firefox -P work";
-        keybindings = [ "$mod+Shift, B" ];
-      };
-      screenshot = {
-        command = "grim -g \"$(slurp)\" - | wl-copy";
-        keybindings = [ "$mod+Shift, S" ];
-      };
-      llm = {
-        floating = true;
-        command = "firefox --no-remote -P llm --new-window https://claude.ai";
-        keybindings = [
-          "$mod, A"
-          "Alt, A"
-        ];
-      };
-      whatsapp = {
-        floating = true;
-        command = "firefox --no-remote -P whatsapp --new-window https://web.whatsapp.com/";
-        keybindings = [ "$mod, W" ];
-      };
+    modules.gui.wm.applications.terminal = {
+      workspace = 1;
+      command = "foot";
+      keybindings = [ "$mod, T" ];
     };
 
     programs.hyprland = {
@@ -80,8 +52,6 @@
         home.packages = with pkgs; [
           wl-clipboard
           capitaine-cursors
-          grim
-          slurp
         ];
 
         wayland.windowManager.hyprland = {

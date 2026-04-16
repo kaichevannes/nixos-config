@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.profiles.desktop = {
     enable = lib.mkEnableOption "desktop";
@@ -12,6 +17,48 @@
       "Downloads"
       "Projects"
     ];
+
+    home-manager.sharedModules = [
+      {
+        home.packages = with pkgs; [
+          grim
+          slurp
+        ];
+      }
+    ];
+
+    modules.gui.wm.applications = {
+      browser = {
+        workspace = 2;
+        command = "firefox -P default";
+        keybindings = [ "$mod, B" ];
+      };
+      work-browser = {
+        command = "firefox -P work";
+        keybindings = [ "$mod+Shift, B" ];
+      };
+      focumon = {
+        workspace = 5;
+        command = "firefox --no-remote -P focumon --new-window https://focumon.com";
+      };
+      screenshot = {
+        command = "grim -g \"$(slurp)\" - | wl-copy";
+        keybindings = [ "$mod+Shift, S" ];
+      };
+      llm = {
+        floating = true;
+        command = "firefox --no-remote -P llm --new-window https://claude.ai";
+        keybindings = [
+          "$mod, A"
+          "Alt, A"
+        ];
+      };
+      whatsapp = {
+        floating = true;
+        command = "firefox --no-remote -P whatsapp --new-window https://web.whatsapp.com/";
+        keybindings = [ "$mod, W" ];
+      };
+    };
   };
 
   imports = [
