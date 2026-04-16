@@ -13,10 +13,6 @@
     modules.user.enable = true;
     modules.gui.enable = true;
 
-    modules.persist.homeDirectories = [
-      "Downloads"
-    ];
-
     modules.gui.wm.applications = {
       browser = {
         workspace = 2;
