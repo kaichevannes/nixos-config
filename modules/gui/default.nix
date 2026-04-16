@@ -13,6 +13,6 @@
     ./application-launcher.nix
     ./greeter.nix
     ./terminal.nix
-    ./window-manager.nix
+    ./window-manager
   ];
 }

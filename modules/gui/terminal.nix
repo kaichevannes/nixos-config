@@ -6,6 +6,12 @@ lib.mkIf config.modules.gui.enable {
     ".local/share/fonts/DankMonoNerdFont-Bold.otf"
   ];
 
+  modules.gui.wm.applications.terminal = {
+    workspace = 1;
+    command = "foot";
+    keybindings = [ "$mod, T" ];
+  };
+
   programs.foot = {
     enable = true;
     settings = {
