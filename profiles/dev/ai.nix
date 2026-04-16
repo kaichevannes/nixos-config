@@ -1,5 +1,12 @@
 { config, lib, ... }:
 lib.mkIf config.profiles.dev.enable {
+  profiles.dev.popups = {
+    claude = {
+      key = "a";
+      command = "claude";
+    };
+  };
+
   home-manager.sharedModules = [
     {
       programs.claude-code = {
