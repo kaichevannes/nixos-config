@@ -38,6 +38,8 @@ lib.mkIf config.profiles.dev.enable {
       };
 
       programs.zsh.initContent = ''
+        eval "$(starship init zsh)"
+
         TRANSIENT_PROMPT="''${PROMPT// prompt / prompt --profile transient }"
         TRANSIENT_RPROMPT="''${PROMPT// prompt / prompt --profile rtransient }"
 
