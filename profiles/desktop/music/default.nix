@@ -10,6 +10,12 @@
   };
 
   config = lib.mkIf config.profiles.desktop.music.enable {
+    modules.secrets.enable = true;
+
+    modules.secrets.homeFiles = [
+      ".config/REAPER/reaper-license.rk"
+    ];
+
     environment.systemPackages = with pkgs; [
       reaper
     ];
