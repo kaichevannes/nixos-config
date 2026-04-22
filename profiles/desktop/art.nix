@@ -10,8 +10,6 @@
   };
 
   config = lib.mkIf config.profiles.desktop.art.enable {
-    modules.gui.enable = true;
-
     environment.systemPackages = with pkgs; [
       krita
     ];

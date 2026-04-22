@@ -8,6 +8,7 @@
     ./art.nix
     ./browser.nix
     ./screenshot.nix
+    ./printing.nix
     ./vms
   ];
 

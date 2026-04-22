@@ -8,6 +8,7 @@
     desktop = {
       enable = true;
       art.enable = true;
+      printing.enable = true;
       vms.enable = true;
     };
     dev = {
