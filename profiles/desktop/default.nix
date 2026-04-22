@@ -7,8 +7,9 @@
   imports = [
     ./art.nix
     ./browser.nix
-    ./screenshot.nix
+    ./music
     ./printing.nix
+    ./screenshot.nix
     ./vms
   ];
 
