@@ -33,8 +33,8 @@
         command = "firefox -P default";
         keybindings = [ "$mod, B" ];
       };
-      work-browser = {
-        command = "firefox -P work";
+      alt-browser = {
+        command = "chromium";
         keybindings = [ "$mod+Shift, B" ];
       };
       task-management = {

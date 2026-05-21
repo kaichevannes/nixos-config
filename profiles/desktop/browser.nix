@@ -12,9 +12,8 @@ lib.mkIf config.profiles.desktop.enable {
       programs.firefox = {
         enable = true;
         profiles.default.id = 0;
-        profiles.work.id = 1;
         profiles.llm = {
-          id = 2;
+          id = 1;
           settings = {
             "browser.tabs.inTitlebar" = 1;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -25,7 +24,7 @@ lib.mkIf config.profiles.desktop.enable {
           '';
         };
         profiles.whatsapp = {
-          id = 3;
+          id = 2;
           settings = {
             "browser.tabs.inTitlebar" = 1;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
