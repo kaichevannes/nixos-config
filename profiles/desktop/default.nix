@@ -25,7 +25,7 @@
     environment.systemPackages = with pkgs; [
       ticktick
     ];
-    modules.persist.homeDirectories = ".config/ticktick";
+    modules.persist.homeDirectories = [ ".config/ticktick" ];
 
     modules.gui.wm.applications = {
       browser = {

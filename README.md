@@ -1,5 +1,10 @@
 # nixos-config
 
+## Cloud Backup
+
+### Restoring
+`sudo restic-personal restore latest --target /`
+
 ## Installation
 
 ### NixOS

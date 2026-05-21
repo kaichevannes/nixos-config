@@ -10,9 +10,15 @@
   };
 
   config = lib.mkIf config.profiles.desktop.art.enable {
+    modules.persist.homeDirectories = [
+      {
+        directory = "Art";
+        cloudSync = true;
+      }
+    ];
+
     environment.systemPackages = with pkgs; [
       krita
-      pureref
     ];
 
     hardware.opentabletdriver.enable = true;
