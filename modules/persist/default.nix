@@ -5,6 +5,12 @@
   ...
 }:
 {
+  imports = [
+    inputs.impermanence.nixosModules.impermanence
+    ./cloud-storage.nix
+    ./erase-disk.nix
+  ];
+
   options.modules.persist =
     let
       pathModule = lib.types.submodule {
@@ -83,10 +89,4 @@
       };
     };
   };
-
-  imports = [
-    inputs.impermanence.nixosModules.impermanence
-    ./cloud-storage.nix
-    ./erase-disk.nix
-  ];
 }
