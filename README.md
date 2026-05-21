@@ -21,7 +21,8 @@ sudo nix --extra-experimental-features "nix-command flakes" run github:kaichevan
 To rebuild use `sudo nixos-rebuild switch`. 
 To rollback use `sudo nixos-rebuild switch --rollback`.
 
-### WSL
+### ~WSL (Currently Broken)~
+
 Install [Wezterm nightly](https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe)
 
 1. Enable WSL
