@@ -19,6 +19,7 @@
 
     environment.systemPackages = with pkgs; [
       krita
+      beeref
     ];
 
     hardware.opentabletdriver.enable = true;
