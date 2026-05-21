@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -21,6 +22,11 @@
     modules.user.enable = true;
     modules.gui.enable = true;
 
+    environment.systemPackages = with pkgs; [
+      ticktick
+    ];
+    modules.persist.homeDirectories = ".config/ticktick";
+
     modules.gui.wm.applications = {
       browser = {
         workspace = 2;
@@ -31,9 +37,9 @@
         command = "firefox -P work";
         keybindings = [ "$mod+Shift, B" ];
       };
-      focumon = {
+      task-management = {
         workspace = 5;
-        command = "firefox --no-remote -P focumon --new-window https://focumon.com";
+        command = "ticktick";
       };
       llm = {
         floating = true;
