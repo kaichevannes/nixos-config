@@ -12,6 +12,7 @@
   config = lib.mkIf config.profiles.desktop.art.enable {
     environment.systemPackages = with pkgs; [
       krita
+      pureref
     ];
 
     hardware.opentabletdriver.enable = true;
