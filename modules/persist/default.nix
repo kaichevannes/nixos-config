@@ -99,6 +99,6 @@
   imports = [
     inputs.impermanence.nixosModules.impermanence
     ./cloud-storage.nix
-    # ./erase-disk.nix
+    ./erase-disk.nix
   ];
 }

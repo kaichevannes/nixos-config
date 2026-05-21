@@ -5,7 +5,7 @@
     description = "Erase BTRFS root subvolume on boot";
     wantedBy = [ "initrd.target" ];
     after = [ "systemd-cryptsetup@cryptroot.service" ];
-    before = [ "initrd-root-fs.target" ];
+    before = [ "sysroot.mount" ];
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
     script = ''
