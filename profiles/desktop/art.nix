@@ -12,8 +12,8 @@
   config = lib.mkIf config.profiles.desktop.art.enable {
     modules.persist.homeDirectories = [
       {
-        directory = "Art";
-        cloudSync = true;
+        path = "Art";
+        cloudBucket = "art";
       }
     ];
 

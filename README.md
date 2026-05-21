@@ -2,8 +2,11 @@
 
 ## Cloud Backup
 
+### Initialise
+`sudo systemctl start restic-backups-<bucket>.service`
+
 ### Restoring
-`sudo restic-personal restore latest --target /`
+`sudo restic-<bucket> restore latest --target /`
 
 ## Installation
 

@@ -8,40 +8,39 @@
       "restic/r2-env" = { };
     };
 
-    services.restic.backups.personal =
+    services.restic.backups =
       let
-        username = config.meta.username;
+        prependHome = map (item: item // { path = "/home/${config.meta.username}/${item.path}"; });
 
-        cloudDirectories = list: map (item: item.directory) (lib.filter (item: item.cloudSync) list);
-        cloudFiles = list: map (item: item.file) (lib.filter (item: item.cloudSync) list);
+        cloudItems = lib.filter (item: item.cloudBucket != null);
+        cloudSyncItems =
+          cloudItems config.modules.persist.systemFiles
+          ++ cloudItems config.modules.persist.systemDirectories
+          ++ prependHome (cloudItems config.modules.persist.homeFiles)
+          ++ prependHome (cloudItems config.modules.persist.homeDirectories);
 
-        cloudSyncPaths =
-          cloudFiles config.modules.persist.systemFiles
-          ++ cloudDirectories config.modules.persist.systemDirectories
-          ++ map (path: "/home/${username}/${path}") (cloudFiles config.modules.persist.homeFiles)
-          ++ map (path: "/home/${username}/${path}") (
-            cloudDirectories config.modules.persist.homeDirectories
-          );
+        itemsByBucket = lib.groupBy (item: item.cloudBucket) cloudSyncItems;
       in
-      {
-        repository = "s3:https://ddd66280f8d373a97fa4ba2ff541b0c9.r2.cloudflarestorage.com/personal";
+      lib.mapAttrs (bucket: items: {
+        repository = "s3:https://ddd66280f8d373a97fa4ba2ff541b0c9.r2.cloudflarestorage.com/${bucket}";
         passwordFile = config.sops.secrets."restic/password".path;
         environmentFile = config.sops.secrets."restic/r2-env".path;
 
         initialize = true;
 
-        paths = cloudSyncPaths;
+        paths = map (item: item.path) items;
 
         pruneOpts = [
           "--keep-daily 7"
           "--keep-weekly 4"
           "--keep-monthly 12"
+          "--keep-yearly 3"
         ];
 
         timerConfig = {
           OnCalendar = "daily";
           Persistent = true;
         };
-      };
+      }) itemsByBucket;
   };
 }

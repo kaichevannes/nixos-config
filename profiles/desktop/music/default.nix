@@ -10,7 +10,16 @@
   };
 
   config = lib.mkIf config.profiles.desktop.music.enable {
-    modules.persist.homeDirectories = [ ".mixxx" ];
+    modules.persist.homeDirectories = [
+      {
+        path = "Music";
+        cloudBucket = "music";
+      }
+      {
+        path = ".mixxx";
+        cloudBucket = "music";
+      }
+    ];
 
     environment.systemPackages = with pkgs; [
       mixxx

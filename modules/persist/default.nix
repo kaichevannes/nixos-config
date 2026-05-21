@@ -7,29 +7,16 @@
 {
   options.modules.persist =
     let
-      fileModule = lib.types.submodule {
+      pathModule = lib.types.submodule {
         options = {
-          file = lib.mkOption {
+          path = lib.mkOption {
             type = lib.types.str;
-            description = "The file path";
+            description = "The path to persist.";
           };
-          cloudSync = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-            description = "Whether to sync this directory to the cloud.";
-          };
-        };
-      };
-      dirModule = lib.types.submodule {
-        options = {
-          directory = lib.mkOption {
-            type = lib.types.str;
-            description = "The directory path";
-          };
-          cloudSync = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-            description = "Whether to sync this directory to the cloud.";
+          cloudBucket = lib.mkOption {
+            type = lib.types.nullOr lib.types.str;
+            default = null;
+            description = "The bucket to backup this data to.";
           };
         };
       };
@@ -38,9 +25,9 @@
       systemDirectories = lib.mkOption {
         type = lib.types.listOf (
           lib.types.coercedTo lib.types.str (str: {
-            directory = str;
-            cloudSync = false;
-          }) dirModule
+            path = str;
+            cloudBucket = null;
+          }) pathModule
         );
         default = [
           "/root/.cache/nix"
@@ -53,9 +40,9 @@
       systemFiles = lib.mkOption {
         type = lib.types.listOf (
           lib.types.coercedTo lib.types.str (str: {
-            file = str;
-            cloudSync = false;
-          }) fileModule
+            path = str;
+            cloudBucket = null;
+          }) pathModule
         );
         default = [ "/etc/machine-id" ];
         description = "System files to persist.";
@@ -63,9 +50,9 @@
       homeDirectories = lib.mkOption {
         type = lib.types.listOf (
           lib.types.coercedTo lib.types.str (str: {
-            directory = str;
-            cloudSync = false;
-          }) dirModule
+            path = str;
+            cloudBucket = null;
+          }) pathModule
         );
         default = [ ];
         description = "Home directories to persist, with optional cloud sync.";
@@ -73,9 +60,9 @@
       homeFiles = lib.mkOption {
         type = lib.types.listOf (
           lib.types.coercedTo lib.types.str (str: {
-            file = str;
-            cloudSync = false;
-          }) fileModule
+            path = str;
+            cloudBucket = null;
+          }) pathModule
         );
         default = [ ];
         description = "Home files to persist.";
@@ -84,14 +71,15 @@
 
   config = {
     fileSystems."/persist".neededForBoot = true;
+
     environment.persistence."/persist" = {
       enable = true;
       hideMounts = true;
-      directories = map (item: item.directory) config.modules.persist.systemDirectories;
-      files = map (item: item.file) config.modules.persist.systemFiles;
+      directories = map (item: item.path) config.modules.persist.systemDirectories;
+      files = map (item: item.path) config.modules.persist.systemFiles;
       users.${config.meta.username} = {
-        directories = map (item: item.directory) config.modules.persist.homeDirectories;
-        files = map (item: item.file) config.modules.persist.homeFiles;
+        directories = map (item: item.path) config.modules.persist.homeDirectories;
+        files = map (item: item.path) config.modules.persist.homeFiles;
       };
     };
   };
