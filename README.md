@@ -1,13 +1,5 @@
 # nixos-config
 
-## Cloud Backup
-
-### Initialise
-`sudo systemctl start restic-backups-<bucket>.service`
-
-### Restoring
-`sudo restic-<bucket> restore latest --target /`
-
 ## Installation
 
 ### NixOS
@@ -43,3 +35,12 @@ nix-shell -p sops --run "sops secrets/secrets.yaml"
 
 ### Linux User Password
 Store the result of `mkpasswd -m yescrypt <password>` in `secrets.yaml` under `password_<user>`.
+
+## Cloud Backup
+
+### Initialise
+`sudo systemctl start restic-backups-<bucket>.service`
+
+### Restoring
+`sudo restic-<bucket> restore latest --target /`
+
