@@ -45,7 +45,7 @@ lib.mkIf config.profiles.dev.enable {
         docker-compose-language-service
         emmet-language-server
         gopls
-        gotools
+        # gotools
         golangci-lint
         golangci-lint-langserver
         nil
