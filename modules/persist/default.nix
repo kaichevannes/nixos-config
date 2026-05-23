@@ -35,12 +35,7 @@
             cloudBucket = null;
           }) pathModule
         );
-        default = [
-          "/root/.cache/nix"
-          "/var/lib/nixos"
-          "/var/lib/systemd"
-          "/etc/nixos"
-        ];
+        default = [ ];
         description = "System directories to persist.";
       };
       systemFiles = lib.mkOption {
@@ -50,7 +45,7 @@
             cloudBucket = null;
           }) pathModule
         );
-        default = [ "/etc/machine-id" ];
+        default = [ ];
         description = "System files to persist.";
       };
       homeDirectories = lib.mkOption {
@@ -76,6 +71,16 @@
     };
 
   config = {
+    modules.persist = {
+      systemDirectories = [
+        "/root/.cache/nix"
+        "/var/lib/nixos"
+        "/var/lib/systemd"
+        "/etc/nixos"
+      ];
+      systemFiles = [ "/etc/machine-id" ];
+    };
+
     fileSystems."/persist".neededForBoot = true;
 
     environment.persistence."/persist" = {
