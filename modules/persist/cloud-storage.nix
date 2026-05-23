@@ -42,5 +42,45 @@
           Persistent = true;
         };
       }) itemsByBucket;
+
+    modules.persist.systemDirectories = [ "/var/lib/restore-markers" ];
+    systemd.services =
+      let
+        buckets = lib.unique (
+          lib.filter (bucket: bucket != null) (
+            lib.catAttrs "cloudBucket" (
+              config.modules.persist.systemFiles
+              ++ config.modules.persist.systemDirectories
+              ++ config.modules.persist.homeFiles
+              ++ config.modules.persist.homeDirectories
+            )
+          )
+        );
+      in
+      lib.listToAttrs (
+        map (
+          bucket:
+          lib.nameValuePair "restic-restore-${bucket}" {
+            description = "Restore ${bucket} from restic if marker is absent.";
+            wantedBy = [ "multi-user.target" ];
+            after = [ "network-online.target" ];
+            wants = [ "network-online.target" ];
+
+            unitConfig.ConditionPathExists = "!/var/lib/restore-markers/${bucket}.done";
+
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+
+            script = ''
+              restic-${bucket} restore latest --target /
+              touch /var/lib/restore-markers/${bucket}.done
+            '';
+
+            path = [ "/run/current-system/sw" ];
+          }
+        ) buckets
+      );
   };
 }
