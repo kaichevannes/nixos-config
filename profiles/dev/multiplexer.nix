@@ -49,6 +49,7 @@
             enable = true;
             escapeTime = 0;
             historyLimit = 50000;
+            keyMode = "vi";
             terminal = "tmux-256color";
             extraConfig = popupBindings;
           };
